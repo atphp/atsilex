@@ -12,7 +12,7 @@ class ComposerBuildRoot
         // Get root composer, reset it
         $composer = json_decode(file_get_contents($root . '/composer.json'), true);
         $composer['require'] = ['php' => '>=5.5'];
-        $composer['require-dev'] = ['symfony\/var-dumper' => '^2.7.0'];
+        $composer['require-dev'] = ['symfony/var-dumper' => '^2.7.0'];
         $composer['autoload'] = ['psr-4' => ['vendor_name\\project_name\\' => 'src']];
 
         foreach (glob($root . '/modules/*/composer.json') as $path) {
