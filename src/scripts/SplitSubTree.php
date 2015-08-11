@@ -14,6 +14,7 @@ if (false !== strpos(phpversion(), '5.6.')) {
       if ($privateKeyUrl = getenv('PRIVATE_KEY_URL')) {
         passthru("touch ~/.ssh/id_rsa");
         passthru("wget $privateKeyUrl -O ~/.ssh/id_rsa");
+        passthru("chmod 600 ~/.ssh/id_rsa");
       }
 
       foreach ($trees as $local => $url) {
