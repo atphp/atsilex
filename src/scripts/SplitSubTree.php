@@ -13,7 +13,8 @@ if (false !== strpos(phpversion(), '5.6.')) {
 
       if ($privateKeyUrl = getenv('PRIVATE_KEY_URL')) {
         passthru("touch ~/.ssh/id_rsa");
-        passthru("wget $privateKeyUrl -O ~/.ssh/id_rsa");
+        $data = file_get_contents($privateKeyUrl);
+        file_put_contents("~/.ssh/id_rsa", $data);
         passthru("chmod 600 ~/.ssh/id_rsa");
       }
 
