@@ -31,13 +31,15 @@ trait V3kAppTrait
      * @param ClassLoader $loader
      * @return self
      */
-    public function setClassLoader(ClassLoader $loader)
+    public function setClassLoader(ClassLoader $loader = null)
     {
-        $this->classLoader = $loader;
+        if (null !== $loader) {
+            $this->classLoader = $loader;
 
-        $dir = $this->getAppRoot() . '/files/vendor/composer';
-        if (is_dir($dir)) {
-            $this->registerExtraClassLoading($dir);
+            $dir = $this->getAppRoot() . '/files/vendor/composer';
+            if (is_dir($dir)) {
+                $this->registerExtraClassLoading($dir);
+            }
         }
 
         return $this;
