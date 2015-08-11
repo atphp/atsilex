@@ -6,9 +6,10 @@ if (false !== strpos(phpversion(), '5.6.')) {
       $branches = ['0.1'];
       $tmp = '/tmp';
       $trees = [
+          'modules/module' => 'git@github.com:v3knet/module.git',
+          'modules/queue'   => 'git@github.com:v3knet/queue-module.git',
           'modules/swagger' => 'git@github.com:v3knet/swagger-module.git',
           'modules/system'  => 'git@github.com:v3knet/system-module.git',
-          'modules/queue'   => 'git@github.com:v3knet/queue-module.git',
       ];
 
       if ($privateKeyUrl = getenv('PRIVATE_KEY_URL')) {
