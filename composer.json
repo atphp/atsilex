@@ -1,0 +1,62 @@
+{
+    "name": "vendor-name\/project-name",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "vendor_name\\project_name\\": "src",
+            "v3knet\\module\\": "modules\/module",
+            "v3knet\\module\\queue\\": "modules\/queue",
+            "v3knet\\module\\swagger\\": "modules\/swagger",
+            "v3knet\\module\\system\\": "modules\/system"
+        }
+    },
+    "require": {
+        "php": ">=5.5",
+        "silex\/silex": "2.0.x-dev",
+        "bernard\/bernard": "1.0.*@dev",
+        "symfony\/console": "^2.7.0",
+        "doctrine\/orm": "^2.5.0",
+        "phpdocumentor\/reflection-docblock": "^2.0",
+        "doctrine\/cache": "^1.4.1",
+        "dflydev\/doctrine-orm-service-provider": "^2.0.0",
+        "guzzlehttp\/guzzle": "^5.2.0",
+        "jms\/serializer": "^1.0",
+        "psr\/log": "^1.0.0",
+        "silex\/web-profiler": "2.0.x-dev",
+        "symfony\/form": "^2.7.0",
+        "symfony\/security": "^2.7.0",
+        "symfony\/security-csrf": "^2.7.0",
+        "symfony\/serializer": "^2.7.0",
+        "symfony\/translation": "^2.7.0",
+        "symfony\/validator": "^2.7.0",
+        "twig\/twig": "^1.18"
+    },
+    "require-dev": {
+        "symfony\\\/var-dumper": "^2.7.0",
+        "symfony\/var-dumper": "^2.7.0"
+    },
+    "scripts": {
+        "run": [
+            "echo 'Started web server on http:\/\/localhost:8888'",
+            "php -S localhost:8888 -t public public\/index.php"
+        ],
+        "post-install-cmd": [
+            "php src\/scripts\/DefineConfigFile.php",
+            "php cli.php v3k:run-script 'vendor_name\\project_name\\scripts\\ComposerRebuild'",
+            "php cli.php v3k:run-script 'vendor_name\\project_name\\scripts\\BuildAssets'"
+        ],
+        "post-update-cmd": [
+            "php cli.php v3k:run-script 'vendor_name\\project_name\\scripts\\ComposerRebuild'",
+            "php cli.php v3k:run-script 'vendor_name\\project_name\\scripts\\BuildAssets'"
+        ],
+        "config-file-generate": [
+            "php src\/scripts\/DefineConfigFile.php"
+        ],
+        "module-composer-update": [
+            "php cli.php v3k:run-script 'vendor_name\\project_name\\scripts\\ComposerRebuild'"
+        ],
+        "module-build-assets": [
+            "php cli.php v3k:run-script 'vendor_name\\project_name\\scripts\\BuildAssets'"
+        ]
+    }
+}

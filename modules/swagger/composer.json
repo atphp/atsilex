@@ -1,0 +1,14 @@
+{
+  "name": "v3knet/swagger-module",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "v3knet\\module\\swagger\\": "./"
+    }
+  },
+  "require": {
+    "php": ">=5.5",
+    "doctrine/orm": "^2.5.0",
+    "phpdocumentor/reflection-docblock": "^2.0"
+  }
+}

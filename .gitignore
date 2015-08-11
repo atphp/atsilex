@@ -1,0 +1,5 @@
+files/
+config.php
+public/assets/
+sites/*/*/
+vendor/

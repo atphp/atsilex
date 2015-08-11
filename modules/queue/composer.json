@@ -1,0 +1,19 @@
+{
+  "name": "v3knet/queue-module",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "v3knet\\module\\queue\\": "./"
+    }
+  },
+  "minimum-stability": "dev",
+  "require": {
+    "bernard/bernard": "1.0.*@dev",
+    "silex/silex": "2.0.x-dev",
+    "symfony/console": "^2.7.0",
+    "v3knet/module": "0.1.x-dev"
+  },
+  "require-dev": {
+    "symfony/var-dumper": "^2.7.0"
+  }
+}

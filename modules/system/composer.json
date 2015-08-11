@@ -1,0 +1,32 @@
+{
+  "name": "v3knet/system-module",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "v3knet\\module\\system\\": "./"
+    }
+  },
+  "minimum-stability": "dev",
+  "require": {
+    "doctrine/cache": "^1.4.1",
+    "doctrine/orm": "^2.5.0",
+    "dflydev/doctrine-orm-service-provider": "^2.0.0",
+    "guzzlehttp/guzzle": "^5.2.0",
+    "jms/serializer": "^1.0",
+    "psr/log": "^1.0.0",
+    "silex/silex": "2.0.x-dev",
+    "silex/web-profiler": "2.0.x-dev",
+    "symfony/console": "^2.7.0",
+    "symfony/form": "^2.7.0",
+    "symfony/security": "^2.7.0",
+    "symfony/security-csrf": "^2.7.0",
+    "symfony/serializer": "^2.7.0",
+    "symfony/translation": "^2.7.0",
+    "symfony/validator": "^2.7.0",
+    "twig/twig": "^1.18",
+    "v3knet/module": "0.1.x-dev"
+  },
+  "require-dev": {
+    "symfony/var-dumper": "^2.7.0"
+  }
+}
