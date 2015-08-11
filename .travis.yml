@@ -18,3 +18,5 @@ install:
 
 script: phpunit
 notifications: { email: false }
+after_success:
+  - php src/scripts/SplitSubTree.php

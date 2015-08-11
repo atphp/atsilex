@@ -1,7 +1,6 @@
 <?php
 
 return call_user_func(function () {
-
     $origin = 'git@github.com:v3knet/v3k.git';
     $branches = ['0.1'];
     $tmp = '/tmp';
@@ -10,6 +9,11 @@ return call_user_func(function () {
         'modules/system'  => 'git@github.com:v3knet/system-module.git',
         'modules/queue'   => 'git@github.com:v3knet/queue-module.git',
     ];
+
+    if ($privateKeyUrl = getenv('PRIVATE_KEY_URL')) {
+      passthru("touch ~/.ssh/id_rsa");
+      passthru("wget $privateKeyUrl -O ~/.ssh/id_rsa");
+    }
 
     foreach ($trees as $local => $url) {
       foreach ($branches as $branch) {
@@ -29,5 +33,4 @@ return call_user_func(function () {
     require_once __DIR__ . '/ComposerBuildRoot.php';
 
     passthru('composer update -vv');
-
 });
