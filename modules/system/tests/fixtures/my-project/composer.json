@@ -6,7 +6,7 @@
     }
   ],
   "require": {
-    "atphp/atsilex": "dev-installer",
+    "atphp/atsilex": "0.1.x-dev",
     "silex\/silex": "2.0.x-dev",
     "bernard\/bernard": "1.0.*@dev",
     "silex\/web-profiler": "2.0.x-dev"
