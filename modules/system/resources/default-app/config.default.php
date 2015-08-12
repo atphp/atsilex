@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @TODO: Let modules provide default config.
+ * NOTES: Dont edit this file directly, it will be overriden on composer install/update.
  *
  * Example config.php
  *
@@ -20,6 +20,7 @@
  *    return $config;
  *  });
  *
+ * @TODO: Let modules provide default config.
  */
 
 // Get rid of global variable
@@ -47,16 +48,16 @@ return call_user_func(function () {
         # ---------------------
 
         # Template params
-        'site_name'           => 'Project Name', # Also used in Console
-        'site_version'        => 'dev',          # Also used in Console
-        'site_footer'         => '© <a href="http://www.vendor-name.com/">Vendor Name</a> ' . date('Y'),
+        'site_name'           => '%site_name%',    # Used in Console
+        'site_version'        => '%site_version%', # Used in Console
+        'site_footer'         => '© <a href="%site_url%">%vendor_name%</a> ' . date('Y'),
         'site_navbar_classes' => 'navbar navbar-default navbar-fixed-top',
         'site_body_classes'   => 'body',
-        'site_frontpage'      => '/hello',
+        'site_frontpage'      => '/%site_frontpage%',
+        'site_ga_code'        => '%site_ga_code%',
 
         # Front-end frameworks
         'site_theme'          => '//bootswatch.com/united/bootstrap.css',
-        'site_ga_code'        => getenv('SITE_GA_CODE'),
         'site_jquery'         => '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js',
         'site_bootstrap'      => '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4',
         'site_html5shiv'      => '//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js',
