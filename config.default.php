@@ -60,7 +60,6 @@ return call_user_func(function () {
         'site_respondjs'      => '//oss.maxcdn.com/respond/1.4.2/respond.min.js',
 
         # Twig
-        'twig.path'           => [__DIR__ . '/resources/views'],
         'twig.form.templates' => ['bootstrap_3_horizontal_layout.html.twig'],
 
         # The security configuration
