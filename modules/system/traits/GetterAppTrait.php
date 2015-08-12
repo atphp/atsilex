@@ -6,10 +6,13 @@ use Doctrine\Common\Cache\Cache;
 use Doctrine\Common\EventManager;
 use Doctrine\DBAL\Configuration;
 use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\Tools\Console\ConsoleRunner as DBAL;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Tools\Console\ConsoleRunner as ORM;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use Symfony\Component\Console\Application as Console;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -86,7 +89,24 @@ trait GetterAppTrait
             $name = isset($this['site_name']) ? $this['site_name'] : 'V3K';
             $version = isset($this['site_version']) ? $this['site_version'] : 'dev';
             $this['console'] = new Console($name, $version);
+
+            // Doctrine commands
+            $this['console']->setHelperSet(DBAL::createHelperSet($this->getDb()));
+            $this['console']->setHelperSet(ORM::createHelperSet($this->getEntityManager()));
+            DBAL::addCommands($this['console']);
+            ORM::addCommands($this['console']);
+
+            // Our custom commands
+            foreach ($this->keys() as $key) {
+                if (0 === strpos($key, '@') && false !== strpos($key, '.cmd.')) {
+                    $cmd = $this[$key];
+                    if ($cmd instanceof Command) {
+                        $this['console']->add($cmd);
+                    }
+                }
+            }
         }
+
         return $this['console'];
     }
 

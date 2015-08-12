@@ -2,8 +2,8 @@
 
 namespace v3knet\module\system\tests;
 
+use v3knet\module\system\ModularApp;
 use v3knet\module\system\SystemModule;
-use v3knet\module\system\tests\fixtures\ModularApp;
 use v3knet\module\system\tests\fixtures\modules\foo\FooModule;
 
 abstract class BaseTestCase extends \PHPUnit_Framework_TestCase
