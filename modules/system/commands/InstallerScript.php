@@ -25,36 +25,33 @@ class InstallerScript
     {
         $root = dirname($event->getComposer()->getConfig()->get('vendor-dir'));
 
-        $me = new ComposerInstallScript($root);
+        $me = new static($root);
         return $me->install();
     }
 
     public function install()
     {
-        $this->createFilesDirectory();
-        $this->createPublicDirectory();
-        $this->generateConfigFile();
-        $this->buildAssets();
+        // `files` directory
+        $this->run('rsync -a %default/files/ %root/files/');
+        $this->run('chmod 777 -Rf %root/files');
+
+        // `public` directory
+        $this->run('rsync -a %default/public/ %root/public/');
+
+        // Config file
+        $this->run('rsync %default/config.default.php %root/config.default.php');
+        $this->run('php %root/index.php v3k:generate-config-file');
+
+        // Build assets
+        $this->run('php %root/index.php v3k:build-assets');
     }
 
-    private function createFilesDirectory()
+    private function run($cmd)
     {
-        // TBD
-    }
-
-    private function createPublicDirectory()
-    {
-        // TBD
-    }
-
-    public function generateConfigFile()
-    {
-        // TBD
-    }
-
-    private function buildAssets()
-    {
-        // TBD
+        passthru(strtr($cmd, [
+            '%default' => dirname(__DIR__) . '/resources/default-app',
+            '%root'    => $this->root
+        ]));
     }
 
 }
