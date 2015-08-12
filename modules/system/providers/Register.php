@@ -85,7 +85,10 @@ class Register
     {
         if (!isset($c['twig'])) {
             $c->register(new TwigServiceProvider(), [
-                'twig.path'           => $c['twig.path'],
+                'twig.path'           => array_merge(
+                    is_array($c['twig.path']) ? $c['twig.path'] : [$c['twig.path']],
+                    [dirname(__DIR__) . '/resources/default-app/views']
+                ),
                 'twig.form.templates' => $c['twig.form.templates']
             ]);
         }
@@ -100,7 +103,8 @@ class Register
             function (\Twig_Loader_Filesystem $loader, Container $c) {
                 /** @var ModularTrait $c */
                 foreach ($c->getModules() as $name) {
-                    $path = $c->getModulePath($name) . '/views';
+                    $path = $c->getModulePath($name) . '/resources/views';
+
                     if (is_dir($path)) {
                         $loader->addPath($path, $name);
                     }

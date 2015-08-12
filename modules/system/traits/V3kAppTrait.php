@@ -3,7 +3,9 @@
 namespace v3knet\module\system\traits;
 
 use Composer\Autoload\ClassLoader;
+use Symfony\Component\Debug\Exception\FlattenException;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Debug\ExceptionHandler;
 
 trait V3kAppTrait
 {
