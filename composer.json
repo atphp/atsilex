@@ -1,5 +1,5 @@
 {
-    "name": "vendor-name\/project-name",
+    "name": "atphp\/atsilex",
     "type": "project",
     "autoload": {
         "psr-4": {
