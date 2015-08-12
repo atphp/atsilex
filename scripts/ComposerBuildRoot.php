@@ -1,7 +1,10 @@
 <?php
 
-namespace vendor_name\project_name\scripts;
+namespace atsilex\scripts;
 
+/**
+ * Simple script to merge core-modules's composer files to master one.
+ */
 class ComposerBuildRoot
 {
 

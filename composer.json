@@ -7,6 +7,7 @@
             "v3knet\\module\\queue\\": "modules\/queue",
             "v3knet\\module\\swagger\\": "modules\/swagger",
             "v3knet\\module\\system\\": "modules\/system"
+            "atsilex\\": ".\/",
         }
     },
     "require": {
@@ -49,7 +50,7 @@
             "php src\/scripts\/DefineConfigFile.php"
         ],
         "module-composer-update": [
-            "php cli.php v3k:run-script 'vendor_name\\project_name\\scripts\\ComposerRebuild'"
+            "php cli.php v3k:run-script 'atphp\\atsilex\\scripts\\ComposerRebuild'"
         ],
         "module-build-assets": [
             "php cli.php v3k:build-assets"
