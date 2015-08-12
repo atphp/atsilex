@@ -33,9 +33,5 @@ if (false !== strpos(phpversion(), '5.6.')) {
           ]));
         }
       }
-
-      require_once __DIR__ . '/ComposerBuildRoot.php';
-
-      passthru('composer update -vv');
   });
 }
