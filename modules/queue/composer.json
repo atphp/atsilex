@@ -6,7 +6,6 @@
       "v3knet\\module\\queue\\": "./"
     }
   },
-  "minimum-stability": "dev",
   "require": {
     "bernard/bernard": "1.0.*@dev",
     "silex/silex": "2.0.x-dev",

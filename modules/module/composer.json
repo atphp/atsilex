@@ -6,7 +6,6 @@
       "v3knet\\module\\": "./"
     }
   },
-  "minimum-stability": "dev",
   "require": {
     "php": ">=5.5",
     "silex/silex": "2.0.x-dev"

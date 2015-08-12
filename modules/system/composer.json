@@ -6,7 +6,6 @@
       "v3knet\\module\\system\\": "./"
     }
   },
-  "minimum-stability": "dev",
   "require": {
     "doctrine/cache": "^1.4.1",
     "doctrine/orm": "^2.5.0",
