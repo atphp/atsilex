@@ -1,11 +1,31 @@
 <?php
 
-namespace vendor_name\project_name\scripts;
+namespace v3knet\module\system\commands;
 
-class ComposerRebuild extends BaseScript
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+use v3knet\module\system\ModularApp;
+
+class ComposerRebuildCommand extends Command
 {
 
-    public function execute()
+    /** @var  ModularApp */
+    protected $app;
+
+    public function __construct(ModularApp $app)
+    {
+        $this->app = $app;
+
+        parent::__construct('v3k:composer-rebuild');
+    }
+
+    protected function configure()
+    {
+        $this->setDescription("Rebuild master composer file for all non-core modules.");
+    }
+
+    protected function execute(InputInterface $input, OutputInterface $output)
     {
         $root = $this->app->getAppRoot();
         $json = [];
