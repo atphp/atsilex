@@ -6,6 +6,7 @@ use atsilex\module\system\traits\GetterAppTrait;
 use atsilex\module\system\traits\ModularAppTrait;
 use Composer\Autoload\ClassLoader;
 use Silex\Application;
+use Silex\Application\UrlGeneratorTrait;
 
 class ModularApp extends Application
 {
@@ -14,6 +15,7 @@ class ModularApp extends Application
 
     use ModularAppTrait;
     use GetterAppTrait;
+    use UrlGeneratorTrait;
 
     public function __construct(array $values = [], ClassLoader $loader = null)
     {
