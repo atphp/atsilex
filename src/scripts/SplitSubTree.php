@@ -1,17 +1,21 @@
 <?php
 
+/**
+ * This script is executed by Travis-CI to push changes to sub-trees.
+ */
+
 if (false !== strpos(phpversion(), '5.6.')) {
   return call_user_func(function () {
-      $origin = 'git@github.com:v3knet/v3k.git';
-      $branches = ['0.1'];
-      $tmp = '/tmp';
+      $origin = 'git@github.com:v3knet/v3k.git'; # The main repository
+      $branches = ['0.1'];                       # Only push main branches
+      $tmp = '/tmp';                             # Temp dir
       $trees = [
-          'modules/module' => 'git@github.com:v3knet/module.git',
+          'modules/module'  => 'git@github.com:v3knet/module.git',
           'modules/queue'   => 'git@github.com:v3knet/queue-module.git',
           'modules/swagger' => 'git@github.com:v3knet/swagger-module.git',
           'modules/system'  => 'git@github.com:v3knet/system-module.git',
       ];
-
+      
       if ($privateKeyUrl = getenv('PRIVATE_KEY_URL')) {
         passthru("touch ~/.ssh/id_rsa");
         $data = file_get_contents($privateKeyUrl);
