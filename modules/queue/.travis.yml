@@ -16,6 +16,5 @@ matrix:
 install:
   - composer install
 
-script: phpunit --testdox --boot=vendor/autoload.php tests/
+script: phpunit --boot=vendor/autoload.php tests/
 notifications: { email: false }
-

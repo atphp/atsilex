@@ -11,8 +11,5 @@
     "silex/silex": "2.0.x-dev",
     "symfony/console": "^2.7.0",
     "v3knet/module": "0.1.x-dev"
-  },
-  "require-dev": {
-    "symfony/var-dumper": "^2.7.0"
   }
 }
