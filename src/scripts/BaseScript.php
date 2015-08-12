@@ -2,8 +2,6 @@
 
 namespace vendor_name\project_name\scripts;
 
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
 use vendor_name\project_name\App;
 
 abstract class BaseScript
@@ -14,8 +12,7 @@ abstract class BaseScript
 
     public function __construct(App $app = null)
     {
-        $this->app = $app;
-        if (null === $app) {
+        if (!$this->app = $app) {
             !defined('APP_CLI') && define('APP_CLI', true);
             $this->app = require __DIR__ . '/../../public/index.php';
         }
