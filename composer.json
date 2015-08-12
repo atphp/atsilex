@@ -40,12 +40,12 @@
             "php -S localhost:8888 -t public public\/index.php"
         ],
         "post-install-cmd": [
-            "php src\/scripts\/DefineConfigFile.php",
-            "php cli.php v3k:run-script 'vendor_name\\project_name\\scripts\\ComposerRebuild'",
+            "php cli.php v3k:generate-config-file",
+            "php cli.php v3k:composer-rebuild",
             "php cli.php v3k:build-assets"
         ],
         "post-update-cmd": [
-            "php cli.php v3k:run-script 'vendor_name\\project_name\\scripts\\ComposerRebuild'",
+            "php cli.php v3k:composer-rebuild",
             "php cli.php v3k:build-assets"
         ],
         "config-file-generate": [
