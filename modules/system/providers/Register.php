@@ -71,11 +71,13 @@ class Register
         $this->registerDoctrineServices($c);
         $this->registerMagicServices($c);
 
-        $c->register(new WebProfilerServiceProvider(), [
-            'profiler.storage' => function (Container $c) {
-                return new FileProfilerStorage('file:' . $c['app.root'] . '/files/cache/profiler');
-            },
-        ]);
+        if (isset($this['debug']) && !empty($this['debug'])) {
+            $c->register(new WebProfilerServiceProvider(), [
+                'profiler.storage' => function (Container $c) {
+                    return new FileProfilerStorage('file:' . $c['app.root'] . '/files/cache/profiler');
+                },
+            ]);
+        }
     }
 
     /**
