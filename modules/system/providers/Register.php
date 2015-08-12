@@ -84,11 +84,19 @@ class Register
     private function registerTwigServices(Container $c)
     {
         if (!isset($c['twig'])) {
+            $paths = [dirname(__DIR__) . '/resources/default-app/views'];
+
+            if (isset($c['twig.path'])) {
+                if (is_array($c['twig.path'])) {
+                    $paths = array_merge($c['twig.path'], $paths);
+                }
+                else {
+                    $paths[] = $c['twig.path'];
+                }
+            }
+
             $c->register(new TwigServiceProvider(), [
-                'twig.path'           => array_merge(
-                    is_array($c['twig.path']) ? $c['twig.path'] : [$c['twig.path']],
-                    [dirname(__DIR__) . '/resources/default-app/views']
-                ),
+                'twig.path'           => $paths,
                 'twig.form.templates' => $c['twig.form.templates']
             ]);
         }
