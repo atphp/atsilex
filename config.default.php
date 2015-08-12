@@ -29,10 +29,12 @@ use atsilex\module\system\SystemModule;
 return call_user_func(function () {
     global $loader;
 
+    !defined('APP_ROOT') && define('APP_ROOT', __DIR__);
+
     return [
         'debug'               => true,
-        'app.root'            => __DIR__,
-        'db.options'          => ['driver' => 'pdo_sqlite', 'path' => __DIR__ . '/files/app.db'],
+        'app.root'            => APP_ROOT,
+        'db.options'          => ['driver' => 'pdo_sqlite', 'path' => APP_ROOT . '/files/app.db'],
 
         # Modules
         # ---------------------
