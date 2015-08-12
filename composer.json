@@ -3,7 +3,6 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "vendor_name\\project_name\\": "src",
             "v3knet\\module\\": "modules\/module",
             "v3knet\\module\\queue\\": "modules\/queue",
             "v3knet\\module\\swagger\\": "modules\/swagger",
