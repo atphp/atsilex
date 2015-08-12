@@ -2,10 +2,12 @@
 
 namespace v3knet\module\system\tests;
 
+use Doctrine\Common\Cache\Cache;
 use Doctrine\DBAL\Driver\Connection;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use JMS\Serializer\SerializerInterface;
+use Psr\Log\LoggerInterface;
 use Silex\Application;
 use Silex\Controller;
 use Silex\Provider\Locale\LocaleListener;
@@ -28,6 +30,8 @@ class SystemModuleTest extends BaseTestCase
     {
         $app = $this->getApplication();
 
+        $this->assertTrue($app->getCache() instanceof Cache);
+        $this->assertTrue($app->getLogger() instanceof LoggerInterface);
         $this->assertTrue($app->getValidatorBuilder() instanceof ValidatorBuilderInterface);
         $this->assertTrue($app->getValidator() instanceof ValidatorInterface);
         $this->assertTrue($app->getFormFactory() instanceof FormFactoryInterface);

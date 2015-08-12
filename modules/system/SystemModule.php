@@ -7,7 +7,6 @@ use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 use v3knet\module\Module;
 use v3knet\module\system\providers\Register;
-use v3knet\module\system\traits\ModularAppTrait;
 
 /**
  * @TODO Include Swift Mailer.
@@ -28,7 +27,7 @@ class SystemModule extends Module
 
     public function register(Container $c)
     {
-        $isModular = in_array(ModularAppTrait::class, class_uses($c));
+        $isModular = $c instanceof ModularApp;
         (new Register($isModular))->register($c);
 
         // Site front-page

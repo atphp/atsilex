@@ -42,11 +42,11 @@
         "post-install-cmd": [
             "php src\/scripts\/DefineConfigFile.php",
             "php cli.php v3k:run-script 'vendor_name\\project_name\\scripts\\ComposerRebuild'",
-            "php cli.php v3k:run-script 'vendor_name\\project_name\\scripts\\BuildAssets'"
+            "php cli.php v3k:build-assets"
         ],
         "post-update-cmd": [
             "php cli.php v3k:run-script 'vendor_name\\project_name\\scripts\\ComposerRebuild'",
-            "php cli.php v3k:run-script 'vendor_name\\project_name\\scripts\\BuildAssets'"
+            "php cli.php v3k:build-assets"
         ],
         "config-file-generate": [
             "php src\/scripts\/DefineConfigFile.php"
@@ -55,7 +55,7 @@
             "php cli.php v3k:run-script 'vendor_name\\project_name\\scripts\\ComposerRebuild'"
         ],
         "module-build-assets": [
-            "php cli.php v3k:run-script 'vendor_name\\project_name\\scripts\\BuildAssets'"
+            "php cli.php v3k:build-assets"
         ]
     }
 }

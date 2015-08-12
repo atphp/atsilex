@@ -2,8 +2,7 @@
 
 namespace vendor_name\project_name\test_cases;
 
-use Doctrine\Common\Cache\Cache;
-use Psr\Log\LoggerInterface;
+use v3knet\module\system\ModularApp;
 use v3knet\module\system\tests\BaseTestCase;
 
 class AppTest extends BaseTestCase
@@ -20,9 +19,27 @@ class AppTest extends BaseTestCase
     {
         $app = $this->getApplication();
 
+        $this->assertTrue($app instanceof ModularApp);
         $this->assertEquals(APP_ROOT, $app->getAppRoot());
-        $this->assertTrue($app->getCache() instanceof Cache);
-        $this->assertTrue($app->getLogger() instanceof LoggerInterface);
+    }
+
+    public function testBuildAssetsCommand()
+    {
+
+    }
+
+    public function testComposerBuildRootCommand()
+    {
+    }
+
+    public function testComposerRebuildCommand()
+    {
+
+    }
+
+    public function testConfigFileGeneratatorCommand()
+    {
+
     }
 
 }
