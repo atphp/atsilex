@@ -43,17 +43,17 @@
             "v3knet\\module\\system\\commands\\InstallerScript::execute"
         ],
         "post-update-cmd": [
-            "php public/index.php v3k:composer-rebuild",
-            "php public/index.php v3k:build-assets"
+            "php public\/index.php v3k:composer-rebuild",
+            "php public\/index.php v3k:build-assets"
         ],
         "config-file-generate": [
             "php src\/scripts\/DefineConfigFile.php"
         ],
         "module-composer-update": [
-            "php public/index.php v3k:run-script 'atphp\\atsilex\\scripts\\ComposerRebuild'"
+            "php public\/index.php v3k:run-script 'atphp\\atsilex\\scripts\\ComposerRebuild'"
         ],
         "module-build-assets": [
-            "php public/index.php v3k:build-assets"
+            "php public\/index.php v3k:build-assets"
         ]
     }
 }
