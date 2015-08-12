@@ -19,7 +19,7 @@ return call_user_func(function () {
     }
 
     $app = new ModularApp(require $configFile, $loader);
+    $app->boot();
 
-    // Handle user's request or return the application object.
-    return defined('APP_CLI') ? $app : $app->run();
+    return 'cli' === php_sapi_name() ? $app->getConsole()->run() : $app->run();
 });

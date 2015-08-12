@@ -1,5 +1,5 @@
 {
-    "name": "vendor-name\/project-name",
+    "name": "atphp\/atsilex",
     "type": "project",
     "autoload": {
         "psr-4": {
@@ -43,17 +43,17 @@
             "v3knet\\module\\system\\commands\\InstallerScript::execute"
         ],
         "post-update-cmd": [
-            "php cli.php v3k:composer-rebuild",
-            "php cli.php v3k:build-assets"
+            "php public/index.php v3k:composer-rebuild",
+            "php public/index.php v3k:build-assets"
         ],
         "config-file-generate": [
             "php src\/scripts\/DefineConfigFile.php"
         ],
         "module-composer-update": [
-            "php cli.php v3k:run-script 'atphp\\atsilex\\scripts\\ComposerRebuild'"
+            "php public/index.php v3k:run-script 'atphp\\atsilex\\scripts\\ComposerRebuild'"
         ],
         "module-build-assets": [
-            "php cli.php v3k:build-assets"
+            "php public/index.php v3k:build-assets"
         ]
     }
 }
