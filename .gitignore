@@ -1,4 +1,5 @@
-files/
+files/cache/*
+files/session/*
 config.php
 public/assets/
 sites/*/*/
