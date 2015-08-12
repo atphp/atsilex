@@ -2,7 +2,7 @@
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/v3knet/v3k"
+      "url": "https://github.com/atphp/atsilex"
     }
   ],
   "require": {
