@@ -9,10 +9,9 @@
          processIsolation="false"
          stopOnFailure="false"
          syntaxCheck="false"
-         bootstrap="./tests/bootstrap.php">
+         bootstrap="./bootstrap.php">
     <testsuites>
         <testsuite name="Project Name Test Suite">
-            <directory>./tests</directory>
             <directory>./modules/*/tests</directory>
         </testsuite>
     </testsuites>
