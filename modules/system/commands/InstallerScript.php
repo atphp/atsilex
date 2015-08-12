@@ -35,7 +35,7 @@ class InstallerScript
         $this
             // `files` directory
             ->run('rsync -a %default/files/ %root/files/')
-            ->run('chmod 777 -Rf %root/files')
+            ->run('chmod -Rf 777 %root/files')
             // `public` directory
             ->run('rsync -a %default/public/ %root/public/')
             // Config file
@@ -54,10 +54,12 @@ class InstallerScript
 
     private function run($cmd)
     {
-        passthru(strtr($cmd, [
+        $cmd = strtr($cmd, [
             '%default' => dirname(__DIR__) . '/resources/default-app',
             '%root'    => $this->root
-        ]));
+        ]);
+
+        passthru($cmd);
 
         return $this;
     }
