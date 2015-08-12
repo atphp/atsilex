@@ -26,24 +26,30 @@ class InstallerScript
         $root = dirname($event->getComposer()->getConfig()->get('vendor-dir'));
 
         $me = new static($root);
-        return $me->install();
+        return $me->install($event);
     }
 
-    public function install()
+    public function install(Event $event)
     {
-        // `files` directory
-        $this->run('rsync -a %default/files/ %root/files/');
-        $this->run('chmod 777 -Rf %root/files');
+        // Put default files in place.
+        $this
+            // `files` directory
+            ->run('rsync -a %default/files/ %root/files/')
+            ->run('chmod 777 -Rf %root/files')
+            // `public` directory
+            ->run('rsync -a %default/public/ %root/public/')
+            // Config file
+            ->run('rsync %default/config.default.php %root/config.default.php')
+            ->run('php %root/public/index.php v3k:generate-config-file')
+            // Build assets
+            ->run('php %root/public/index.php v3k:build-assets');
 
-        // `public` directory
-        $this->run('rsync -a %default/public/ %root/public/');
-
-        // Config file
-        $this->run('rsync %default/config.default.php %root/config.default.php');
-        $this->run('php %root/index.php v3k:generate-config-file');
-
-        // Build assets
-        $this->run('php %root/index.php v3k:build-assets');
+        // Find and replace tokens defined in composer's extra
+        $extras = $event->getComposer()->getPackage()->getExtra();
+        if (isset($extras) && !empty($extras['atsilex'])) {
+            $code = file_get_contents("$this->root/config.default.php");
+            file_put_contents("$this->root/config.default.php", strtr($code, $extras['atsilex']));
+        }
     }
 
     private function run($cmd)
@@ -52,6 +58,8 @@ class InstallerScript
             '%default' => dirname(__DIR__) . '/resources/default-app',
             '%root'    => $this->root
         ]));
+
+        return $this;
     }
 
 }
