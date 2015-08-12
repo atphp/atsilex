@@ -28,7 +28,7 @@ if (false !== strpos(phpversion(), '5.6.')) {
             foreach ($branches as $branch) {
                 passthru(implode('; ', [
                     "rm -rf $tmp/v3k",
-                    "git clone -q $origin $tmp/v3k",
+                    "git clone -q --single-branch --branch=$branch $origin $tmp/v3k",
                     "cd $tmp/v3k",
                     "git filter-branch -f --prune-empty --subdirectory-filter $local $branch",
                     "git remote add read-only $url",
