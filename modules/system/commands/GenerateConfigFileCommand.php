@@ -44,7 +44,7 @@ class GenerateConfigFileCommand extends Command
     private function generate($path)
     {
         file_put_contents(
-            $file,
+            $path,
             sprintf(
                 "<?php \n\nreturn [\n"
                 . "    'debug'   => true,\n"
