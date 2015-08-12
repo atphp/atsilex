@@ -11,11 +11,13 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Console\ConsoleRunner as ORM;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
+use Silex\ControllerCollection;
 use Symfony\Component\Console\Application as Console;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\Routing\RouteCollection;
 use Symfony\Component\Security\Csrf\CsrfTokenManager;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Translation\Translator;
@@ -78,6 +80,22 @@ trait GetterAppTrait
     public function getEntityManager($name = 'default')
     {
         return isset($this["orm.em.{$name}"]) ? $this["orm.em.{$name}"] : $this['orm.em'];
+    }
+
+    /**
+     * @return ControllerCollection
+     */
+    public function getControllerFactory()
+    {
+        return $this['controllers_factory'];
+    }
+
+    /**
+     * @return RouteCollection
+     */
+    public function getRoutes()
+    {
+        return $this['routes'];
     }
 
     /**
