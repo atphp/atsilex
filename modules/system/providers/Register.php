@@ -71,7 +71,7 @@ class Register
         $this->registerDoctrineServices($c);
         $this->registerMagicServices($c);
 
-        if (isset($this['debug']) && !empty($this['debug'])) {
+        if (isset($c['debug']) && !empty($c['debug'])) {
             $c->register(new WebProfilerServiceProvider(), [
                 'profiler.storage' => function (Container $c) {
                     return new FileProfilerStorage('file:' . $c['app.root'] . '/files/cache/profiler');
