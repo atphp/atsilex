@@ -84,7 +84,7 @@ class Register
     private function registerTwigServices(Container $c)
     {
         if (!isset($c['twig'])) {
-            $paths = [dirname(__DIR__) . '/resources/default-app/views'];
+            $paths = [];
 
             if (isset($c['twig.path'])) {
                 if (is_array($c['twig.path'])) {
@@ -94,6 +94,8 @@ class Register
                     $paths[] = $c['twig.path'];
                 }
             }
+
+            $paths[] = dirname(__DIR__) . '/resources/default-app/views';
 
             $c->register(new TwigServiceProvider(), [
                 'twig.path'           => $paths,
