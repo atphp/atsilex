@@ -31,6 +31,7 @@ return call_user_func(function () {
 
     return [
         'debug'               => true,
+        'app.root'            => __DIR__,
         'db.options'          => ['driver' => 'pdo_sqlite', 'path' => __DIR__ . '/files/app.db'],
 
         # Modules
