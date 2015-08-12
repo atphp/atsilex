@@ -59,7 +59,7 @@ return call_user_func(function () {
         # Front-end frameworks
         'site_theme'          => '//bootswatch.com/united/bootstrap.css',
         'site_jquery'         => '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js',
-        'site_bootstrap'      => '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4',
+        'site_bootstrap'      => '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5',
         'site_html5shiv'      => '//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js',
         'site_respondjs'      => '//oss.maxcdn.com/respond/1.4.2/respond.min.js',
 
