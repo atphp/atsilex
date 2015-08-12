@@ -9,14 +9,19 @@ use v3knet\module\Module;
 use v3knet\module\system\providers\Register;
 
 /**
- * @TODO Include Swift Mailer.
- * @TODO Support HAL
+ * @TODO
+ *
+ *  Features
+ *  ---------------------
+ *  - system-module or create a separated project as a composer plugin, so we can auto setup a
+ *      new project without base-app structure.
+ *  - Include Swift Mailer.
+ *  - Hal
  *      - https://github.com/mikekelly/hal-browser
  *      - Nocarrier\Hal — https://github.com/blongden/hal
  *      - https://github.com/easybiblabs/silex-hal-provider
  *      - http://www.slideshare.net/LukeStokes/pox-to-hateoas-13077649
- * @TODO Support https://vadikom.github.io/smartmenus/src/demo/bootstrap-navbar.html?
- * @TODO Support drupal navbar?
+ *  - Support drupal navbar and/or github.com/vadikom/smartmenus
  */
 class SystemModule extends Module
 {
