@@ -1,6 +1,6 @@
 <?php
 
-namespace v3knet\module\tests\fixtures\foo\models;
+namespace atsilex\module\tests\fixtures\foo\models;
 
 class Foo
 {

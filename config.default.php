@@ -23,8 +23,8 @@
  */
 
 // Get rid of global variable
-use v3knet\module\queue\QueueModule;
-use v3knet\module\system\SystemModule;
+use atsilex\module\queue\QueueModule;
+use atsilex\module\system\SystemModule;
 
 return call_user_func(function () {
     global $loader;

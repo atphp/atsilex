@@ -1,6 +1,6 @@
 <?php
 
-use v3knet\module\system\ModularApp;
+use atsilex\module\system\ModularApp;
 
 // Get rid of global variables
 return call_user_func(function () {

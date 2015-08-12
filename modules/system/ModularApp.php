@@ -1,11 +1,11 @@
 <?php
 
-namespace v3knet\module\system;
+namespace atsilex\module\system;
 
+use atsilex\module\system\traits\GetterAppTrait;
+use atsilex\module\system\traits\ModularAppTrait;
 use Composer\Autoload\ClassLoader;
 use Silex\Application;
-use v3knet\module\system\traits\GetterAppTrait;
-use v3knet\module\system\traits\ModularAppTrait;
 
 class ModularApp extends Application
 {

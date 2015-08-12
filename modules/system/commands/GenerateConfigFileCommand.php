@@ -1,13 +1,13 @@
 <?php
 
-namespace v3knet\module\system\commands;
+namespace atsilex\module\system\commands;
 
+use atsilex\module\queue\QueueModule;
+use atsilex\module\system\ModularApp;
+use atsilex\module\system\SystemModule;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use v3knet\module\queue\QueueModule;
-use v3knet\module\system\ModularApp;
-use v3knet\module\system\SystemModule;
 
 /**
  * @TODO: Use a better method

@@ -1,6 +1,6 @@
 <?php
 
-namespace v3knet\module\swagger\controllers;
+namespace atsilex\module\swagger\controllers;
 
 use Symfony\Component\HttpFoundation\Response;
 

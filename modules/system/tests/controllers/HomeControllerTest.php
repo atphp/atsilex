@@ -1,9 +1,9 @@
 <?php
 
-namespace v3knet\module\system\tests\controllers;
+namespace atsilex\module\system\tests\controllers;
 
+use atsilex\module\system\tests\BaseTestCase;
 use Symfony\Component\HttpFoundation\Request;
-use v3knet\module\system\tests\BaseTestCase;
 
 class HomeControllerTest extends BaseTestCase
 {

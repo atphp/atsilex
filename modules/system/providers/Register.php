@@ -1,6 +1,6 @@
 <?php
 
-namespace v3knet\module\system\providers;
+namespace atsilex\module\system\providers;
 
 use Dflydev\Provider\DoctrineOrm\DoctrineOrmServiceProvider;
 use Doctrine\Common\Cache\FilesystemCache;

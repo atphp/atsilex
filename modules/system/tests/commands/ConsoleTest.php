@@ -1,12 +1,12 @@
 <?php
 
-namespace v3knet\module\system\tests\commands;
+namespace atsilex\module\system\tests\commands;
 
+use atsilex\module\system\commands\RunScriptCommand;
+use atsilex\module\system\tests\BaseTestCase;
+use atsilex\module\system\tests\fixtures\modules\foo\commands\FooCommand;
 use Symfony\Component\Console\Application as Console;
 use Symfony\Component\Console\Tester\CommandTester;
-use v3knet\module\system\commands\RunScriptCommand;
-use v3knet\module\system\tests\BaseTestCase;
-use v3knet\module\system\tests\fixtures\modules\foo\commands\FooCommand;
 
 class ConsoleTest extends BaseTestCase
 {

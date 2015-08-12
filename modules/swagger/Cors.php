@@ -1,6 +1,6 @@
 <?php
 
-namespace v3knet\module\swagger;
+namespace atsilex\module\swagger;
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;

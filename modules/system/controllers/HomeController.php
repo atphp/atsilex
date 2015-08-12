@@ -1,6 +1,6 @@
 <?php
 
-namespace v3knet\module\system\controllers;
+namespace atsilex\module\system\controllers;
 
 class HomeController extends BaseController
 {

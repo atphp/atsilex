@@ -1,6 +1,6 @@
 <?php
 
-namespace v3knet\module;
+namespace atsilex\module;
 
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;

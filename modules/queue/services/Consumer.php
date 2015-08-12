@@ -1,6 +1,6 @@
 <?php
 
-namespace v3knet\module\queue\services;
+namespace atsilex\module\queue\services;
 
 use Bernard\Router;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;

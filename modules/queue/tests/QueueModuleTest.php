@@ -1,7 +1,9 @@
 <?php
 
-namespace v3knet\module\queue\test_cases;
+namespace atsilex\module\queue\test_cases;
 
+use atsilex\module\queue\QueueModule;
+use atsilex\module\test_cases\BaseTestCase;
 use Bernard\Consumer;
 use Bernard\Driver;
 use Bernard\Producer;
@@ -9,9 +11,6 @@ use Bernard\QueueFactory\PersistentFactory;
 use Bernard\Router;
 use Bernard\Serializer;
 use Silex\Application;
-use v3knet\module\queue\QueueModule;
-use v3knet\module\system\SystemModule;
-use v3knet\module\test_cases\BaseTestCase;
 
 class QueueModuleTest extends \PHPUnit_Framework_TestCase
 {

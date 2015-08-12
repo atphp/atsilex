@@ -3,11 +3,11 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "v3knet\\module\\": "modules\/module",
-            "v3knet\\module\\queue\\": "modules\/queue",
-            "v3knet\\module\\swagger\\": "modules\/swagger",
-            "v3knet\\module\\system\\": "modules\/system"
             "atsilex\\": ".\/",
+            "atsilex\\module\\": "modules\/module",
+            "atsilex\\module\\queue\\": "modules\/queue",
+            "atsilex\\module\\swagger\\": "modules\/swagger",
+            "atsilex\\module\\system\\": "modules\/system"
         }
     },
     "require": {

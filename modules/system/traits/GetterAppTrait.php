@@ -1,6 +1,6 @@
 <?php
 
-namespace v3knet\module\system\traits;
+namespace atsilex\module\system\traits;
 
 use Doctrine\Common\Cache\Cache;
 use Doctrine\Common\EventManager;

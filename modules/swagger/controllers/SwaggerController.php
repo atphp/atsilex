@@ -1,17 +1,17 @@
 <?php
 
-namespace v3knet\module\swagger\controllers;
+namespace atsilex\module\swagger\controllers;
 
+use atsilex\module\exceptions\RuntimeException;
+use atsilex\module\ServiceProvider;
+use atsilex\module\swagger\annotations\Method;
+use atsilex\module\swagger\annotations\Param;
+use atsilex\module\swagger\annotations\Response;
+use atsilex\module\system\controllers\BaseController;
 use Doctrine\Common\Annotations\AnnotationReader;
 use phpDocumentor\Reflection\DocBlock;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RequestContext;
-use v3knet\module\exceptions\RuntimeException;
-use v3knet\module\ServiceProvider;
-use v3knet\module\swagger\annotations\Method;
-use v3knet\module\swagger\annotations\Param;
-use v3knet\module\swagger\annotations\Response;
-use v3knet\module\system\controllers\BaseController;
 
 class SwaggerController extends BaseController
 {

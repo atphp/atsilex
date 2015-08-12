@@ -1,6 +1,6 @@
 <?php
 
-namespace v3knet\module\system\providers;
+namespace atsilex\module\system\providers;
 
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use JMS\Serializer\Naming\IdenticalPropertyNamingStrategy;

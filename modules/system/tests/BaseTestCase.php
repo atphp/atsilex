@@ -1,10 +1,10 @@
 <?php
 
-namespace v3knet\module\system\tests;
+namespace atsilex\module\system\tests;
 
-use v3knet\module\system\ModularApp;
-use v3knet\module\system\SystemModule;
-use v3knet\module\system\tests\fixtures\modules\foo\FooModule;
+use atsilex\module\system\ModularApp;
+use atsilex\module\system\SystemModule;
+use atsilex\module\system\tests\fixtures\modules\foo\FooModule;
 
 abstract class BaseTestCase extends \PHPUnit_Framework_TestCase
 {

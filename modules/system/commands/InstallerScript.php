@@ -1,6 +1,6 @@
 <?php
 
-namespace v3knet\module\system\commands;
+namespace atsilex\module\system\commands;
 
 use Composer\Script\Event;
 

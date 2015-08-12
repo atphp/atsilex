@@ -1,6 +1,6 @@
 <?php
 
-namespace v3knet\module\system\tests\fixtures\modules\foo\models;
+namespace atsilex\module\system\tests\fixtures\modules\foo\models;
 
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;

@@ -1,7 +1,11 @@
 <?php
 
-namespace v3knet\module\system\tests;
+namespace atsilex\module\system\tests;
 
+use atsilex\module\system\commands\RunScriptCommand;
+use atsilex\module\system\controllers\HomeController;
+use atsilex\module\system\tests\fixtures\modules\foo\FooModule;
+use atsilex\module\system\tests\fixtures\modules\foo\models\FooEntity;
 use Doctrine\Common\Cache\Cache;
 use Doctrine\DBAL\Driver\Connection;
 use Doctrine\ORM\EntityManagerInterface;
@@ -18,10 +22,6 @@ use Symfony\Component\Translation\Translator;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Validator\ValidatorBuilderInterface;
 use Twig_Environment;
-use v3knet\module\system\commands\RunScriptCommand;
-use v3knet\module\system\controllers\HomeController;
-use v3knet\module\system\tests\fixtures\modules\foo\FooModule;
-use v3knet\module\system\tests\fixtures\modules\foo\models\FooEntity;
 
 class SystemModuleTest extends BaseTestCase
 {
