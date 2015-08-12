@@ -10,7 +10,7 @@ $loader = $loader ?: require_once __DIR__ . '/../vendor/autoload.php';
 // Get rid of global variables
 return call_user_func(function () use ($loader) {
     // APP_ROOT is useful to get app directories/files.
-    !defined('APP_ROOT') && define('APP_ROOT', dirname(dirname(__DIR__)));
+    !defined('APP_ROOT') && define('APP_ROOT', dirname(__DIR__));
 
     // app object, the core of the application.
     $configFile = APP_ROOT . '/config.php';
