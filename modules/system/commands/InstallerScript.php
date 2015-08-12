@@ -10,6 +10,8 @@ use Composer\Script\Event;
  * In your composer.json add this command to your scripts.post-install-cmd and scripts.post-update-cmd:
  *
  *  v3knet\module\system\commands\InstallerScript::execute
+ *
+ * @TODO Use PHP to create files instead of bash commands.
  */
 class InstallerScript
 {

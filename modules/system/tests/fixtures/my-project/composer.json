@@ -1,6 +1,9 @@
 {
   "repositories": [
-    { "type": "vcs", "url": "https://github.com/v3knet/v3k" }
+    {
+      "type": "vcs",
+      "url": "https://github.com/v3knet/v3k"
+    }
   ],
   "require": {
     "atphp/atsilex": "dev-installer",
@@ -15,12 +18,12 @@
   },
   "extra": {
     "atsilex": {
-      "%site_name%":       "My Project",
-      "%site_version%":    "0.1",
-      "%site_url%":        "http://www.v3k.net/",
-      "%site_frontpage%":  "hello",
-      "%site_ga_code%":    "UA-1234567-890",
-      "%vendor_name%":     "First Last"
+      "%site_name%": "My Project",
+      "%site_version%": "0.1",
+      "%site_url%": "http://www.v3k.net/",
+      "%site_frontpage%": "hello",
+      "%site_ga_code%": "UA-1234567-890",
+      "%vendor_name%": "First Last"
     }
   }
 }
