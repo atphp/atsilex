@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @TODO: Let modules provide default config.
+ * NOTES: Dont edit this file directly, it will be overriden on composer install/update.
  *
  * Example config.php
  *
@@ -20,18 +20,22 @@
  *    return $config;
  *  });
  *
+ * @TODO: Let modules provide default config.
  */
 
 // Get rid of global variable
-use v3knet\module\queue\QueueModule;
-use v3knet\module\system\SystemModule;
+use atsilex\module\queue\QueueModule;
+use atsilex\module\system\SystemModule;
 
 return call_user_func(function () {
     global $loader;
 
+    !defined('APP_ROOT') && define('APP_ROOT', __DIR__);
+
     return [
         'debug'               => true,
-        'db.options'          => ['driver' => 'pdo_sqlite', 'path' => __DIR__ . '/files/app.db'],
+        'app.root'            => APP_ROOT,
+        'db.options'          => ['driver' => 'pdo_sqlite', 'path' => APP_ROOT . '/files/app.db'],
 
         # Modules
         # ---------------------
@@ -44,23 +48,22 @@ return call_user_func(function () {
         # ---------------------
 
         # Template params
-        'site_name'           => 'Project Name', # Also used in Console
-        'site_version'        => 'dev',          # Also used in Console
-        'site_footer'         => '© <a href="http://www.vendor-name.com/">Vendor Name</a> ' . date('Y'),
+        'site_name'           => '%site_name%',    # Used in Console
+        'site_version'        => '%site_version%', # Used in Console
+        'site_footer'         => '© <a href="%site_url%">%vendor_name%</a> ' . date('Y'),
         'site_navbar_classes' => 'navbar navbar-default navbar-fixed-top',
         'site_body_classes'   => 'body',
-        'site_frontpage'      => '/hello',
+        'site_frontpage'      => '/%site_frontpage%',
+        'site_ga_code'        => '%site_ga_code%',
 
         # Front-end frameworks
         'site_theme'          => '//bootswatch.com/united/bootstrap.css',
-        'site_ga_code'        => getenv('SITE_GA_CODE'),
         'site_jquery'         => '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js',
         'site_bootstrap'      => '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4',
         'site_html5shiv'      => '//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js',
         'site_respondjs'      => '//oss.maxcdn.com/respond/1.4.2/respond.min.js',
 
         # Twig
-        'twig.path'           => [__DIR__ . '/resources/views'],
         'twig.form.templates' => ['bootstrap_3_horizontal_layout.html.twig'],
 
         # The security configuration

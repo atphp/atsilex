@@ -1,16 +1,16 @@
 <?php
 
-namespace v3knet\module\tests;
+namespace atsilex\module\tests;
 
-use v3knet\module\tests\fixtures\foo\FooModule;
-use v3knet\module\tests\fixtures\InvalidModule;
+use atsilex\module\tests\fixtures\foo\FooModule;
+use atsilex\module\tests\fixtures\InvalidModule;
 
 class ModuleTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
      * @expectedException \RuntimeException
-     * @expectedExceptionMessage Machine name is required: v3knet\module\tests\fixtures\InvalidModule
+     * @expectedExceptionMessage Machine name is required: atsilex\module\tests\fixtures\InvalidModule
      */
     public function testInvalidModule()
     {

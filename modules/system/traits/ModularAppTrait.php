@@ -1,9 +1,9 @@
 <?php
 
-namespace v3knet\module\system\traits;
+namespace atsilex\module\system\traits;
 
+use atsilex\module\Module;
 use Silex\Application;
-use v3knet\module\Module;
 
 trait ModularAppTrait
 {

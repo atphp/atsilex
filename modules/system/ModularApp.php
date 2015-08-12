@@ -1,11 +1,11 @@
 <?php
 
-namespace v3knet\module\system;
+namespace atsilex\module\system;
 
+use atsilex\module\system\traits\GetterAppTrait;
+use atsilex\module\system\traits\ModularAppTrait;
 use Composer\Autoload\ClassLoader;
 use Silex\Application;
-use v3knet\module\system\traits\GetterAppTrait;
-use v3knet\module\system\traits\ModularAppTrait;
 
 class ModularApp extends Application
 {
@@ -19,7 +19,10 @@ class ModularApp extends Application
     {
         parent::__construct($values);
 
-        !$this->offsetExists('app.root') && $this->offsetSet('app.root', dirname(__DIR__));
+        if (!$this->offsetExists('app.root')) {
+            throw new \InvalidArgumentException('Missing app.root value.');
+        }
+
         is_null($loader) && $this->setClassLoader($loader);
 
         $this->before([$this, 'onBefore']);

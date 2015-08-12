@@ -1,13 +1,13 @@
 <?php
 
-namespace v3knet\module\swagger;
+namespace atsilex\module\swagger;
 
+use atsilex\module\Module;
+use atsilex\module\swagger\controllers\OptionsController;
 use Pimple\Container;
 use Silex\Application;
 use Silex\ControllerCollection;
 use Symfony\Component\Routing\RouteCollection;
-use v3knet\module\Module;
-use v3knet\module\swagger\controllers\OptionsController;
 
 class SwaggerModule extends Module
 {

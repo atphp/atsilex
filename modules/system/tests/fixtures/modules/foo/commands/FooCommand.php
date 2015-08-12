@@ -1,6 +1,6 @@
 <?php
 
-namespace v3knet\module\system\tests\fixtures\modules\foo\commands;
+namespace atsilex\module\system\tests\fixtures\modules\foo\commands;
 
 class FooCommand
 {

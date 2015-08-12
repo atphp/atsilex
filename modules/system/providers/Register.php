@@ -1,6 +1,6 @@
 <?php
 
-namespace v3knet\module\system\providers;
+namespace atsilex\module\system\providers;
 
 use Dflydev\Provider\DoctrineOrm\DoctrineOrmServiceProvider;
 use Doctrine\Common\Cache\FilesystemCache;
@@ -84,11 +84,21 @@ class Register
     private function registerTwigServices(Container $c)
     {
         if (!isset($c['twig'])) {
+            $paths = [];
+
+            if (isset($c['twig.path'])) {
+                if (is_array($c['twig.path'])) {
+                    $paths = array_merge($c['twig.path'], $paths);
+                }
+                else {
+                    $paths[] = $c['twig.path'];
+                }
+            }
+
+            $paths[] = dirname(__DIR__) . '/resources/default-app/views';
+
             $c->register(new TwigServiceProvider(), [
-                'twig.path'           => array_merge(
-                    is_array($c['twig.path']) ? $c['twig.path'] : [$c['twig.path']],
-                    [dirname(__DIR__) . '/resources/default-app/views']
-                ),
+                'twig.path'           => $paths,
                 'twig.form.templates' => $c['twig.form.templates']
             ]);
         }

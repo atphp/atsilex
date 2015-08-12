@@ -1,6 +1,6 @@
 <?php
 
-namespace v3knet\module\swagger\annotations;
+namespace atsilex\module\swagger\annotations;
 
 use Doctrine\Common\Annotations\Annotation;
 

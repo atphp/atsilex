@@ -1,8 +1,8 @@
 <?php
 
-namespace v3knet\module\tests\fixtures\foo;
+namespace atsilex\module\tests\fixtures\foo;
 
-use v3knet\module\Module;
+use atsilex\module\Module;
 
 class FooModule extends Module
 {

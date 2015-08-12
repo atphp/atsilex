@@ -1,12 +1,12 @@
 <?php
 
-namespace v3knet\module\system;
+namespace atsilex\module\system;
 
+use atsilex\module\Module;
+use atsilex\module\system\providers\Register;
 use Pimple\Container;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
-use v3knet\module\Module;
-use v3knet\module\system\providers\Register;
 
 /**
  * @TODO

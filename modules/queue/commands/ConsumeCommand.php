@@ -1,7 +1,8 @@
 <?php
 
-namespace v3knet\module\queue\commands;
+namespace atsilex\module\queue\commands;
 
+use atsilex\module\App;
 use Bernard\Consumer;
 use Bernard\Event\RejectEnvelopeEvent;
 use Bernard\Message\DefaultMessage;
@@ -11,7 +12,6 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use v3knet\module\App;
 
 class ConsumeCommand extends Command
 {

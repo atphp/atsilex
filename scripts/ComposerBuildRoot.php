@@ -1,19 +1,22 @@
 <?php
 
-namespace vendor_name\project_name\scripts;
+namespace atsilex\scripts;
 
+/**
+ * Simple script to merge core-modules's composer files to master one.
+ */
 class ComposerBuildRoot
 {
 
     public function execute()
     {
-        $root = realpath(__DIR__ . '/../../');
+        $root = realpath(__DIR__ . '/../');
 
         // Get root composer, reset it
         $composer = json_decode(file_get_contents($root . '/composer.json'), true);
         $composer['require'] = ['php' => '>=5.5'];
         $composer['require-dev'] = ['symfony/var-dumper' => '^2.7.0'];
-        $composer['autoload'] = ['psr-4' => ['vendor_name\\project_name\\' => 'src']];
+        $composer['autoload'] = ['psr-4' => ['atsilex\\' => './']];
 
         foreach (glob($root . '/modules/*/composer.json') as $path) {
             $this->merge($composer, $path, $root);
@@ -50,7 +53,7 @@ class ComposerBuildRoot
         foreach (['require', 'require-dev', 'autoload'] as $key) {
             $composer[$key] = isset($composer[$key]) ? $composer[$key] : [];
             if (!empty($info[$key])) {
-                $composer[$key] = $this->mergeDeepArray($composer[$key], $info[$key]);
+                $composer[$key] = $this->mergeArray([$composer[$key], $info[$key]]);
             }
         }
 
@@ -59,31 +62,20 @@ class ComposerBuildRoot
         }
     }
 
-    private function mergeDeepArray()
-    {
-        $args = func_get_args();
-        return $this->doMergeDeepArray($args);
-    }
-
-    private function doMergeDeepArray($arrays)
+    private function mergeArray($arrays)
     {
         $result = [];
 
         foreach ($arrays as $array) {
             foreach ($array as $key => $value) {
-                // Renumber integer keys as array_merge_recursive() does. Note that PHP
-                // automatically converts array keys that are integer strings (e.g., '1')
-                // to integers.
                 if (is_integer($key)) {
-                    $result [] = $value;
+                    $result[] = $value;
                 }
-                // Recurse when both values are arrays.
-                elseif (isset($result [$key]) && is_array($result [$key]) && is_array($value)) {
-                    $result [$key] = $this->doMergeDeepArray([$result [$key], $value]);
+                elseif (isset($result[$key]) && is_array($result[$key]) && is_array($value)) {
+                    $result[$key] = $this->mergeArray([$result[$key], $value]);
                 }
-                // Otherwise, use the latter value, overriding any previous value.
                 else {
-                    $result [$key] = $value;
+                    $result[$key] = $value;
                 }
             }
         }

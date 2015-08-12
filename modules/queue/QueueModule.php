@@ -1,7 +1,9 @@
 <?php
 
-namespace v3knet\module\queue;
+namespace atsilex\module\queue;
 
+use atsilex\module\Module;
+use atsilex\module\queue\services\Consumer;
 use Bernard\Driver\FlatFileDriver;
 use Bernard\Middleware\MiddlewareBuilder;
 use Bernard\Normalizer\DefaultMessageNormalizer;
@@ -13,9 +15,6 @@ use Bernard\Serializer;
 use Normalt\Normalizer\AggregateNormalizer;
 use Pimple\Container;
 use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
-use v3knet\module\Module;
-use v3knet\module\queue\commands\ConsumeCommand;
-use v3knet\module\queue\services\Consumer;
 
 class QueueModule extends Module
 {

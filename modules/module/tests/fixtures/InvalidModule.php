@@ -1,8 +1,8 @@
 <?php
 
-namespace v3knet\module\tests\fixtures;
+namespace atsilex\module\tests\fixtures;
 
-use v3knet\module\Module;
+use atsilex\module\Module;
 
 class InvalidModule extends Module
 {

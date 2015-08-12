@@ -1,6 +1,6 @@
 <?php
 
-namespace v3knet\module\system\traits;
+namespace atsilex\module\system\traits;
 
 use Composer\Autoload\ClassLoader;
 use Symfony\Component\Debug\Exception\FlattenException;

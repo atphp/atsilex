@@ -1,4 +1,4 @@
-Project Name [![Build Status](https://travis-ci.org/v3knet/v3k.svg)](https://travis-ci.org/v3knet/v3k)
+Modular Silex [![Build Status](https://travis-ci.org/v3knet/v3k.svg)](https://travis-ci.org/v3knet/v3k)
 ====
 
 ## Built-ins features

@@ -1,11 +1,11 @@
 <?php
 
-namespace v3knet\module\system\commands;
+namespace atsilex\module\system\commands;
 
+use atsilex\module\system\ModularApp;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use v3knet\module\system\ModularApp;
 
 class BuildAssetsCommand extends Command
 {
