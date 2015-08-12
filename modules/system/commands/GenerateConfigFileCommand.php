@@ -46,7 +46,10 @@ class GenerateConfigFileCommand extends Command
         file_put_contents(
             $path,
             sprintf(
-                "<?php \n\nreturn [\n"
+                "<?php\n"
+                . "date_default_timezone_set('UTC');\n"
+                . "\n"
+                . "return [\n"
                 . "    'debug'   => true,\n"
                 . "    'modules' => [\n"
                 . "        'queue'  => '%s',\n"
