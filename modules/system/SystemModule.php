@@ -11,10 +11,13 @@ use v3knet\module\system\providers\Register;
 /**
  * @TODO
  *
- *  Features
+ *  Architect
  *  ---------------------
  *  - system-module or create a separated project as a composer plugin, so we can auto setup a
  *      new project without base-app structure.
+ *
+ *  Features
+ *  ---------------------
  *  - Include Swift Mailer.
  *  - Hal
  *      - https://github.com/mikekelly/hal-browser
