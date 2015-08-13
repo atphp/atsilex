@@ -3,13 +3,14 @@
 namespace atsilex\module\system\controllers;
 
 use atsilex\module\App;
+use atsilex\module\system\ModularApp;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 
 abstract class BaseController
 {
 
-    /** @var Application */
+    /** @var ModularApp */
     protected $app;
 
     public function __construct(Application $app)
