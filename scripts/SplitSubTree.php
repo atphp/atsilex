@@ -7,9 +7,9 @@
 
 if (false !== strpos(phpversion(), '5.6.')) {
     return call_user_func(function () {
-        $origin = 'git@github.com:v3knet/v3k.git'; # The main repository
-        $branches = ['0.1'];                       # Only push main branches
-        $tmp = '/tmp';                             # Temp dir
+        $origin = 'git@github.com:atphp/atsilex.git'; # The main repository
+        $branches = ['0.1'];                          # Only push main branches
+        $tmp = '/tmp';                                # Temp dir
         $trees = [
             'modules/module'  => 'git@github.com:v3knet/module.git',
             'modules/queue'   => 'git@github.com:v3knet/queue-module.git',
