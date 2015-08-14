@@ -147,33 +147,10 @@ class Register
         ]);
     }
 
-    /**
-     * @TODO Cache me.
-     */
-    private function registerMagicServices(Container $c)
+    private function registerMagicServices(ModularApp $c)
     {
-        if (!$this->isModular) {
-            return;
-        }
-
-        /** @var ModularTrait $c */
-        foreach ($c->getModules() as $module) {
-            foreach ($this->magics as $magic) {
-                list($ns, $suffix, $short) = $magic;
-
-                if (($dir = $c->getModulepath($module) . '/' . $ns) && is_dir($dir)) {
-                    $this->registerMagicModuleServices($c, $module, $ns, $dir, $suffix, $short);
-                }
-            }
-        }
-    }
-
-    private function registerMagicModuleServices(Container $c, $module, $ns, $dir, $suffix, $short)
-    {
-        // Scan all module's classes, create services for each.
-        foreach (glob("{$dir}/*{$suffix}.php") as $file) {
-            $class = str_replace([$dir . '/', $suffix . '.php'], '', $file);
-            $service = "@{$module}.{$short}." . $this->convertFromCamelCaseToSnakeCase($class);
+        foreach ($this->findMagicServicesInfo($c) as $service => $info) {
+            list($module, $class, $ns, $suffix) = $info;
 
             $c[$service] = function ($c) use ($module, $class, $ns, $suffix) {
                 $moduleNS = $c->getModuleNamespace($module);
@@ -181,6 +158,42 @@ class Register
 
                 return new $class($c);
             };
+        }
+    }
+
+    private function findMagicServicesInfo(ModularApp $c)
+    {
+        $cache = $c->getCache();
+        $cache->setNamespace('@system');
+        $cacheId = 'services:magic';
+
+        if ($cache->contains($cacheId)) {
+            return $cache->fetch($cacheId);
+        }
+
+        $mappings = [];
+        foreach ($c->getModules() as $module) {
+            foreach ($this->magics as $magic) {
+                list($ns, $suffix, $short) = $magic;
+
+                if (($dir = $c->getModulepath($module) . '/' . $ns) && is_dir($dir)) {
+                    $this->findModuleMagicServicesInfo($mappings, $module, $ns, $dir, $suffix, $short);
+                }
+            }
+        }
+
+        $cache->save($cacheId, $mappings);
+
+        return $mappings;
+    }
+
+    private function findModuleMagicServicesInfo(array &$mappings, $module, $ns, $dir, $suffix, $short)
+    {
+        // Scan all module's classes, create services for each.
+        foreach (glob("{$dir}/*{$suffix}.php") as $file) {
+            $class = str_replace([$dir . '/', $suffix . '.php'], '', $file);
+            $service = "@{$module}.{$short}." . $this->convertFromCamelCaseToSnakeCase($class);
+            $mappings[$service] = [$module, $class, $ns, $suffix];
         }
     }
 
