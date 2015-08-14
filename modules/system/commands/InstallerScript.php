@@ -39,7 +39,8 @@ class InstallerScript
             ->run('rsync -a %default/files/ %root/files/')
             ->run('chmod -Rf 777 %root/files')
             // `public` directory
-            ->run('rsync -a %default/public/ %root/public/')
+            ->run('mkdir -p %root/public/assets/modules/')
+            ->run('rsync %default/public/index.php %root/public/index.php')
             // Config file
             ->run('rsync %default/config.default.php %root/config.default.php')
             ->run('php %root/public/index.php v3k:generate-config-file')

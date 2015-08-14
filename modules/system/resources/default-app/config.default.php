@@ -56,12 +56,13 @@ return call_user_func(function () {
         'site_frontpage'       => '/%site_frontpage%',
         'site_ga_code'         => '%site_ga_code%',
 
-        # Front-end frameworks
+        # Front-end assets
         'site_theme'           => '//bootswatch.com/united/bootstrap.css',
         'site_jquery'          => '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js',
         'site_bootstrap'       => '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5',
         'site_html5shiv'       => '//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js',
         'site_respondjs'       => '//oss.maxcdn.com/respond/1.4.2/respond.min.js',
+        'site_assets_prefix'   => '//cdn.rawgit.com/v3knet/system-module/0.1/resources/default-app/public',
 
         # Twig
         'twig.form.templates'  => ['bootstrap_3_horizontal_layout.html.twig'],
