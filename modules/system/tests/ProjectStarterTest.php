@@ -10,7 +10,7 @@ class ProjectStarterTest extends BaseTestCase
     public function testProjectStructure()
     {
         if (!is_file($this->root . '/composer.json')) {
-            $this->markTestSkipped('This test is slow, only on Travis, check .travis.yml');
+            return $this->markTestSkipped('This test is slow, only on Travis, check .travis.yml');
         }
 
         $this->assertFileExists($this->root . '/composer.json');
