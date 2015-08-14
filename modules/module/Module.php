@@ -237,8 +237,8 @@ abstract class Module implements ServiceProviderInterface,
 
     /**
      * Method to build module's assets to make them accessible by user's request.
-     * 
-     * @TODO If module public = app public. Don't do anything.
+     *
+     * @TODO If module public = app public. Don't do anything?
      */
     public function buildAssets($docRoot)
     {
