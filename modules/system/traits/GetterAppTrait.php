@@ -3,6 +3,7 @@
 namespace atsilex\module\system\traits;
 
 use Doctrine\Common\Cache\Cache;
+use Doctrine\Common\Cache\CacheProvider;
 use Doctrine\Common\EventManager;
 use Doctrine\DBAL\Configuration;
 use Doctrine\DBAL\Connection;
@@ -43,7 +44,7 @@ trait GetterAppTrait
     }
 
     /**
-     * @return Cache
+     * @return CacheProvider
      */
     public function getCache()
     {
