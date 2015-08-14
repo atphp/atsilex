@@ -38,24 +38,27 @@ class GenerateConfigFileCommand extends Command
 
     private function generate($path)
     {
-        file_put_contents(
-            $path,
-            sprintf(
-                "<?php\n"
-                . "date_default_timezone_set('UTC');\n"
-                . "\n"
-                . "return [\n"
-                . "    'debug'   => true,\n"
-                . "    'modules' => [\n"
-                . "        'queue'  => '%s',\n"
-                . "        'system' => '%s',\n"
-                . "    ]\n"
-                . "] + %s;\n\n",
-                QueueModule::class,
-                SystemModule::class,
-                "require __DIR__ . '/config.default.php'"
-            )
-        );
+        file_put_contents($path, sprintf(
+            implode("\n", [
+                "<?php",
+                "// Avoid error when use date() functions.",
+                "date_default_timezone_set('UTC');",
+                "",
+                "return [",
+                "    'debug'   => true,",
+                "    'modules' => [",
+                "        'queue'  => '%s', # Can disable",
+                "        'system' => '%s', # Can't disable",
+                "    ],",
+                "    # Performance — should disable on dev and enable on production",
+                "    # ---------------------",
+                "    'cache.magic_services' => false,",
+                "] + %s;\n",
+            ]),
+            QueueModule::class,
+            SystemModule::class,
+            "require __DIR__ . '/config.default.php'"
+        ));
     }
 
 }

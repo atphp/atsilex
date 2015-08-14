@@ -166,8 +166,9 @@ class Register
         $cache = $c->getCache();
         $cache->setNamespace('@system');
         $cacheId = 'services:magic';
+        $caching = isset($c['cache.magic_services']) && !empty($c['cache.magic_services']);
 
-        if ($cache->contains($cacheId)) {
+        if ($caching && $cache->contains($cacheId)) {
             return $cache->fetch($cacheId);
         }
 
@@ -182,7 +183,9 @@ class Register
             }
         }
 
-        $cache->save($cacheId, $mappings);
+        if ($caching) {
+            $cache->save($cacheId, $mappings);
+        }
 
         return $mappings;
     }
@@ -202,7 +205,7 @@ class Register
         preg_match_all('!([A-Z][A-Z0-9]*(?=$|[A-Z][a-z0-9])|[A-Za-z][a-z0-9]+)!', $input, $matches);
         $ret = $matches[0];
         foreach ($ret as &$match) {
-            $match = $match == strtoupper($match) ? strtolower($match) : lcfirst($match);
+            $match = $match === strtoupper($match) ? strtolower($match) : lcfirst($match);
         }
         return implode('_', $ret);
     }
