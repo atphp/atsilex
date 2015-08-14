@@ -2,6 +2,7 @@
 
 namespace atsilex\module\system\providers;
 
+use atsilex\module\system\ModularApp;
 use Dflydev\Provider\DoctrineOrm\DoctrineOrmServiceProvider;
 use Doctrine\Common\Cache\FilesystemCache;
 use Pimple\Container;
@@ -22,9 +23,6 @@ use Symfony\Component\HttpKernel\Profiler\FileProfilerStorage;
 class Register
 {
 
-    /** @var bool */
-    private $isModular;
-
     /** @var array[] */
     protected $ormMappings = [];
 
@@ -44,11 +42,6 @@ class Register
         # @module.cmd.my.cron -> module_namespace\commands\my\CronCommand
         ['commands', 'Command', 'cmd']
     ];
-
-    public function __construct($isModular)
-    {
-        $this->isModular = $isModular;
-    }
 
     public function register(Container $c)
     {
@@ -110,7 +103,7 @@ class Register
             return $twig;
         });
 
-        $this->isModular && $c->extend(
+        $c->extend(
             'twig.loader.filesystem',
             function (\Twig_Loader_Filesystem $loader, Container $c) {
                 /** @var ModularTrait $c */
@@ -139,12 +132,10 @@ class Register
             return $c->getCache();
         };
 
-        if ($this->isModular) {
-            foreach ($c->getModules() as $module) {
-                // Register entity mappings if available
-                if ($mappings = $c->getModule($module)->getEntityMappings($c)) {
-                    $this->ormMappings = array_merge($this->ormMappings, $mappings);
-                }
+        foreach ($c->getModules() as $module) {
+            // Register entity mappings if available
+            if ($mappings = $c->getModule($module)->getEntityMappings($c)) {
+                $this->ormMappings = array_merge($this->ormMappings, $mappings);
             }
         }
 

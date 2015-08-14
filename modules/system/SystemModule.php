@@ -30,8 +30,11 @@ class SystemModule extends Module
 
     public function register(Container $c)
     {
-        $isModular = $c instanceof ModularApp;
-        (new Register($isModular))->register($c);
+        if (!$c instanceof ModularApp) {
+            throw new \RuntimeException('Container must be an instance of ' . __NAMESPACE__ . '\\ModularApp');
+        }
+
+        (new Register())->register($c);
 
         // Site front-page
         if (isset($c['site_frontpage']) && ('/' !== $c['site_frontpage'])) {
