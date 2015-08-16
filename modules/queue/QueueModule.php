@@ -61,10 +61,21 @@ class QueueModule extends Module
             $router = $c['bernard.router'];
             $dispatcher = $c['dispatcher'];
 
+            // Raise error instead of silently ignore it
+            // @TODO: Update docs
+            if (isset($c['queue.consumer.throw_error']) && !empty($c['queue.consumer.throw_error'])) {
+                $dispatcher->addListener(
+                    'bernard.reject',
+                    function (RejectEnvelopeEvent $event) {
+                        throw $event->getException();
+                    }
+                );
+            }
+
             return new Consumer($router, $dispatcher);
         };
 
-        // @TODO: Update docs.
+        // @TODO: Update docs
         $c['bernard.queues'] = function (ModularApp $c) {
             return $this->getQueues($c);
         };
