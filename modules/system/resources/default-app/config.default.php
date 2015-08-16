@@ -67,6 +67,10 @@ return call_user_func(function () {
         # Twig
         'twig.form.templates'  => ['bootstrap_3_horizontal_layout.html.twig'],
 
+        # Queue
+        # ---------------------
+        'queue.consumer.throw_error' => true,
+
         # The security configuration
         # ---------------------
         // Authentication
