@@ -4,6 +4,7 @@ namespace atsilex\module\queue;
 
 use atsilex\module\Module;
 use atsilex\module\queue\services\Consumer;
+use atsilex\module\system\ModularApp;
 use Bernard\Driver\FlatFileDriver;
 use Bernard\Middleware\MiddlewareBuilder;
 use Bernard\Normalizer\DefaultMessageNormalizer;
@@ -14,6 +15,7 @@ use Bernard\Router\SimpleRouter;
 use Bernard\Serializer;
 use Normalt\Normalizer\AggregateNormalizer;
 use Pimple\Container;
+use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 
 class QueueModule extends Module
@@ -58,8 +60,25 @@ class QueueModule extends Module
         $c['bernard.consumer'] = function (Container $c) {
             $router = $c['bernard.router'];
             $dispatcher = $c['dispatcher'];
+
             return new Consumer($router, $dispatcher);
         };
+
+        // @TODO: Update docs.
+        $c['bernard.queues'] = function (ModularApp $c) {
+            return $this->getQueues($c);
+        };
+    }
+
+    public function getQueues(ModularApp $c)
+    {
+        $queueNames = new Container();
+
+        $c
+            ->getDispatcher()
+            ->dispatch('@queue.queues.get', $event = new GenericEvent($c, ['queues' => $queueNames]));
+
+        return $queueNames;
     }
 
 }
