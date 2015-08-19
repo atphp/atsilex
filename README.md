@@ -106,3 +106,17 @@ class MyModule extends Module {
     }
 }
 ```
+
+Define a module is simple, you also need tell the application about your module — 
+edit `config.php`, include your modules there:
+ 
+```php
+return [
+    // …
+    'modules' => [
+        'my_module' => 'MyModule',
+        'system'    => 'atsilex\module\system\SystemModule', # Can't disable
+    ],
+    // …
+];
+```
