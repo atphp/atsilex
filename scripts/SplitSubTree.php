@@ -32,7 +32,7 @@ if (false !== strpos(phpversion(), '5.6.')) {
                     "cd $tmp/v3k",
                     "git filter-branch -f --prune-empty --subdirectory-filter $local $branch",
                     "git remote add read-only $url",
-                    "git push -q -f read-only $branch",
+                    "git push -q -f --tags read-only $branch",
                     "cd -",
                     "rm -rf $tmp/v3k",
                 ]));
