@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "de1f43385e953376080936a71067a4fb",
+    "hash": "78bd9f5638be103330fb91ac24b4e24b",
     "packages": [
         {
             "name": "atphp/atsilex",
-            "version": "dev-installer",
+            "version": "0.1.x-dev",
             "source": {
                 "type": "git",
-                "url": "https://github.com/v3knet/v3k.git",
-                "reference": "f17e6955a5491c74cc0329a8f3b85c22e37dbe65"
+                "url": "https://github.com/atphp/atsilex.git",
+                "reference": "57681cb81979d7c5ea3c43aa255fbfb373165e0c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/v3knet/v3k/zipball/f17e6955a5491c74cc0329a8f3b85c22e37dbe65",
-                "reference": "f17e6955a5491c74cc0329a8f3b85c22e37dbe65",
+                "url": "https://api.github.com/repos/atphp/atsilex/zipball/57681cb81979d7c5ea3c43aa255fbfb373165e0c",
+                "reference": "57681cb81979d7c5ea3c43aa255fbfb373165e0c",
                 "shasum": ""
             },
             "require": {
@@ -74,10 +74,10 @@
                 ]
             },
             "support": {
-                "source": "https://github.com/v3knet/v3k/tree/installer",
-                "issues": "https://github.com/v3knet/v3k/issues"
+                "source": "https://github.com/atphp/atsilex/tree/0.1",
+                "issues": "https://github.com/atphp/atsilex/issues"
             },
-            "time": "2015-08-12 20:10:22"
+            "time": "2015-08-19 07:36:36"
         },
         {
             "name": "beberlei/assert",
