@@ -33,13 +33,13 @@ return call_user_func(function () {
     !defined('APP_ROOT') && define('APP_ROOT', __DIR__);
 
     return [
-        'debug'                => true,
-        'app.root'             => APP_ROOT,
-        'db.options'           => ['driver' => 'pdo_sqlite', 'path' => APP_ROOT . '/files/app.db'],
+        'debug'                      => true,
+        'app.root'                   => APP_ROOT,
+        'db.options'                 => ['driver' => 'pdo_sqlite', 'path' => APP_ROOT . '/files/app.db'],
 
         # Modules
         # ---------------------
-        'modules'              => [
+        'modules'                    => [
             'queue'  => QueueModule::class,
             'system' => SystemModule::class,
         ],
@@ -48,24 +48,30 @@ return call_user_func(function () {
         # ---------------------
 
         # Template params
-        'site_name'            => '%site_name%',    # Used in Console
-        'site_version'         => '%site_version%', # Used in Console
-        'site_footer'          => '© <a href="%site_url%">%vendor_name%</a> ' . date('Y'),
-        'site_navbar_classes'  => 'navbar navbar-default navbar-fixed-top',
-        'site_body_classes'    => 'body',
-        'site_frontpage'       => '/%site_frontpage%',
-        'site_ga_code'         => '%site_ga_code%',
+        'site_name'                  => '%site_name%',    # Used in Console
+        'site_version'               => '%site_version%', # Used in Console
+        'site_footer'                => '© <a href="%site_url%">%vendor_name%</a> ' . date('Y'),
+        'site_navbar_classes'        => 'navbar navbar-default navbar-fixed-top',
+        'site_body_classes'          => 'body',
+        'site_frontpage'             => '/%site_frontpage%',
+        'site_ga_code'               => '%site_ga_code%',
+        'site_menu'                  => [
+            'primary'   => [
+                '<a href="/">Home</a>',
+            ],
+            'secondary' => [],
+        ],
 
         # Front-end assets
-        'site_theme'           => '//bootswatch.com/united/bootstrap.css',
-        'site_jquery'          => '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js',
-        'site_bootstrap'       => '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5',
-        'site_html5shiv'       => '//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js',
-        'site_respondjs'       => '//oss.maxcdn.com/respond/1.4.2/respond.min.js',
-        'site_assets_prefix'   => '//cdn.rawgit.com/v3knet/system-module/0.1/resources/default-app/public',
+        'site_theme'                 => '//bootswatch.com/united/bootstrap.css',
+        'site_jquery'                => '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js',
+        'site_bootstrap'             => '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5',
+        'site_html5shiv'             => '//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js',
+        'site_respondjs'             => '//oss.maxcdn.com/respond/1.4.2/respond.min.js',
+        'site_assets_prefix'         => '//cdn.rawgit.com/v3knet/system-module/0.1/resources/default-app/public',
 
         # Twig
-        'twig.form.templates'  => ['bootstrap_3_horizontal_layout.html.twig'],
+        'twig.form.templates'        => ['bootstrap_3_horizontal_layout.html.twig'],
 
         # Queue
         # ---------------------
@@ -74,7 +80,7 @@ return call_user_func(function () {
         # The security configuration
         # ---------------------
         // Authentication
-        'security.firewalls'   => [
+        'security.firewalls'         => [
             'login'   => ['pattern' => '^/user/login$'],
             'default' => [
                 'pattern'   => '^/admin.*$',
@@ -86,7 +92,7 @@ return call_user_func(function () {
 
         # Performance
         # ---------------------
-        'cache.magic_services' => true,
+        'cache.magic_services'       => true,
 
         // Authorization
         # 'security.access_rules' => [],

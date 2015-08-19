@@ -16,18 +16,25 @@
   <script src="/assets/modules/system/js/app.js"></script>
 {% endblock %}
 
-{#{% block navbar_right_links %}#}
-  {#{% set userLink = '<li><a href="' ~ url('user-login') ~ '">Login</a></li>' %}#}
-  {#{% set userLogout = '<li><a href="'~ url('user-logout') ~'">Logout</a></li>' %}#}
+{% block menu_primary %}
+  {% if app.site_menu.primary is defined %}
+    <ul class="nav navbar-nav">
+      {% for link in app.site_menu.primary %}
+        <li>{{ link|raw }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}
 
-  {#{% if app.user %}#}
-    {#{% if app.user.uid %}#}
-      {#{% set userLink = userLogout %}#}
-    {#{% endif %}#}
-  {#{% endif %}#}
-
-  {#{{ userLink|raw }}#}
-{#{% endblock %}#}
+{% block menu_secondary %}
+  {% if app.site_menu.secondary is defined %}
+    <ul class="nav navbar-nav navbar-right">
+      {% for link in app.site_menu.secondary %}
+        <li>{{ link|raw }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}
 
 {% block breadcrumbs %}
   {% if breadcrumbs is defined %}

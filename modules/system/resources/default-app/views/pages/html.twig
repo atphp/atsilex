@@ -51,16 +51,8 @@
       {% endif %}
 
       <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          {% block navbar_links %}
-            <li><a href="/">Home</a></li>
-          {% endblock %}
-        </ul>
-
-        <ul class="nav navbar-nav navbar-right">
-          {% block navbar_right_links %}
-          {% endblock %}
-        </ul>
+        {% block menu_primary %}{% endblock %}
+        {% block menu_secondary %}{% endblock %}
       </div>
     </div>
   </nav>
