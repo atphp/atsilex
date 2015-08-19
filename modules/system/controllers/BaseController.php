@@ -2,9 +2,7 @@
 
 namespace atsilex\module\system\controllers;
 
-use atsilex\module\App;
 use atsilex\module\system\ModularApp;
-use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 
 abstract class BaseController
@@ -13,13 +11,13 @@ abstract class BaseController
     /** @var ModularApp */
     protected $app;
 
-    public function __construct(Application $app)
+    public function __construct(ModularApp $app)
     {
         $this->app = $app;
     }
 
     /**
-     * @return App
+     * @return ModularApp
      */
     protected function getApp()
     {
