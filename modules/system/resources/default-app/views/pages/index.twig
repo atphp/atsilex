@@ -1,10 +1,10 @@
 {% extends 'pages/html.twig' %}
 
 {% block head_stylesheet %}
-  {{ parent() }}
-
   {% if app.site_theme is defined %}
     <link href="{{ app.site_theme }}" rel="stylesheet" media="screen">
+  {% else %}
+    {{ parent() }}
   {% endif %}
 
   <link href="/assets/modules/system/css/app.css" rel="stylesheet" media="screen"/>
