@@ -1,3 +1,4 @@
 * 0.1.1
 
 - Make menu configurable
+- Fix bug: Don't include bootstrap CSS twice.
