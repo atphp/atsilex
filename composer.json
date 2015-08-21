@@ -21,6 +21,7 @@
         "dflydev\/doctrine-orm-service-provider": "^2.0.0",
         "guzzlehttp\/guzzle": "^5.2.0",
         "jms\/serializer": "^1.0",
+        "monolog\/monolog": "^1.16.0",
         "psr\/log": "^1.0.0",
         "silex\/web-profiler": "2.0.x-dev",
         "symfony\/form": "^2.7.0",
@@ -44,12 +45,6 @@
         ],
         "post-update-cmd": [
             "php public\/index.php v3k:composer-rebuild",
-            "php public\/index.php v3k:build-assets"
-        ],
-        "module-composer-update": [
-            "php public\/index.php v3k:run-script 'atphp\\atsilex\\scripts\\ComposerRebuild'"
-        ],
-        "module-build-assets": [
             "php public\/index.php v3k:build-assets"
         ]
     }
