@@ -19,6 +19,9 @@ use Pimple\Container;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 
+/**
+ * @TODO: Integrate https://github.com/bernardphp/Juno
+ */
 class QueueModule extends Module
 {
 
