@@ -6,6 +6,7 @@ use atsilex\module\Module;
 use atsilex\module\queue\services\Consumer;
 use atsilex\module\system\ModularApp;
 use Bernard\Driver\FlatFileDriver;
+use Bernard\Event\RejectEnvelopeEvent;
 use Bernard\Middleware\MiddlewareBuilder;
 use Bernard\Normalizer\DefaultMessageNormalizer;
 use Bernard\Normalizer\EnvelopeNormalizer;
