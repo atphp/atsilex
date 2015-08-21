@@ -32,6 +32,9 @@ return call_user_func(function () {
 
     !defined('APP_ROOT') && define('APP_ROOT', __DIR__);
 
+    // Default timezone
+    date_default_timezone_set('UTC');
+
     return [
         'debug'                      => true,
         'app.root'                   => APP_ROOT,

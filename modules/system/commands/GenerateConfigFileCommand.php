@@ -41,8 +41,6 @@ class GenerateConfigFileCommand extends Command
         file_put_contents($path, sprintf(
             implode("\n", [
                 "<?php",
-                "// Avoid error when use date() functions.",
-                "date_default_timezone_set('UTC');",
                 "",
                 "return [",
                 "    'debug'   => true,",
