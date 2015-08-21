@@ -20,6 +20,7 @@ use Symfony\Component\HttpFoundation\Request;
  *      - https://github.com/easybiblabs/silex-hal-provider
  *      - http://www.slideshare.net/LukeStokes/pox-to-hateoas-13077649
  *  - Support drupal navbar and/or github.com/vadikom/smartmenus
+ *  - Document how to change cache backend.
  */
 class SystemModule extends Module
 {

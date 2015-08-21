@@ -21,6 +21,7 @@ use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 
 /**
  * @TODO: Integrate https://github.com/bernardphp/Juno
+ * @TODO: Document how to change queue backend.
  */
 class QueueModule extends Module
 {
