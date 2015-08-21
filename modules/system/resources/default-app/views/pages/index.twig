@@ -86,7 +86,7 @@
 {% block footer %}
   {{ parent() }}
 
-  {% if app.site_ga_code is defined %}
+  {% if app.site_ga_code %}
     <script>
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', '{{ app.site_ga_code }}']);
