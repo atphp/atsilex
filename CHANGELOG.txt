@@ -3,3 +3,4 @@
 - Make menu configurable
 - Fix bug: Don't include bootstrap CSS twice.
 - Fix bug: Google analytics code is rendered when I disabled it.
+- Documentation for queue module
