@@ -26,7 +26,8 @@ class ConsumeCommand extends Command
         $this->consumer = $app['bernard.consumer'];
         $this->factory = $app['bernard.factory'];
 
-        parent::__construct('v3k:queue:process');
+        $vendor = isset($app['vendor_machine_name']) ? $app['vendor_machine_name'] : 'v3k';
+        parent::__construct($vendor . ':queue:process');
     }
 
     protected function configure()

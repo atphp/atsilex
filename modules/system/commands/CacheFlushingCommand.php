@@ -17,7 +17,9 @@ class CacheFlushingCommand extends Command
     public function __construct(Application $app)
     {
         $this->app = $app;
-        parent::__construct('v3k:cache-flush');
+
+        $vendor = isset($app['vendor_machine_name']) ? $app['vendor_machine_name'] : 'v3k';
+        parent::__construct($vendor . ':cache-flush');
     }
 
     protected function configure()

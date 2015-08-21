@@ -19,7 +19,8 @@ class GenerateConfigFileCommand extends Command
     {
         $this->app = $app;
 
-        parent::__construct('v3k:generate-config-file');
+        $vendor = isset($app['vendor_machine_name']) ? $app['vendor_machine_name'] : 'v3k';
+        parent::__construct($vendor . ':generate-config-file');
     }
 
     protected function configure()
@@ -46,7 +47,7 @@ class GenerateConfigFileCommand extends Command
                 "    'debug'   => true,",
                 "    'modules' => [",
                 "        'queue'  => '%s', # Can disable",
-                "        'system' => '%s', # Can't disable",
+                "        'system' => '%s', # Should always put this in footer, can't disable",
                 "    ],",
                 "    # Performance — should disable on dev and enable on production",
                 "    # ---------------------",

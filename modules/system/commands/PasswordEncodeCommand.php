@@ -19,7 +19,8 @@ class PasswordEncodeCommand extends Command
     {
         $this->app = $app;
 
-        parent::__construct('v3k:password-encode');
+        $vendor = isset($app['vendor_machine_name']) ? $app['vendor_machine_name'] : 'v3k';
+        parent::__construct($vendor . ':password-encode');
     }
 
     protected function configure()

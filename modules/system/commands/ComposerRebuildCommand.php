@@ -17,7 +17,8 @@ class ComposerRebuildCommand extends Command
     {
         $this->app = $app;
 
-        parent::__construct('v3k:composer-rebuild');
+        $vendor = isset($app['vendor_machine_name']) ? $app['vendor_machine_name'] : 'v3k';
+        parent::__construct($vendor . ':composer-rebuild');
     }
 
     protected function configure()

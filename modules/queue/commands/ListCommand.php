@@ -20,7 +20,8 @@ class ListCommand extends Command
     {
         $this->app = $app;
 
-        parent::__construct('v3k:queue:list');
+        $vendor = isset($app['vendor_machine_name']) ? $app['vendor_machine_name'] : 'v3k';
+        parent::__construct($vendor . ':queue:list');
     }
 
     protected function configure()

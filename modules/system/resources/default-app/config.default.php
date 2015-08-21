@@ -99,5 +99,9 @@ return call_user_func(function () {
 
         // Authorization
         # 'security.access_rules' => [],
+
+        # @TODO: Brand
+        # ---------------------
+        'vendor_machine_name'        => 'v3k',
     ];
 });

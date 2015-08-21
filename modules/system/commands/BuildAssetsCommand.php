@@ -17,7 +17,8 @@ class BuildAssetsCommand extends Command
     {
         $this->app = $app;
 
-        parent::__construct('v3k:build-assets');
+        $vendor = isset($app['vendor_machine_name']) ? $app['vendor_machine_name'] : 'v3k';
+        parent::__construct($vendor . ':build-assets');
     }
 
     protected function configure()
