@@ -2,6 +2,7 @@
 
 namespace atsilex\module\queue\test_cases;
 
+use atsilex\module\system\ModularApp;
 use atsilex\module\queue\QueueModule;
 use atsilex\module\test_cases\BaseTestCase;
 use Bernard\Consumer;
@@ -17,8 +18,8 @@ class QueueModuleTest extends \PHPUnit_Framework_TestCase
 
     protected function getContainer()
     {
-        $c = new Application();
-        $c->register(new QueueModule(), ['app.root' => '/tmp']);
+        $c = new ModularApp(['app.root' => '/tmp']);
+        $c->register(new QueueModule());
 
         return $c;
     }
