@@ -1,0 +1,32 @@
+<nav class="{{ app.site_navbar_classes }}">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      {% block site_name %}
+        {% if app.site_name is defined %}
+          <a class="navbar-brand" href="/">{{ app.site_name }}</a>
+        {% endif %}
+      {% endblock %}
+    </div>
+
+    <div id="navbar" class="navbar-collapse collapse">
+      {% block menu_primary %}
+        {% if app.site_menu.primary is defined %}
+          {% include 'partials/links.twig' with { links: app.site_menu.primary, classes: 'nav navbar-nav' } %}
+        {% endif %}
+      {% endblock %}
+
+      {% block menu_secondary %}
+        {% if app.site_menu.secondary is defined %}
+          {% include 'partials/links.twig' with { links: app.site_menu.secondary, classes: 'nav navbar-nav navbar-right'} %}
+        {% endif %}
+      {% endblock %}
+    </div>
+  </div>
+</nav>
