@@ -11,7 +11,7 @@ use Silex\Application\UrlGeneratorTrait;
 class ModularApp extends Application
 {
 
-    const VERSION = '1.0-dev';
+    const VERSION = '0.1.1';
 
     use ModularAppTrait;
     use GetterAppTrait;
