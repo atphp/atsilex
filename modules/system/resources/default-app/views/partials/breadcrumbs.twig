@@ -1,11 +1,25 @@
-{% if breadcrumbs is defined %}
-  <ol class="breadcrumb">
+{% extends 'abstract.twig' %}
+
+{% block main %}
+  {% if breadcrumbs is defined %}
+    {{ block('breadcrumb_start') }}
     {% for path, title in breadcrumbs %}
-      {% block breadcrumb_item %}
-        <li>
-          <a href="{{ path }}">{{ title }}</a>
-        </li>
-      {% endblock %}
+      {{ block('breadcrumb_item') }}
     {% endfor %}
-  </ol>
-{% endif %}
+    {{ block('breadcrumb_end') }}
+  {% endif %}
+{% endblock %}
+
+{% block breadcrumb_start %}
+  {{ '<ol class="breadcrumb">'|raw }}
+{% endblock %}
+
+{% block breadcrumb_item %}
+  <li>
+    <a href="{{ path }}">{{ title }}</a>
+  </li>
+{% endblock %}
+
+{% block breadcrumb_end %}
+  {{ '</ol>'|raw }}
+{% endblock %}

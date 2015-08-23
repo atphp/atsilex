@@ -1,6 +1,13 @@
-<link rel="manifest" href="/{{ app.site_assets_prefix }}/manifest.json">
+{% extends 'abstract.twig' %}
 
-{% set dir = base ~ '/images/favicons' %}
+{% block main %}
+  {% set dir = base ~ '/images/favicons' %}
+
+  <link rel="manifest" href="/{{ base }}/manifest.json">
+  {{ block('favicons_apple_touch') }}
+  {{ block('favicons_android') }}
+  {{ block('favicons') }}
+{% endblock %}
 
 {% block favicons_apple_touch %}
   <link rel="apple-touch-icon" sizes="57x57" href="/{{ dir }}/apple-touch-icon-57x57.png">
@@ -18,7 +25,9 @@
   <link rel="icon" type="image/png" href="/{{ dir }}/android-chrome-192x192.png" sizes="192x192">
 {% endblock %}
 
-<link rel="icon" type="image/png" href="/{{ dir }}/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/{{ dir }}/favicon-194x194.png" sizes="194x194">
-<link rel="icon" type="image/png" href="/{{ dir }}/favicon-96x96.png" sizes="96x96">
-<link rel="icon" type="image/png" href="/{{ dir }}/favicon-16x16.png" sizes="16x16">
+{% block favicons %}
+  <link rel="icon" type="image/png" href="/{{ dir }}/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/{{ dir }}/favicon-194x194.png" sizes="194x194">
+  <link rel="icon" type="image/png" href="/{{ dir }}/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/{{ dir }}/favicon-16x16.png" sizes="16x16">
+{% endblock %}
