@@ -86,6 +86,10 @@
       {% if app.site_footer is defined %}
         <p class="text-muted">{{ app.site_footer|raw }}</p>
       {% endif %}
+
+      {% if app.site_ga_code %}
+        {% include 'partials/google-analytics.twig' with { code: app.site_ga_code } %}
+      {% endif %}
     {% endblock %}
   </footer>
 </div>
