@@ -84,14 +84,12 @@
 
 <div class="container page-wrapper">
   {% block breadcrumbs %}
-    {% if breadcrumbs is defined %}
-      {% include 'partials/breadcrumbs.twig' %}
-    {% endif %}
+    {% include 'partials/breadcrumbs.twig' %}
   {% endblock %}
 
   {% block contentPrefix %}
     {% if contentPrefix is defined %}
-      {{ contentPrefix }}
+      {{ contentPrefix|raw }}
     {% endif %}
   {% endblock %}
 
@@ -103,7 +101,7 @@
 
   {% block contentSuffix %}
     {% if contentSuffix is defined %}
-      {{ contentSuffix }}
+      {{ contentSuffix|raw }}
     {% endif %}
   {% endblock %}
 

@@ -1,7 +1,11 @@
-<ol class="breadcrumb">
-  {% for path, title in breadcrumbs %}
-    <li>
-      <a href="{{ path }}">{{ title }}</a>
-    </li>
-  {% endfor %}
-</ol>
+{% if breadcrumbs is defined %}
+  <ol class="breadcrumb">
+    {% for path, title in breadcrumbs %}
+      {% block breadcrumb_item %}
+        <li>
+          <a href="{{ path }}">{{ title }}</a>
+        </li>
+      {% endblock %}
+    {% endfor %}
+  </ol>
+{% endif %}
