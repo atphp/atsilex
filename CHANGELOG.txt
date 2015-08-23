@@ -5,3 +5,6 @@
 - Fix bug: Google analytics code is rendered when I disabled it.
 - Documentation for queue module.
 - Require monolog library by default.
+- Clean up base template:
+    - Simplify the code
+    - Split some parts to separated template, easier to override.

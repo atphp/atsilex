@@ -1,50 +1,14 @@
 {% extends 'pages/html.twig' %}
 
-{% block head_stylesheet %}
-  {% if app.site_theme is defined %}
-    <link href="{{ app.site_theme }}" rel="stylesheet" media="screen">
-  {% else %}
+{% block site_name %}
+  {% set hide = false %}
+
+  {% if app.site_name_hide is defined %}
+    {% set hide = true %}
+  {% endif %}
+
+  {% if not hide %}
     {{ parent() }}
-  {% endif %}
-
-  <link href="/assets/modules/system/css/app.css" rel="stylesheet" media="screen"/>
-{% endblock %}
-
-{% block footer_script %}
-  {{ parent() }}
-
-  <script src="/assets/modules/system/js/app.js"></script>
-{% endblock %}
-
-{% block menu_primary %}
-  {% if app.site_menu.primary is defined %}
-    <ul class="nav navbar-nav">
-      {% for link in app.site_menu.primary %}
-        <li>{{ link|raw }}</li>
-      {% endfor %}
-    </ul>
-  {% endif %}
-{% endblock %}
-
-{% block menu_secondary %}
-  {% if app.site_menu.secondary is defined %}
-    <ul class="nav navbar-nav navbar-right">
-      {% for link in app.site_menu.secondary %}
-        <li>{{ link|raw }}</li>
-      {% endfor %}
-    </ul>
-  {% endif %}
-{% endblock %}
-
-{% block breadcrumbs %}
-  {% if breadcrumbs is defined %}
-    <ol class="breadcrumb">
-      {% for path, title in breadcrumbs %}
-        <li>
-          <a href="{{ path }}">{{ title }}</a>
-        </li>
-      {% endfor %}
-    </ol>
   {% endif %}
 {% endblock %}
 

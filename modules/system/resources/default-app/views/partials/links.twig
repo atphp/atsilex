@@ -1,0 +1,29 @@
+{% set level = level is defined ? level : 1 %}
+{% set classes = classes is defined ? classes : 'nav navbar-nav' %}
+
+<ul {% if classes %}class="{{ classes }}"{% endif %}>
+  {% for link in links %}
+    {% set caret = link.caret is defined ? link.caret : '<span class="caret"></span>' %}
+
+    <li{% if link.class is defined %} class="{{ link.class }}"{% endif %}>
+      {% if link is not iterable %}
+        {{ link|raw }}
+      {% else %}
+        {% if link.data is defined and link.data is not empty %}
+          {% if link.children is defined %}
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              {{ link.data|raw }} {{ caret|raw }}
+            </a>
+          {% else %}
+            {{ link.data|raw }}
+          {% endif %}
+        {% endif %}
+
+        {% if link.children is defined %}
+          {% set classes = link.children_classes is defined ? link.children_classes : 'dropdown-menu' %}
+          {% include 'partials/links.twig' with { links: link.children, classes: classes, level: level + 1} %}
+        {% endif %}
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
