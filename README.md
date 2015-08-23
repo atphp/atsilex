@@ -121,3 +121,31 @@ return [
     // …
 ];
 ```
+
+## Configure database connection
+
+Default database for application is a SQLite file, it's auto created in `files/app.db`
+when we run `php public/index.php orm:schema-tool:create` command.
+
+To change default config for database connection, in `config.php`, add code similar to this:
+
+```php
+# SQlite
+# $db_options = ['driver' => 'pdo_sqlite',  'path' => '/alternative/path/to/app.db'];
+
+# MySQL
+$db_options = [
+    'driver'    => 'pdo_mysql',
+    'host'      => 'mysql_write.someplace.tld',
+    'dbname'    => 'my_database',
+    'user'      => 'my_username',
+    'password'  => 'my_password',
+    'charset'   => 'utf8mb4',
+];
+
+return [
+ // …
+ 'db.options' => $db_options,
+ // …
+];
+```
