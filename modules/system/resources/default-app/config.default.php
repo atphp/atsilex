@@ -66,7 +66,7 @@ return call_user_func(function () {
         ],
 
         # Front-end assets
-        'site_theme'                 => '//bootswatch.com/united/bootstrap.css',
+        'site_theme'                 => '//maxcdn.bootstrapcdn.com/bootswatch/3.3.5/united/bootstrap.min.css',
         'site_jquery'                => '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js',
         'site_bootstrap'             => '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5',
         'site_html5shiv'             => '//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js',
