@@ -1,6 +1,6 @@
 * 0.1.2-dev
 
-- …
+- Module's public directory should be under ./resources/
 
 * 0.1.1
 

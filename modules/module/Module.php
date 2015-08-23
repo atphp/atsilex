@@ -242,12 +242,17 @@ abstract class Module implements ServiceProviderInterface,
      */
     public function buildAssets($docRoot)
     {
-        $source = $this->getPath() . '/public';
         $target = $docRoot . '/assets/modules/' . $this->getMachineName();
+        $candidates = [
+            $this->getPath() . '/resources/public',
+            $this->getPath() . '/public',
+        ];
 
-        if (is_dir($source) && !is_dir($target)) {
-            passthru(sprintf("mkdir -p %s", dirname($target)));
-            passthru("ln -s $source $target");
+        foreach ($candidates as $source) {
+            if (is_dir($source) && !is_dir($target)) {
+                passthru(sprintf("mkdir -p %s", dirname($target)));
+                passthru("ln -s '$source' '$target'");
+            }
         }
     }
 
