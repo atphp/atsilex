@@ -5,6 +5,8 @@
 - Require Guzzle 6.
 - Add new event: system.twig.create
 - Lazy register system module, make sure system module is always available.
+- Magic service should also scan for sub-directories
+- Remove hardcode cache service.
 
 * 0.1.1
 

@@ -134,9 +134,11 @@ class Register
     {
         $c->register(new DoctrineServiceProvider(), ['db.options' => isset($c['db.options']) ? $c['db.options'] : []]);
 
-        $c['cache'] = function (Container $c) {
-            return new FilesystemCache($c['app.root'] . '/files/cache');
-        };
+        if (!isset($c['cache'])) {
+            $c['cache'] = function (Container $c) {
+                return new FilesystemCache($c['app.root'] . '/files/cache');
+            };
+        }
 
         $c['orm.default_cache'] = function (Container $c) {
             return $c->getCache();
