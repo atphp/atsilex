@@ -65,8 +65,6 @@ Example:
 use atsilex\module\Module;
 use Pimple\Container;
 use Silex\Application;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Symfony\Component\EventDispatcher\Event;
 
 class MyModule extends Module {
     protected $machineName = 'my_module';
@@ -81,16 +79,7 @@ class MyModule extends Module {
             return new MyService($c['my_dependency']);
         };
     }
-    
-    /**
-     * I can add execute my custom code on certain events on system.
-     */
-    public function subscribe(Container $container, EventDispatcherInterface $dispatcher)
-    {
-        $dispatcher->addListener('event_x', function (Event $event) {
-            // My code. 
-        });
-    }
+
 }
 ```
 
