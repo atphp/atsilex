@@ -52,15 +52,6 @@ trait ModularAppTrait
         return $this;
     }
 
-    protected function bootModules()
-    {
-        foreach ($this->modules as $name => $index) {
-            if (is_string($this->modules[$name])) {
-                $this->modules[$name] = new $this->modules[$name];
-            }
-        }
-    }
-
     /**
      * @return string[]
      */
