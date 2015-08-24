@@ -17,6 +17,7 @@ class ComposerBuildRoot
         $composer['require'] = ['php' => '>=5.5'];
         $composer['require-dev'] = ['symfony/var-dumper' => '^2.7.0'];
         $composer['autoload'] = ['psr-4' => ['atsilex\\' => './']];
+        $composer['suggest'] = [];
 
         foreach (glob($root . '/modules/*/composer.json') as $path) {
             $this->merge($composer, $path, $root);
@@ -50,7 +51,7 @@ class ComposerBuildRoot
         }
 
         // Merge parts
-        foreach (['require', 'require-dev', 'autoload'] as $key) {
+        foreach (['require', 'require-dev', 'autoload', 'suggest'] as $key) {
             $composer[$key] = isset($composer[$key]) ? $composer[$key] : [];
             if (!empty($info[$key])) {
                 $composer[$key] = $this->mergeArray([$composer[$key], $info[$key]]);

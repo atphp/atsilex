@@ -20,7 +20,6 @@ use Silex\Provider\TranslationServiceProvider;
 use Silex\Provider\TwigServiceProvider;
 use Silex\Provider\ValidatorServiceProvider;
 use Silex\Provider\WebProfilerServiceProvider;
-use Symfony\Component\HttpKernel\Profiler\FileProfilerStorage;
 
 class Register
 {
@@ -70,11 +69,9 @@ class Register
         $this->registerDoctrineServices($c);
         $this->registerMagicServices($c);
 
-        if (isset($c['debug']) && !empty($c['debug'])) {
+        if (isset($c['debug']) && !empty($c['debug']) && class_exists(WebProfilerServiceProvider::class)) {
             $c->register(new WebProfilerServiceProvider(), [
-                'profiler.storage' => function (Container $c) {
-                    return new FileProfilerStorage('file:' . $c['app.root'] . '/files/cache/profiler');
-                },
+                'profiler.cache_dir' => $c['app.root'] . '/files/profiler',
             ]);
         }
     }

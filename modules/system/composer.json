@@ -15,7 +15,6 @@
     "monolog/monolog": "^1.16.0",
     "psr/log": "^1.0.0",
     "silex/silex": "2.0.x-dev",
-    "silex/web-profiler": "2.0.x-dev",
     "symfony/config": "^2.7.0",
     "symfony/console": "^2.7.0",
     "symfony/form": "^2.7.0",
@@ -27,6 +26,9 @@
     "swiftmailer/swiftmailer": "^5.4.1",
     "twig/twig": "^1.18",
     "v3knet/module": "0.1.x-dev"
+  },
+  "suggest": {
+    "silex/web-profiler": "silex/web-profiler 2.0.x-dev"
   },
   "require-dev": {
     "symfony/var-dumper": "^2.7.0"
