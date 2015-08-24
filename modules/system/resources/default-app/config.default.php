@@ -25,6 +25,7 @@
 
 // Get rid of global variable
 use atsilex\module\queue\QueueModule;
+use atsilex\module\system\ModularApp;
 use atsilex\module\system\SystemModule;
 
 return call_user_func(function () {
@@ -36,6 +37,7 @@ return call_user_func(function () {
     date_default_timezone_set('UTC');
 
     return [
+        'app.class'                  => ModularApp::class,
         'debug'                      => true,
         'app.root'                   => APP_ROOT,
         'db.options'                 => ['driver' => 'pdo_sqlite', 'path' => APP_ROOT . '/files/app.db'],
