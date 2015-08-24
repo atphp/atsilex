@@ -43,12 +43,7 @@ abstract class Module implements ServiceProviderInterface,
     /** @var string */
     protected $version = '0.1.0';
 
-    /**
-     * @TODO Need documentation.
-     * @TODO Need test case.
-     *
-     * @var string
-     */
+    /** @var string */
     protected $routeFile = null;
 
     /** @var string Path to module directory */
