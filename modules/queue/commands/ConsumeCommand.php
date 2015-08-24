@@ -21,21 +21,33 @@ class ConsumeCommand extends Command
     /** @var QueueFactory */
     protected $factory;
 
-    public function __construct(ModularApp $app)
+    /** @var string */
+    protected $defaultQueue = null;
+
+    /** @var int */
+    protected $defaultLimit = 100;
+
+    public function __construct(ModularApp $app, $name = '%vendor:queue:process')
     {
         $this->consumer = $app['bernard.consumer'];
         $this->factory = $app['bernard.factory'];
 
         $vendor = isset($app['vendor_machine_name']) ? $app['vendor_machine_name'] : 'v3k';
-        parent::__construct($vendor . ':queue:process');
+        parent::__construct(str_replace('%vendor', $vendor, $name));
     }
 
     protected function configure()
     {
         $this
             ->setDescription('Message queue consumer')
-            ->addArgument('queue', InputArgument::REQUIRED, 'Name of message queue.')
-            ->addOption('limit', null, InputOption::VALUE_OPTIONAL, 'Number of message to be processed.', 100);
+            ->addOption('limit', null, InputOption::VALUE_OPTIONAL, 'Number of message to be processed.', $this->defaultLimit);
+
+        if (null === $this->defaultQueue) {
+            $this->addArgument('queue', InputArgument::REQUIRED, 'Name of message queue.');
+        }
+        else {
+            $this->addArgument('queue', InputArgument::OPTIONAL, 'Name of message queue.', $this->defaultQueue);
+        }
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

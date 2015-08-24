@@ -8,6 +8,7 @@
 - Magic service should also scan for sub-directories
 - Remove hardcode cache service.
 - Require Symfony Config component.
+- Make ConsumeCommand a bit easier to extends.
 
 * 0.1.1
 
