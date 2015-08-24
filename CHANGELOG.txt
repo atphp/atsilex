@@ -3,6 +3,7 @@
 - Module's public directory should be under ./resources/
 - Require Swiftmailer library.
 - Require Guzzle 6.
+- Add new event: system.twig.create
 
 * 0.1.1
 

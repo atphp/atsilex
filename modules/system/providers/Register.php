@@ -2,6 +2,7 @@
 
 namespace atsilex\module\system\providers;
 
+use atsilex\module\system\events\AppEvent;
 use atsilex\module\system\ModularApp;
 use Dflydev\Provider\DoctrineOrm\DoctrineOrmServiceProvider;
 use Doctrine\Common\Cache\FilesystemCache;
@@ -103,8 +104,12 @@ class Register
             ]);
         }
 
-        $c->extend('twig', function (\Twig_Environment $twig, Container $c) {
+        $c->extend('twig', function (\Twig_Environment $twig, ModularApp $c) {
             $twig->addGlobal('app', $c);
+
+            // @TODO: Document this event.
+            $c->getDispatcher()->dispatch('system.twig.create', new AppEvent($c, $twig));
+
             return $twig;
         });
 
