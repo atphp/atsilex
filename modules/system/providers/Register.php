@@ -164,7 +164,7 @@ class Register
 
             $c[$service] = function ($c) use ($module, $class, $ns, $suffix) {
                 $moduleNS = $c->getModuleNamespace($module);
-                $class = $moduleNS . '\\' . $ns . '\\' . $class . $suffix;
+                $class = str_replace('/', '\\', $moduleNS . '\\' . $ns . '\\' . $class . $suffix);
 
                 return new $class($c);
             };
@@ -203,11 +203,28 @@ class Register
     private function findModuleMagicServicesInfo(array &$mappings, $module, $ns, $dir, $suffix, $short)
     {
         // Scan all module's classes, create services for each.
-        foreach (glob("{$dir}/*{$suffix}.php") as $file) {
-            $class = str_replace([$dir . '/', $suffix . '.php'], '', $file);
-            $service = "@{$module}.{$short}." . $this->convertFromCamelCaseToSnakeCase($class);
+        foreach ($this->rGlob("{$dir}/*{$suffix}.php") as $file) {
+            $_short = $short;
+            $className = $class = str_replace([$dir . '/', $suffix . '.php'], '', $file);
+
+            if (strpos($className, '/')) {
+                $tmp = explode('/', $className);
+                $className = array_pop($tmp);
+                $_short .= '.' . implode('.', $tmp);
+            }
+
+            $service = "@{$module}.{$_short}." . $this->convertFromCamelCaseToSnakeCase($className);
             $mappings[$service] = [$module, $class, $ns, $suffix];
         }
+    }
+
+    private function rGlob($pattern, $flags = 0)
+    {
+        $files = glob($pattern, $flags);
+        foreach (glob(dirname($pattern) . '/*', GLOB_ONLYDIR | GLOB_NOSORT) as $dir) {
+            $files = array_merge($files, $this->rGlob($dir . '/' . basename($pattern), $flags));
+        }
+        return $files;
     }
 
     private function convertFromCamelCaseToSnakeCase($input)
@@ -217,6 +234,7 @@ class Register
         foreach ($ret as &$match) {
             $match = $match === strtoupper($match) ? strtolower($match) : lcfirst($match);
         }
+
         return implode('_', $ret);
     }
 
