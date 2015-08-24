@@ -26,7 +26,6 @@
 // Get rid of global variable
 use atsilex\module\queue\QueueModule;
 use atsilex\module\system\ModularApp;
-use atsilex\module\system\SystemModule;
 
 return call_user_func(function () {
     global $loader;
@@ -42,11 +41,10 @@ return call_user_func(function () {
         'app.root'                   => APP_ROOT,
         'db.options'                 => ['driver' => 'pdo_sqlite', 'path' => APP_ROOT . '/files/app.db'],
 
-        # Modules
+        # Modules — Select modules for the application.
         # ---------------------
         'modules'                    => [
-            'queue'  => QueueModule::class,
-            'system' => SystemModule::class,
+            'queue' => QueueModule::class
         ],
 
         # The front-end configurations

@@ -4,6 +4,7 @@
 - Require Swiftmailer library.
 - Require Guzzle 6.
 - Add new event: system.twig.create
+- Lazy register system module, make sure system module is always available.
 
 * 0.1.1
 
