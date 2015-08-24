@@ -30,6 +30,11 @@ class SystemModule extends Module
     protected $name        = 'System Module';
     protected $description = 'Implements core functions.';
 
+    /**
+     * Created when Twig environment object is created.
+     */
+    const EVENT_TWIG_CREATE = 'system.twig.create';
+
     public function register(Container $c)
     {
         if (!$c instanceof ModularApp) {

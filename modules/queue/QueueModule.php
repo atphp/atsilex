@@ -30,6 +30,16 @@ class QueueModule extends Module
     protected $name        = 'Queue';
 
     /**
+     * When route is created.
+     */
+    const EVENT_ROUTER_CREATE = 'queue.router.create';
+
+    /**
+     * When queue collects system's information about all queues.
+     */
+    const EVENT_QUEUE_INFO = 'queue.queues.get';
+
+    /**
      * {@inheritdoc}
      */
     public function register(Container $c)
@@ -91,7 +101,7 @@ class QueueModule extends Module
 
         $c
             ->getDispatcher()
-            ->dispatch('queue.router.create', new AppEvent($c, $router));
+            ->dispatch(QueueModule::EVENT_ROUTER_CREATE, new AppEvent($c, $router));
 
         return $router;
     }
@@ -102,7 +112,7 @@ class QueueModule extends Module
 
         $c
             ->getDispatcher()
-            ->dispatch('queue.queues.get', new AppEvent($c, $queueNames));
+            ->dispatch(QueueModule::EVENT_QUEUE_INFO, new AppEvent($c, $queueNames));
 
         return $queueNames;
     }
