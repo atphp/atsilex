@@ -1,6 +1,8 @@
 * 0.1.2-dev
 
 - Module's public directory should be under ./resources/
+- Require Swiftmailer library.
+- Require Guzzle 6.
 
 * 0.1.1
 
@@ -8,7 +10,7 @@
 - Fix bug: Don't include bootstrap CSS twice.
 - Fix bug: Google analytics code is rendered when I disabled it.
 - Documentation for queue module.
-- Require monolog library by default.
+- Require Monolog library by default.
 - Clean up base template:
     - Simplify the code
     - Split some parts to separated template, easier to override.

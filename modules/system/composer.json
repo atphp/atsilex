@@ -10,7 +10,7 @@
     "doctrine/cache": "^1.4.1",
     "doctrine/orm": "^2.5.0",
     "dflydev/doctrine-orm-service-provider": "^2.0.0",
-    "guzzlehttp/guzzle": "^5.2.0",
+    "guzzlehttp/guzzle": "^6.0.2",
     "jms/serializer": "^1.0",
     "monolog/monolog": "^1.16.0",
     "psr/log": "^1.0.0",
@@ -23,6 +23,7 @@
     "symfony/serializer": "^2.7.0",
     "symfony/translation": "^2.7.0",
     "symfony/validator": "^2.7.0",
+    "swiftmailer/swiftmailer": "^5.4.1",
     "twig/twig": "^1.18",
     "v3knet/module": "0.1.x-dev"
   },
