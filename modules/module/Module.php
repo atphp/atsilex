@@ -9,7 +9,9 @@ use Silex\Api\ControllerProviderInterface;
 use Silex\Api\EventListenerProviderInterface;
 use Silex\Application;
 use Silex\ControllerCollection;
+use Symfony\Component\Config\FileLocator;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\Routing\Loader\YamlFileLoader;
 
 /**
  * A module can:
@@ -40,6 +42,14 @@ abstract class Module implements ServiceProviderInterface,
 
     /** @var string */
     protected $version = '0.1.0';
+
+    /**
+     * @TODO Need documentation.
+     * @TODO Need test case.
+     *
+     * @var string
+     */
+    protected $routeFile = null;
 
     /** @var string Path to module directory */
     protected $path;
@@ -81,7 +91,14 @@ abstract class Module implements ServiceProviderInterface,
      */
     public function boot(Application $app)
     {
-        // Final module can override this method to do things on application boot.
+        // Load routes from YAML file
+        if (null !== $this->routeFile) {
+            $path = str_replace('%dir', $this->getPath(), $this->routeFile);
+            $loader = new YamlFileLoader(new FileLocator([dirname($path)]));
+            $collection = $loader->load('routing.yml');
+            $collection->addPrefix($this->routePrefix);
+            $app['routes']->addCollection($collection);
+        }
     }
 
     /**

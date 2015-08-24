@@ -9,6 +9,7 @@
 - Remove hardcode cache service.
 - Require Symfony Config component.
 - Make ConsumeCommand a bit easier to extends.
+- Support YAML routing.
 
 * 0.1.1
 
