@@ -54,10 +54,10 @@ public/                  # Document root
 
 A module is basically a class which extends `atsilex\module\Module`. Each module can:
 
-1. Define custom services
-- Define new routes
-- Define new commands
-- Listen to system events.
+1. [Define custom services](https://github.com/atphp/atsilex/blob/0.1/modules/system/resources/docs/DI.md)
+- [Define new routes](http://j.mp/1U9Xpwx)
+- [Define new commands](http://j.mp/1WOXsSL)
+- [Listen to system events](http://j.mp/1WOXutP)
 
 Example:
 
@@ -72,7 +72,7 @@ class MyModule extends Module {
     protected $machineName = 'my_module';
     protected $name        = 'My Module';
     protected $description = 'Study the how to write module.';
-    
+
     /**
      * Register my services to DI container.
      */
@@ -80,20 +80,6 @@ class MyModule extends Module {
         $c['my_service'] = function(Container $c) {
             return new MyService($c['my_dependency']);
         };
-    }
-    
-    /**
-     * Tell the app that I have routes.
-     */
-    public function connect(Application $app) {
-        $route = $app['controllers_factory'];
-        
-        $route
-            ->get('/hi/{name}', function(Application $app, $name) {
-                return sprintf("Hi %s!", $app->escape($name));
-            });
-        
-        return $route;
     }
     
     /**
