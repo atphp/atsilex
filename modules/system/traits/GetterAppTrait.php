@@ -9,6 +9,7 @@ use Doctrine\DBAL\Configuration;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Tools\Console\ConsoleRunner as DBAL;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Tools\Console\ConsoleRunner as ORM;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
@@ -19,6 +20,9 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\RouteCollection;
+use Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager;
+use Symfony\Component\Security\Core\Authorization\AccessDecisionManager;
+use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\Security\Csrf\CsrfTokenManager;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Translation\Translator;
@@ -81,6 +85,16 @@ trait GetterAppTrait
     public function getEntityManager($name = 'default')
     {
         return isset($this["orm.em.{$name}"]) ? $this["orm.em.{$name}"] : $this['orm.em'];
+    }
+
+    /**
+     * @param string $className
+     * @param string $emName
+     * @return EntityRepository
+     */
+    public function getRepository($className, $emName = 'default')
+    {
+        return $this->getEntityManager($emName)->getRepository($className);
     }
 
     /**
@@ -159,6 +173,30 @@ trait GetterAppTrait
     public function getCsrfProvider()
     {
         return $this['form.csrf_provider'];
+    }
+
+    /**
+     * @return SecurityContext
+     */
+    public function getSecurity()
+    {
+        return $this['security'];
+    }
+
+    /**
+     * @return AuthenticationProviderManager
+     */
+    public function getSecurityAuthenticationManager()
+    {
+        return $this['security.authentication_manager'];
+    }
+
+    /**
+     * @return AccessDecisionManager
+     */
+    public function getSecurityAccessManager()
+    {
+        return $this['security.access_manager'];
     }
 
     /**
