@@ -1,0 +1,4 @@
+hello-yaml:
+  path: /hello-yaml
+  methods: [GET]
+  defaults: { _controller: @foo.ctrl.hello:actionGet }

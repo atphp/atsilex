@@ -27,10 +27,11 @@
     "twig/twig": "^1.18",
     "v3knet/module": "0.1.x-dev"
   },
+  "require-dev": {
+    "silex/web-profiler": "2.0.x-dev",
+    "symfony/var-dumper": "^2.7.0"
+  },
   "suggest": {
     "silex/web-profiler": "silex/web-profiler 2.0.x-dev"
-  },
-  "require-dev": {
-    "symfony/var-dumper": "^2.7.0"
   }
 }

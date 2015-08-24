@@ -17,6 +17,7 @@ use Silex\Controller;
 use Silex\Provider\Locale\LocaleListener;
 use Symfony\Component\Console\Application as Console;
 use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Translation\Translator;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -71,6 +72,17 @@ class SystemModuleTest extends BaseTestCase
 
         $this->assertTrue($app->isModuleExists('foo'));
         $this->assertTrue($app->getModule('foo') instanceof FooModule);
+    }
+
+    public function testModuleYamlRouting()
+    {
+        $app = $this->getApplication();
+
+        $request = Request::create('/hello-yaml');
+        $response = $app->handle($request);
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertContains($response->getContent(), 'Hi there!');
     }
 
     /**

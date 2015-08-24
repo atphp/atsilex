@@ -6,6 +6,7 @@ use atsilex\module\Module;
 use atsilex\module\system\providers\Register;
 use Pimple\Container;
 use Silex\Application;
+use Silex\ControllerCollection;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
