@@ -14,6 +14,7 @@ use Silex\Provider\RoutingServiceProvider;
 use Silex\Provider\SecurityServiceProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\SessionServiceProvider;
+use Silex\Provider\SwiftmailerServiceProvider;
 use Silex\Provider\TranslationServiceProvider;
 use Silex\Provider\TwigServiceProvider;
 use Silex\Provider\ValidatorServiceProvider;
@@ -52,6 +53,10 @@ class Register
         $c->register(new LocaleServiceProvider());
         $c->register(new RoutingServiceProvider());
         $c->register(new ServiceControllerServiceProvider());
+        $c->register(new SwiftmailerServiceProvider(), [
+            'swiftmailer.use_spool' => isset($c['swiftmailer.use_spool']) ? $c['swiftmailer.use_spool'] : true,
+            'swiftmailer.options'   => isset($c['swiftmailer.options']) ? $c['swiftmailer.options'] : [],
+        ]);
         $c->register(new SessionServiceProvider(), [
             'session.test'              => isset($c['session.test']) ? $c['session.test'] : false,
             'session.storage.save_path' => $c['app.root'] . '/files/session'

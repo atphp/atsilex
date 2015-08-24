@@ -239,4 +239,20 @@ trait GetterAppTrait
         return $this['validator'];
     }
 
+    /**
+     * @return \Swift_Mailer
+     */
+    public function getMailer()
+    {
+        return $this['mailer'];
+    }
+
+    /**
+     * @return \Swift_Transport
+     */
+    public function getMailerTransport()
+    {
+        return $this['swiftmailer.transport'];
+    }
+
 }
