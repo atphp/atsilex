@@ -93,6 +93,7 @@ abstract class Module implements ServiceProviderInterface,
     {
         // Load routes from YAML file
         if (null !== $this->routeFile) {
+            $this->routeFile = true === $this->routeFile ? '%dir/resources/config/routing.yml' : $this->routeFile;
             $path = str_replace('%dir', $this->getPath(), $this->routeFile);
             $loader = new YamlFileLoader(new FileLocator([dirname($path)]));
             $collection = $loader->load('routing.yml');
