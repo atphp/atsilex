@@ -59,33 +59,9 @@ A module is basically a class which extends `atsilex\module\Module`. Each module
 - [Define new commands](http://j.mp/1WOXsSL)
 - [Listen to system events](http://j.mp/1WOXutP)
 
-Example:
-
-```php
-use atsilex\module\Module;
-use Pimple\Container;
-use Silex\Application;
-
-class MyModule extends Module {
-    protected $machineName = 'my_module';
-    protected $name        = 'My Module';
-    protected $description = 'Study the how to write module.';
-
-    /**
-     * Register my services to DI container.
-     */
-    public function register(Container $c) {
-        $c['my_service'] = function(Container $c) {
-            return new MyService($c['my_dependency']);
-        };
-    }
-
-}
-```
-
 Define a module is simple, you also need tell the application about your module — 
 edit `config.php`, include your modules there:
- 
+
 ```php
 return [
     // …
