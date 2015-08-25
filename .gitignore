@@ -1,7 +1,9 @@
 files/cache/*
 files/session/*
 config.php
+config.default.php
 public/assets/
+public/index.php
 sites/*/*/
 vendor/
 .idea/
