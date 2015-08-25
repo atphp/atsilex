@@ -53,8 +53,8 @@ class SystemModule extends Module
         $route = $app['controllers_factory'];
 
         $route->get('/hello', '@system.ctrl.home:get')->bind('hello');
-        $route->get('/login', '@system.ctrl.user:getLogin')->bind('user-login');
-        $route->get('/logout', '@system.ctrl.user:getLogout')->bind('user-logout');
+        # $route->get('/login', '@system.ctrl.user:getLogin')->bind('user-login');
+        # $route->get('/logout', '@system.ctrl.user:getLogout')->bind('user-logout');
 
         return $route;
     }
