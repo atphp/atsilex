@@ -5,6 +5,7 @@ namespace atsilex\module\system\tests;
 use atsilex\module\system\ModularApp;
 use atsilex\module\system\SystemModule;
 use atsilex\module\system\tests\fixtures\modules\foo\FooModule;
+use Doctrine\ORM\Tools\SchemaTool;
 
 abstract class BaseTestCase extends \PHPUnit_Framework_TestCase
 {
@@ -44,6 +45,22 @@ abstract class BaseTestCase extends \PHPUnit_Framework_TestCase
         }
 
         return $this->app;
+    }
+
+    protected function getEntityManager()
+    {
+        static $ran = false;
+
+        $em = $this->getApplication()->getEntityManager();
+
+        if ((false === $ran) && ($ran = true)) {
+            $schema = new SchemaTool($em);
+            $meta = $em->getMetadataFactory()->getAllMetadata();
+            $schema->dropSchema($meta); # drop all schemas
+            $schema->createSchema($meta); # recreate schemas
+        }
+
+        return $em;
     }
 
 }
