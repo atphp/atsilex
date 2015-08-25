@@ -43,6 +43,8 @@ class SystemModuleTest extends BaseTestCase
         $this->assertTrue($app->getSerializer() instanceof SerializerInterface);
         $this->assertTrue($app->getConsole() instanceof Console);
         $this->assertTrue($app->getTwig() instanceof Twig_Environment);
+        $this->assertTrue($app->getMailer() instanceof \Swift_Mailer);
+        $this->assertTrue($app->getMailerTransport() instanceof \Swift_Transport);
     }
 
     public function testDoctrineServices()
