@@ -43,8 +43,8 @@ abstract class Module implements ServiceProviderInterface,
     /** @var string */
     protected $version = '0.1.0';
 
-    /** @var string */
-    protected $routeFile = null;
+    /** @var bool|string */
+    protected $routeFile = false;
 
     /** @var string Path to module directory */
     protected $path;
@@ -87,7 +87,7 @@ abstract class Module implements ServiceProviderInterface,
     public function boot(Application $app)
     {
         // Load routes from YAML file
-        if (null !== $this->routeFile) {
+        if (!empty($this->routeFile)) {
             $this->routeFile = true === $this->routeFile ? '%dir/resources/config/routing.yml' : $this->routeFile;
             $path = str_replace('%dir', $this->getPath(), $this->routeFile);
             $loader = new YamlFileLoader(new FileLocator([dirname($path)]));
