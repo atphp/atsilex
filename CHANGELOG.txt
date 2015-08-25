@@ -10,6 +10,7 @@
 - Require Symfony Config component.
 - Make ConsumeCommand a bit easier to extends.
 - Support YAML routing.
+- Add .htaccess for default app.
 
 * 0.1.1
 
