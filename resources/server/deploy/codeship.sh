@@ -37,9 +37,8 @@ if [ -z "$TARGET_DIR" ];      then DEPLOY_ERROR=1; echo "Missing variable TARGET
 if [ -z "$TARGET_COMPOSER" ]; then DEPLOY_ERROR=1; echo "Missing variable TARGET_COMPOSER"; fi
 if [ $DEPLOY_ERROR -ge 1 ];   then exit 1; fi
 
-# Sync built source code to target
-# ---------------------
 # Sync source code
+# ---------------------
 $SSH "mkdir -p $TARGET_DIR"
 rsync -a --delete --exclude=files/ --exclude=vendor/ --exclude=.git/ \
       ${CLONE}/ \
