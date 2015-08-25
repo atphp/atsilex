@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @file index.php
+ *
+ * Default front controller for @Silex application.
+ * In most cases, we don't need toe edit this file.
+ */
+
 use atsilex\module\system\ModularApp;
 
 // Get rid of global variables
