@@ -103,9 +103,7 @@ class Register
         }
 
         $c->extend('twig', function (\Twig_Environment $twig, ModularApp $c) {
-            $twig->addGlobal('app', $c);
-
-            // @TODO: Document this event.
+            # @TODO: Document this event.
             $c->getDispatcher()->dispatch(SystemModule::EVENT_TWIG_CREATE, new AppEvent($c, $twig));
 
             return $twig;
