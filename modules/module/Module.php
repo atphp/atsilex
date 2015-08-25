@@ -263,8 +263,11 @@ abstract class Module implements ServiceProviderInterface,
 
         foreach ($candidates as $source) {
             if (is_dir($source) && !is_dir($target)) {
-                passthru(sprintf("mkdir -p %s", dirname($target)));
-                passthru("ln -s '$source' '$target'");
+                passthru(implode('; ', [
+                    "unlink '$target'",
+                    sprintf("mkdir -p %s", dirname($target)),
+                    "ln -s '$source' '$target'"
+                ]));
             }
         }
     }
