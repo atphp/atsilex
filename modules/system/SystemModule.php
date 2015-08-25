@@ -6,7 +6,6 @@ use atsilex\module\Module;
 use atsilex\module\system\providers\Register;
 use Pimple\Container;
 use Silex\Application;
-use Silex\ControllerCollection;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -29,6 +28,7 @@ class SystemModule extends Module
     protected $machineName = 'system';
     protected $name        = 'System Module';
     protected $description = 'Implements core functions.';
+    protected $routeFile   = true;
 
     /**
      * Created when Twig environment object is created.
@@ -45,18 +45,6 @@ class SystemModule extends Module
                 return $c->handle(Request::create($c['site_frontpage']));
             });
         }
-    }
-
-    public function connect(Application $app)
-    {
-        /** @var ControllerCollection $route */
-        $route = $app['controllers_factory'];
-
-        $route->get('/hello', '@system.ctrl.home:get')->bind('hello');
-        # $route->get('/login', '@system.ctrl.user:getLogin')->bind('user-login');
-        # $route->get('/logout', '@system.ctrl.user:getLogout')->bind('user-logout');
-
-        return $route;
     }
 
 }
