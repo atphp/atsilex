@@ -17,6 +17,7 @@
         "symfony\/console": "^2.7.0",
         "doctrine\/orm": "^2.5.0",
         "phpdocumentor\/reflection-docblock": "^2.0",
+        "container-interop\/container-interop": "^1.1.0",
         "doctrine\/cache": "^1.4.1",
         "dflydev\/doctrine-orm-service-provider": "^2.0.0",
         "guzzlehttp\/guzzle": "^6.0.2",
