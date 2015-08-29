@@ -35,6 +35,11 @@ class SystemModule extends Module
      */
     const EVENT_TWIG_CREATE = 'system.twig.create';
 
+    /**
+     * On application install.
+     */
+    const EVENT_APP_INSTALL = 'system.app.install';
+
     public function register(Container $c)
     {
         (new Register())->register($c);
