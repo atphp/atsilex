@@ -16,18 +16,19 @@ class InstallerScript
 {
 
     private $root;
+    private $systemModuleDir;
 
     public function __construct($root)
     {
         $this->root = $root;
+        $this->systemModuleDir = dirname(__DIR__);
     }
 
     public static function execute(Event $event)
     {
         $root = dirname($event->getComposer()->getConfig()->get('vendor-dir'));
 
-        $me = new static($root);
-        return $me->install($event);
+        return (new static($root))->install($event);
     }
 
     /**
@@ -38,6 +39,19 @@ class InstallerScript
     {
         $cli = 'php %root/public/index.php';
 
+        $this->setupFileStructure($cli);
+
+        // Find and replace tokens defined in composer's extra
+        $extras = $event->getComposer()->getPackage()->getExtra();
+        if (isset($extras) && !empty($extras['atsilex'])) {
+            $this->buildDefaultConfig($extras);
+        }
+
+        $this->run("$cli v3k:install");
+    }
+
+    private function setupFileStructure($cli)
+    {
         $this
             ->run('rsync -a %default/files/ %root/files/')
             ->run('chmod -Rf 777 %root/files')
@@ -48,24 +62,23 @@ class InstallerScript
             ->run("$cli orm:schema-tool:update --force")
             ->run("$cli v3k:build-assets")
             ->run("$cli v3k:cache:flush");
+    }
 
-        // Find and replace tokens defined in composer's extra
-        $extras = $event->getComposer()->getPackage()->getExtra();
-        if (isset($extras) && !empty($extras['atsilex'])) {
-            file_put_contents(
-                "$this->root/config.default.php",
-                strtr(
-                    file_get_contents("$this->root/config.default.php"),
-                    $extras['atsilex']
-                )
-            );
-        }
+    private function buildDefaultConfig(array $extras)
+    {
+        file_put_contents(
+            "$this->root/config.default.php",
+            strtr(
+                file_get_contents("$this->root/config.default.php"),
+                $extras['atsilex']
+            )
+        );
     }
 
     private function run($cmd)
     {
         passthru(strtr($cmd, [
-            '%default' => dirname(__DIR__) . '/resources/default-app',
+            '%default' => $this->systemModuleDir . '/resources/default-app',
             '%root'    => $this->root
         ]));
 
