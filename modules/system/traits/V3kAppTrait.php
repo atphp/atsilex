@@ -3,6 +3,7 @@
 namespace atsilex\module\system\traits;
 
 use Composer\Autoload\ClassLoader;
+use Interop\Container\ContainerInterface;
 use Symfony\Component\Debug\Exception\FlattenException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Debug\ExceptionHandler;
@@ -12,6 +13,9 @@ trait V3kAppTrait
 
     /** @var  ClassLoader */
     private $classLoader;
+
+    /** @var ContainerInterface */
+    protected $container;
 
     /**
      * @return string
@@ -43,6 +47,25 @@ trait V3kAppTrait
                 $this->registerExtraClassLoading($dir);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return ContainerInterface
+     */
+    public function getContainer()
+    {
+        return $this->container;
+    }
+
+    /**
+     * @param ContainerInterface $container
+     * @return self
+     */
+    public function setContainer(ContainerInterface $container = null)
+    {
+        $this->container = $container;
 
         return $this;
     }
