@@ -190,7 +190,7 @@ class Register
                 $_short .= '.' . implode('.', $tmp);
             }
 
-            $service = "@{$module}.{$_short}." . $this->convertFromCamelCaseToSnakeCase($className);
+            $service = "{$module}.{$_short}." . $this->convertFromCamelCaseToSnakeCase($className);
             $mappings[$service] = [$module, $class, $ns, $suffix];
         }
     }

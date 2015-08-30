@@ -9,6 +9,7 @@ trait ModularAppTrait
 {
 
     use V3kAppTrait;
+    use ContainerAppTrait;
 
     private $modules = [];
 

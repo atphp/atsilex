@@ -35,6 +35,8 @@ class ModularApp extends Application
     {
         parent::__construct($values);
 
+        $this['app'] = $this;
+        
         foreach ($this->requiredConfigKeys as $k) {
             if (!$this->offsetExists($k)) {
                 throw new \InvalidArgumentException(sprintf('Missing "%s" value.', $k));
