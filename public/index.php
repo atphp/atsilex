@@ -22,19 +22,7 @@ return call_user_func(function () {
     // app object, the core of the application.
     $config = require file_exists(APP_ROOT . '/config.php') ? APP_ROOT . '/config.php' : APP_ROOT . '/config.default.php';
     $appClass = isset($config['app.class']) ? $config['app.class'] : ModularApp::class;
-
-    if (is_string($appClass)) {
-        $app = new $appClass($config, $loader);
-    }
-    elseif (is_arary($appClass)) {
-        foreach ($appClass as $class) {
-            if (class_exists($class)) {
-                $app = new $class($config, $loader);
-                break;
-            }
-        }
-    }
-
+    $app = new $appClass($config, $loader);
     $app->boot();
 
     return 'cli' === php_sapi_name() ? $app->getConsole()->run() : $app->run();
