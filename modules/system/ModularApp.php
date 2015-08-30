@@ -8,6 +8,13 @@ use Composer\Autoload\ClassLoader;
 use Silex\Application;
 use Silex\Application\SecurityTrait;
 use Silex\Application\UrlGeneratorTrait;
+use Silex\Provider\FormServiceProvider;
+use Silex\Provider\HttpFragmentServiceProvider;
+use Silex\Provider\LocaleServiceProvider;
+use Silex\Provider\RoutingServiceProvider;
+use Silex\Provider\ServiceControllerServiceProvider;
+use Silex\Provider\TranslationServiceProvider;
+use Silex\Provider\ValidatorServiceProvider;
 use Silex\Provider\VarDumperServiceProvider;
 
 class ModularApp extends Application
@@ -33,7 +40,14 @@ class ModularApp extends Application
         $this->before([$this, 'onBefore']);
         $this->error([$this, 'onError']);
 
+        $this->register(new FormServiceProvider());
+        $this->register(new HttpFragmentServiceProvider());
+        $this->register(new LocaleServiceProvider());
+        $this->register(new RoutingServiceProvider());
+        $this->register(new ServiceControllerServiceProvider());
         $this->register(new VarDumperServiceProvider());
+        $this->register(new TranslationServiceProvider());
+        $this->register(new ValidatorServiceProvider());
 
         // Register configured modules
         if (!empty($this['modules'])) {
