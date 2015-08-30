@@ -54,17 +54,6 @@ class ModularApp extends Application
         }
     }
 
-    public function __get($id)
-    {
-        if ($this->offsetExists($id)) {
-            return $this->offsetGet($id);
-        }
-
-        if ($this->getContainer()->has($id)) {
-            return $this->getContainer()->get($id);
-        }
-    }
-
     public function boot()
     {
         $this->register(new CsrfServiceProvider());
