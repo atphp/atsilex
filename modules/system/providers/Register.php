@@ -13,7 +13,6 @@ use Silex\Provider\SecurityServiceProvider;
 use Silex\Provider\SessionServiceProvider;
 use Silex\Provider\SwiftmailerServiceProvider;
 use Silex\Provider\TwigServiceProvider;
-use Silex\Provider\WebProfilerServiceProvider;
 
 class Register
 {
@@ -50,17 +49,11 @@ class Register
             'session.test'              => isset($c['session.test']) ? $c['session.test'] : false,
             'session.storage.save_path' => $c['app.root'] . '/files/session'
         ]);
-        $c->register(new SecurityServiceProvider(), ['security.firewalls' => $c['security.firewalls']]);
+
 
         $this->registerTwigServices($c);
         $this->registerDoctrineServices($c);
         $this->registerMagicServices($c);
-
-        if (isset($c['debug']) && !empty($c['debug']) && class_exists(WebProfilerServiceProvider::class)) {
-            $c->register(new WebProfilerServiceProvider(), [
-                'profiler.cache_dir' => $c['app.root'] . '/files/profiler',
-            ]);
-        }
     }
 
     /**
