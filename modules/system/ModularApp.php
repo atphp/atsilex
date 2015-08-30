@@ -5,7 +5,6 @@ namespace atsilex\module\system;
 use atsilex\module\system\traits\GetterAppTrait;
 use atsilex\module\system\traits\ModularAppTrait;
 use Composer\Autoload\ClassLoader;
-use Interop\Container\ContainerInterface;
 use Silex\Application;
 use Silex\Application\SecurityTrait;
 use Silex\Application\UrlGeneratorTrait;
@@ -20,7 +19,7 @@ class ModularApp extends Application
     use UrlGeneratorTrait;
     use SecurityTrait;
 
-    public function __construct(array $values = [], ClassLoader $loader = null, ContainerInterface $container = null)
+    public function __construct(array $values = [], ClassLoader $loader = null)
     {
         parent::__construct($values);
 
@@ -28,9 +27,7 @@ class ModularApp extends Application
             throw new \InvalidArgumentException('Missing app.root value.');
         }
 
-        $this
-            ->setClassLoader($loader)
-            ->setContainer($container);
+        $this->setClassLoader($loader);
 
         $this->before([$this, 'onBefore']);
         $this->error([$this, 'onError']);
