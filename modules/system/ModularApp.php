@@ -8,6 +8,7 @@ use Composer\Autoload\ClassLoader;
 use Silex\Application;
 use Silex\Application\SecurityTrait;
 use Silex\Application\UrlGeneratorTrait;
+use Silex\Provider\VarDumperServiceProvider;
 
 class ModularApp extends Application
 {
@@ -31,6 +32,8 @@ class ModularApp extends Application
 
         $this->before([$this, 'onBefore']);
         $this->error([$this, 'onError']);
+
+        $this->register(new VarDumperServiceProvider());
 
         // Register configured modules
         if (!empty($this['modules'])) {
