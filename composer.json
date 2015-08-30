@@ -24,6 +24,7 @@
         "monolog\/monolog": "^1.16.0",
         "psr\/log": "^1.0.0",
         "symfony\/config": "^2.7.0",
+        "symfony\/dependency-injection": "^2.7.0",
         "symfony\/form": "^2.7.0",
         "symfony\/security": "^2.7.0",
         "symfony\/security-csrf": "^2.7.0",
@@ -40,16 +41,8 @@
         "silex\/web-profiler": "2.0.x-dev"
     },
     "scripts": {
-        "run": [
-            "echo 'Started web server on http:\/\/localhost:8888'",
-            "php -S localhost:8888 -t public public\/index.php"
-        ],
         "post-install-cmd": [
             "atsilex\\module\\system\\commands\\InstallerScript::execute"
-        ],
-        "post-update-cmd": [
-            "php public\/index.php v3k:composer-rebuild",
-            "php public\/index.php v3k:build-assets"
         ]
     },
     "suggest": {

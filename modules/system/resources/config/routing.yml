@@ -1,11 +1,11 @@
 hello:
   path: /hello
-  defaults: { _controller: @system.ctrl.home:get }
+  defaults: { _controller: system.ctrl.home:actionGet }
 
 #user-login:
 #  path: /login
-#  defaults: { _controller: @system.ctrl.user:getLogin }
+#  defaults: { _controller: system.ctrl.user:getLogin }
 #
 #user-logout:
 #  path: /logout
-#  defaults: { _controller: @system.ctrl.user:getLogout }
+#  defaults: { _controller: system.ctrl.user:getLogout }

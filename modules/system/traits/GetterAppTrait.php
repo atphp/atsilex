@@ -2,7 +2,6 @@
 
 namespace atsilex\module\system\traits;
 
-use Doctrine\Common\Cache\Cache;
 use Doctrine\Common\Cache\CacheProvider;
 use Doctrine\Common\EventManager;
 use Doctrine\DBAL\Configuration;
@@ -131,7 +130,7 @@ trait GetterAppTrait
 
             // Our custom commands
             foreach ($this->keys() as $key) {
-                if (0 === strpos($key, '@') && false !== strpos($key, '.cmd.')) {
+                if (false !== strpos($key, '.cmd.')) {
                     $cmd = $this[$key];
                     if ($cmd instanceof Command) {
                         $this['console']->add($cmd);
