@@ -1,4 +1,9 @@
-* 0.1.2-dev
+* 0.2.0-dev
+
+- Remove '@' from magic service (@system.ctrl.home -> system.ctrl.home)
+- Add symfony container ($app->getContainer()), we can access Silex services from this.
+
+* 0.1.2
 
 - Module's public directory should be under ./resources/
 - Require Swiftmailer library.

@@ -38,7 +38,7 @@ class SystemModuleTest extends BaseTestCase
         $this->assertTrue($app->getFormFactory() instanceof FormFactoryInterface);
         $this->assertTrue($app['locale.listener'] instanceof LocaleListener);
         $this->assertTrue($app->getTranslator() instanceof Translator);
-        $this->assertTrue($app['@system.ctrl.home'] instanceof HomeController); # ServiceControllerServiceProvider
+        $this->assertTrue($app['system.ctrl.home'] instanceof HomeController); # ServiceControllerServiceProvider
         $this->assertTrue($app->getSession() instanceof Session);
         $this->assertTrue($app->getSerializer() instanceof SerializerInterface);
         $this->assertTrue($app->getConsole() instanceof Console);
@@ -64,8 +64,8 @@ class SystemModuleTest extends BaseTestCase
     public function testMagicServices()
     {
         $app = $this->getApplication();
-        $this->assertTrue($app['@system.cmd.run_script'] instanceof RunScriptCommand);
-        $this->assertTrue($app['@system.ctrl.home'] instanceof HomeController);
+        $this->assertTrue($app['system.cmd.run_script'] instanceof RunScriptCommand);
+        $this->assertTrue($app['system.ctrl.home'] instanceof HomeController);
     }
 
     public function testModule()

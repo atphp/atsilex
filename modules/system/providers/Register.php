@@ -9,18 +9,10 @@ use Dflydev\Provider\DoctrineOrm\DoctrineOrmServiceProvider;
 use Doctrine\Common\Cache\FilesystemCache;
 use Pimple\Container;
 use Silex\Provider\DoctrineServiceProvider;
-use Silex\Provider\FormServiceProvider;
-use Silex\Provider\HttpFragmentServiceProvider;
-use Silex\Provider\LocaleServiceProvider;
-use Silex\Provider\RoutingServiceProvider;
 use Silex\Provider\SecurityServiceProvider;
-use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\SessionServiceProvider;
 use Silex\Provider\SwiftmailerServiceProvider;
-use Silex\Provider\TranslationServiceProvider;
 use Silex\Provider\TwigServiceProvider;
-use Silex\Provider\ValidatorServiceProvider;
-use Silex\Provider\WebProfilerServiceProvider;
 
 class Register
 {
@@ -48,12 +40,7 @@ class Register
     public function register(Container $c)
     {
         // Register app core & popular contributed providers
-        $c->register(new FormServiceProvider());
-        $c->register(new HttpFragmentServiceProvider());
         $c->register(new JmsSerializerServiceProvider(), ['serializer.cacheDir' => $c['app.root'] . '/files/cache/jms.serializer']);
-        $c->register(new LocaleServiceProvider());
-        $c->register(new RoutingServiceProvider());
-        $c->register(new ServiceControllerServiceProvider());
         $c->register(new SwiftmailerServiceProvider(), [
             'swiftmailer.use_spool' => isset($c['swiftmailer.use_spool']) ? $c['swiftmailer.use_spool'] : true,
             'swiftmailer.options'   => isset($c['swiftmailer.options']) ? $c['swiftmailer.options'] : [],
@@ -62,19 +49,11 @@ class Register
             'session.test'              => isset($c['session.test']) ? $c['session.test'] : false,
             'session.storage.save_path' => $c['app.root'] . '/files/session'
         ]);
-        $c->register(new SecurityServiceProvider(), ['security.firewalls' => $c['security.firewalls']]);
-        $c->register(new TranslationServiceProvider());
-        $c->register(new ValidatorServiceProvider());
+
 
         $this->registerTwigServices($c);
         $this->registerDoctrineServices($c);
         $this->registerMagicServices($c);
-
-        if (isset($c['debug']) && !empty($c['debug']) && class_exists(WebProfilerServiceProvider::class)) {
-            $c->register(new WebProfilerServiceProvider(), [
-                'profiler.cache_dir' => $c['app.root'] . '/files/profiler',
-            ]);
-        }
     }
 
     /**
@@ -211,7 +190,7 @@ class Register
                 $_short .= '.' . implode('.', $tmp);
             }
 
-            $service = "@{$module}.{$_short}." . $this->convertFromCamelCaseToSnakeCase($className);
+            $service = "{$module}.{$_short}." . $this->convertFromCamelCaseToSnakeCase($className);
             $mappings[$service] = [$module, $class, $ns, $suffix];
         }
     }

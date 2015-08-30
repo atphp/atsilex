@@ -1,4 +1,4 @@
-Modular Silex [![Build Status](https://travis-ci.org/atphp/atsilex.svg)](https://travis-ci.org/atphp/atsilex)
+Modular Silex [![Build Status](https://travis-ci.org/atphp/atsilex.svg?branch=0.2)](https://travis-ci.org/atphp/atsilex)
 ====
 
 ## Built-ins features
