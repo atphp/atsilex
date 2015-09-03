@@ -8,7 +8,7 @@
 if (false !== strpos(phpversion(), '5.6.')) {
     return call_user_func(function () {
         $origin = 'git@github.com:atphp/atsilex.git'; # The main repository
-        $branches = ['0.1'];                          # Only push main branches
+        $branches = ['0.1', '0.2'];                   # Only push main branches
         $tmp = '/tmp';                                # Temp dir
         $trees = [
             'modules/module'  => 'git@github.com:v3knet/module.git',
