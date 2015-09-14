@@ -51,13 +51,13 @@ return call_user_func(function () {
         # ---------------------
 
         # Template params
-        'site_name'                  => 'VỢ ❤ CON',    # Used in Console
-        'site_version'               => '0.1', # Used in Console
-        'site_footer'                => '© <a href="http://www.v3k.net/">Andy Truong</a> ' . date('Y'),
+        'site_name'                  => '%site_name%',    # Used in Console
+        'site_version'               => '%site_version%', # Used in Console
+        'site_footer'                => '© <a href="%site_url%">%vendor_name%</a> ' . date('Y'),
         'site_navbar_classes'        => 'navbar navbar-default navbar-fixed-top',
         'site_body_classes'          => 'body',
-        'site_frontpage'             => '/hello',
-        'site_ga_code'               => 'UA-1234567-890',
+        'site_frontpage'             => '/%site_frontpage%',
+        'site_ga_code'               => '%site_ga_code%',
         'site_menu'                  => [
             'primary'   => [
                 '<a href="/">Home</a>',
