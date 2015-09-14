@@ -8,11 +8,11 @@ use atsilex\module\system\SystemModule;
 use Dflydev\Provider\DoctrineOrm\DoctrineOrmServiceProvider;
 use Doctrine\Common\Cache\FilesystemCache;
 use Pimple\Container;
+use Silex\Provider\CsrfServiceProvider;
 use Silex\Provider\DoctrineServiceProvider;
 use Silex\Provider\FormServiceProvider;
 use Silex\Provider\HttpFragmentServiceProvider;
 use Silex\Provider\LocaleServiceProvider;
-use Silex\Provider\RoutingServiceProvider;
 use Silex\Provider\SecurityServiceProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\SessionServiceProvider;
@@ -48,11 +48,11 @@ class Register
     public function register(Container $c)
     {
         // Register app core & popular contributed providers
+        $c->register(new CsrfServiceProvider());
         $c->register(new FormServiceProvider());
         $c->register(new HttpFragmentServiceProvider());
         $c->register(new JmsSerializerServiceProvider(), ['serializer.cacheDir' => $c['app.root'] . '/files/cache/jms.serializer']);
         $c->register(new LocaleServiceProvider());
-        $c->register(new RoutingServiceProvider());
         $c->register(new ServiceControllerServiceProvider());
         $c->register(new SwiftmailerServiceProvider(), [
             'swiftmailer.use_spool' => isset($c['swiftmailer.use_spool']) ? $c['swiftmailer.use_spool'] : true,
@@ -105,6 +105,9 @@ class Register
         $c->extend('twig', function (\Twig_Environment $twig, ModularApp $c) {
             # @TODO: Document this event.
             $c->getDispatcher()->dispatch(SystemModule::EVENT_TWIG_CREATE, new AppEvent($c, $twig));
+
+            # @TODO: Check $c['twig.app_variable']
+            $twig->addGlobal('app', $c);
 
             return $twig;
         });
