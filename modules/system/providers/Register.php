@@ -82,6 +82,9 @@ class Register
             # @TODO: Document this event.
             $c->getDispatcher()->dispatch(SystemModule::EVENT_TWIG_CREATE, new AppEvent($c, $twig));
 
+            # @TODO: Check $c['twig.app_variable']
+            $twig->addGlobal('app', $c);
+
             return $twig;
         });
 
