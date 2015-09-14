@@ -49,7 +49,6 @@ class Register
             'session.storage.save_path' => $c['app.root'] . '/files/session'
         ]);
 
-
         $this->registerTwigServices($c);
         $this->registerDoctrineServices($c);
         $this->registerMagicServices($c);
@@ -107,12 +106,6 @@ class Register
     {
         $c->register(new DoctrineServiceProvider(), ['db.options' => isset($c['db.options']) ? $c['db.options'] : []]);
 
-        if (!isset($c['cache'])) {
-            $c['cache'] = function (Container $c) {
-                return new FilesystemCache($c['app.root'] . '/files/cache');
-            };
-        }
-
         $c['orm.default_cache'] = function (Container $c) {
             return $c->getCache();
         };
@@ -126,10 +119,15 @@ class Register
 
         $c->register(new DoctrineOrmServiceProvider(), [
             'orm.proxies_dir' => $c['app.root'] . '/files/proxies',
+            'orm.default_cache' => $c['cache.default'],
             'orm.em.options'  => [
                 'mappings' => $this->ormMappings
             ],
         ]);
+
+        $c['cache'] = function (Container $c) {
+            return $c['orm.cache.locator']('default', 'default', $c['cache.default']);
+        };
     }
 
     private function registerMagicServices(ModularApp $c)

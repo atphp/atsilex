@@ -6,6 +6,7 @@ use atsilex\module\system\ModularApp;
 use atsilex\module\system\SystemModule;
 use atsilex\module\system\tests\fixtures\modules\foo\FooModule;
 use Doctrine\ORM\Tools\SchemaTool;
+use Pimple\Container;
 
 abstract class BaseTestCase extends \PHPUnit_Framework_TestCase
 {
@@ -16,6 +17,10 @@ abstract class BaseTestCase extends \PHPUnit_Framework_TestCase
         return [
             'debug'               => true,
             'app.root'            => __DIR__ . '/fixtures',
+            'cache.default' => [
+                'driver' => 'filesystem',
+                'path' => __DIR__ . '/fixtures/files/cache',
+            ],
             'security.firewalls'  => [
                 'default' => [
                     'pattern'   => '^/',
