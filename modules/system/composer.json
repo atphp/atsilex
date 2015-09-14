@@ -26,13 +26,13 @@
     "symfony/twig-bridge": "^2.7",
     "symfony/yaml": "^2.7.0",
     "symfony/validator": "^2.7.0",
+    "symfony/var-dumper": "^2.7.0",
     "swiftmailer/swiftmailer": "^5.4.1",
     "twig/twig": "^1.18",
     "v3knet/module": "0.1.x-dev"
   },
   "require-dev": {
-    "silex/web-profiler": "2.0.x-dev",
-    "symfony/var-dumper": "^2.7.0"
+    "silex/web-profiler": "2.0.x-dev"
   },
   "suggest": {
     "silex/web-profiler": "silex/web-profiler 2.0.x-dev"

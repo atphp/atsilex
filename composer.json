@@ -33,6 +33,7 @@
         "symfony\/twig-bridge": "^2.7",
         "symfony\/yaml": "^2.7.0",
         "symfony\/validator": "^2.7.0",
+        "symfony\/var-dumper": "^2.7.0",
         "swiftmailer\/swiftmailer": "^5.4.1",
         "twig\/twig": "^1.18"
     },
