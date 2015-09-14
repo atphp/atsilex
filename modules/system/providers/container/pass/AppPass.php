@@ -9,7 +9,6 @@ use Symfony\Component\DependencyInjection\Definition;
 
 class AppPass implements CompilerPassInterface
 {
-
     /** @var ModularApp */
     private $app;
 
@@ -40,5 +39,4 @@ class AppPass implements CompilerPassInterface
             }
         }
     }
-
 }

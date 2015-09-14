@@ -20,7 +20,6 @@ interface ModuleInterface extends ServiceProviderInterface,
     EventListenerProviderInterface,
     ControllerProviderInterface
 {
-
     /**
      * @return string
      */
@@ -49,5 +48,4 @@ interface ModuleInterface extends ServiceProviderInterface,
      * @return string
      */
     public function getPath();
-
 }

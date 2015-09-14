@@ -34,7 +34,6 @@ use Twig_Environment;
  */
 trait GetterAppTrait
 {
-
     /**
      * @return LoggerInterface
      */
@@ -253,5 +252,4 @@ trait GetterAppTrait
     {
         return $this['swiftmailer.transport'];
     }
-
 }

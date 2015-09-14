@@ -10,7 +10,6 @@ use Doctrine\Common\Annotations\Annotation;
  */
 class Method extends Annotation
 {
-
     /**
      * @var array<Param>
      */
@@ -25,5 +24,4 @@ class Method extends Annotation
      * @var string
      */
     public $description;
-
 }

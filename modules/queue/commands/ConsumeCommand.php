@@ -14,7 +14,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class ConsumeCommand extends Command
 {
-
     /** @var Consumer */
     protected $consumer;
 
@@ -44,8 +43,7 @@ class ConsumeCommand extends Command
 
         if (null === $this->defaultQueue) {
             $this->addArgument('queue', InputArgument::REQUIRED, 'Name of message queue.');
-        }
-        else {
+        } else {
             $this->addArgument('queue', InputArgument::OPTIONAL, 'Name of message queue.', $this->defaultQueue);
         }
     }
@@ -60,5 +58,4 @@ class ConsumeCommand extends Command
             ]
         );
     }
-
 }

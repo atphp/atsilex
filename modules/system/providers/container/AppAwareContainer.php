@@ -7,7 +7,6 @@ use Symfony\Component\DependencyInjection\Container;
 
 abstract class AppAwareContainer extends Container
 {
-
     /** @var ModularApp */
     private $app;
 
@@ -27,5 +26,4 @@ abstract class AppAwareContainer extends Container
 
         return parent::get($id, $invalidBehavior);
     }
-
 }

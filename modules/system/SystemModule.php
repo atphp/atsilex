@@ -24,7 +24,6 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class SystemModule extends Module
 {
-
     protected $machineName = 'system';
     protected $name        = 'System Module';
     protected $description = 'Implements core functions.';
@@ -51,5 +50,4 @@ class SystemModule extends Module
             });
         }
     }
-
 }

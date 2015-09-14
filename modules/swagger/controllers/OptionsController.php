@@ -6,7 +6,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class OptionsController
 {
-
     private $methods;
 
     public function __construct($methods)
@@ -18,5 +17,4 @@ class OptionsController
     {
         return Response::create("", 204, array("Allow" => implode(",", $this->methods)));
     }
-
 }

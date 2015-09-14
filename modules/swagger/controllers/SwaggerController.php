@@ -15,7 +15,6 @@ use Symfony\Component\Routing\RequestContext;
 
 class SwaggerController extends BaseController
 {
-
     /** @var array $definitions */
     private $definitions = [];
 
@@ -68,8 +67,7 @@ class SwaggerController extends BaseController
             if ($ctrl = $route->getDefaults()['_controller']) { // Path has controller
                 try {
                     $this->getPath($reader, $key, $route, $ctrl, $paths);
-                }
-                catch (\RuntimeException $e) {
+                } catch (\RuntimeException $e) {
                     // Unable to add route to swagger info response.
                 }
             }
@@ -84,12 +82,10 @@ class SwaggerController extends BaseController
             list($class, $method) = is_callable($ctrl) ? $ctrl : explode(':', $ctrl);
             list($module, $group, $chunks) = explode('.', trim($class), 3); // Parse @MODULE.group.chunks
             $class = $this->getApp()->getModule($module)->getMagicServiceClass($group, $chunks);
-        }
-        elseif (is_array($ctrl)) {
+        } elseif (is_array($ctrl)) {
             $class = $ctrl[0];
             $method = $ctrl[1];
-        }
-        else {
+        } else {
             return; // unsupported controller
         }
 
@@ -108,8 +104,7 @@ class SwaggerController extends BaseController
         foreach ($annotations as $annotation) {
             if ($annotation instanceof Param) {
                 $params[] = $annotation;
-            }
-            else if ($annotation instanceof Response) {
+            } elseif ($annotation instanceof Response) {
                 $response = $annotation;
             }
         }
@@ -151,8 +146,7 @@ class SwaggerController extends BaseController
                 $this->swaggerResponse($classMethod->response, $info);
                 $paths[$route->getPath()][$swaggerMethod] = $info;
             }
-        }
-        else {
+        } else {
             $info = [
                 "summary"   => $rDoc->getShortDescription(),
                 "responses" => [
@@ -181,7 +175,7 @@ class SwaggerController extends BaseController
      * @param Response $response
      * @param array    $info Swagger api info to return
      */
-    function swaggerResponse(Response $response, &$info, $swaggerMethod = 'get')
+    public function swaggerResponse(Response $response, &$info, $swaggerMethod = 'get')
     {
         // shorthand response object
         // [EntityType] = { schema: { "type": "array", "items": { "$ref": "EntityType" } } }
@@ -192,14 +186,12 @@ class SwaggerController extends BaseController
                 $info['responses'][200]['schema']['type'] = 'array';
                 $info['responses'][200]['schema']['items']['$ref'] = $def;
                 $this->addDefinition($def);
-            }
-            else {
+            } else {
                 $def = $response->value;
                 $info['responses'][200]['schema']['$ref'] = $def;
                 $this->addDefinition($def);
             }
-        }
-        else {
+        } else {
             $def = $response;
             // full response object is pass as is
             $info['responses'][200] = $def;
@@ -233,28 +225,24 @@ class SwaggerController extends BaseController
                     'type'   => 'string',
                     'format' => 'date-time'
                 ];
-            }
-            elseif ('date' === $type) {
+            } elseif ('date' === $type) {
                 $this->definitions[$entity]['properties'][$field] = [
                     'type'   => 'string',
                     'format' => 'date'
                 ];
-            }
-            elseif ('json_array' === $type) {
+            } elseif ('json_array' === $type) {
                 $this->definitions[$entity]['properties'][$field] = [
                     'type'  => 'array',
                     'items' => [
                         'type' => 'string'
                     ]
                 ];
-            }
-            elseif ('float' === $type) {
+            } elseif ('float' === $type) {
                 $this->definitions[$entity]['properties'][$field] = [
                     'type'   => 'number',
                     'format' => 'float'
                 ];
-            }
-            else {
+            } else {
                 $this->definitions[$entity]['properties'][$field] = [
                     'type' => 'text' === $type ? 'string' : $type
                 ];
@@ -325,5 +313,4 @@ class SwaggerController extends BaseController
 
         return reset($matches);
     }
-
 }

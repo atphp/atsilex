@@ -11,7 +11,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class GenerateConfigFileCommand extends Command
 {
-
     /** @var  ModularApp */
     protected $app;
 
@@ -59,5 +58,4 @@ class GenerateConfigFileCommand extends Command
             "require __DIR__ . '/config.default.php'"
         ));
     }
-
 }

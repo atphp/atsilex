@@ -21,7 +21,6 @@ use Silex\Provider\WebProfilerServiceProvider;
 
 class ModularApp extends Application
 {
-
     const VERSION = '0.1.1-dev';
 
     use ModularAppTrait;
@@ -83,5 +82,4 @@ class ModularApp extends Application
 
         return parent::boot();
     }
-
 }

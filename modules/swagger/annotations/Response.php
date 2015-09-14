@@ -10,7 +10,6 @@ use Doctrine\Common\Annotations\Annotation;
  */
 class Response extends Annotation
 {
-
     /**
      * @var string
      */
@@ -35,5 +34,4 @@ class Response extends Annotation
      * @var string
      */
     public $method;
-
 }

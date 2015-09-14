@@ -7,7 +7,6 @@ use Silex\Application;
 
 trait ModularAppTrait
 {
-
     use V3kAppTrait;
     use ContainerAppTrait;
 
@@ -24,8 +23,7 @@ trait ModularAppTrait
         if ($module instanceof Module) {
             $name = $module->getMachineName();
             $instance = $module;
-        }
-        else {
+        } else {
             if (!is_string($module) || is_null($instance)) {
                 throw new \UnexpectedValueException();
             }
@@ -114,5 +112,4 @@ trait ModularAppTrait
 
         return $this->getModule($module)->getMagicServiceClass($group, $chunks);
     }
-
 }

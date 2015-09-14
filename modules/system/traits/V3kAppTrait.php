@@ -9,7 +9,6 @@ use Symfony\Component\HttpKernel\Debug\ExceptionHandler;
 
 trait V3kAppTrait
 {
-
     /** @var  ClassLoader */
     private $classLoader;
 
@@ -113,5 +112,4 @@ trait V3kAppTrait
             'content'    => $handler->getContent($exception),
         ]);
     }
-
 }

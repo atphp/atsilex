@@ -15,7 +15,6 @@ use Silex\Application;
 
 class QueueModuleTest extends \PHPUnit_Framework_TestCase
 {
-
     protected function getContainer()
     {
         $c = new ModularApp(['app.root' => '/tmp']);
@@ -46,5 +45,4 @@ class QueueModuleTest extends \PHPUnit_Framework_TestCase
         // $console->add(new new ConsumeCommand());
         // $this->assertTrue(false);
     }
-
 }

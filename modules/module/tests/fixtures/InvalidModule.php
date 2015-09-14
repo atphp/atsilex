@@ -6,5 +6,4 @@ use atsilex\module\Module;
 
 class InvalidModule extends Module
 {
-
 }

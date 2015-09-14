@@ -14,7 +14,6 @@ use Composer\Script\Event;
  */
 class InstallerScript
 {
-
     private $root;
     private $systemModuleDir;
 
@@ -84,5 +83,4 @@ class InstallerScript
 
         return $this;
     }
-
 }

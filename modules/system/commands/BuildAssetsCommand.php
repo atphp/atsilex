@@ -9,7 +9,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class BuildAssetsCommand extends Command
 {
-
     /** @var  ModularApp */
     protected $app;
 
@@ -33,5 +32,4 @@ class BuildAssetsCommand extends Command
             $this->app->getModule($module)->buildAssets($this->app->getAppRoot() . '/public');
         }
     }
-
 }

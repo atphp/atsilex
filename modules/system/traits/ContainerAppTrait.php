@@ -7,7 +7,6 @@ use atsilex\module\system\providers\container\ContainerBuilder;
 
 trait ContainerAppTrait
 {
-
     private $container;
     private $containerNs    = 'atsilex';
     private $containerClass = 'atcontainer';
@@ -47,5 +46,4 @@ trait ContainerAppTrait
 
         return $this->container;
     }
-
 }

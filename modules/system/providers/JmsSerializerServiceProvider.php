@@ -15,7 +15,6 @@ use Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException;
  */
 class JmsSerializerServiceProvider implements ServiceProviderInterface
 {
-
     /**
      * {@inheritdoc}
      */
@@ -56,8 +55,7 @@ class JmsSerializerServiceProvider implements ServiceProviderInterface
     {
         if ($c['serializer.namingStrategy'] instanceof PropertyNamingStrategyInterface) {
             $namingStrategy = $c['serializer.namingStrategy'];
-        }
-        else {
+        } else {
             switch ($c['serializer.namingStrategy']) {
                 case 'IdenticalProperty':
                     $namingStrategy = new IdenticalPropertyNamingStrategy();
@@ -107,5 +105,4 @@ class JmsSerializerServiceProvider implements ServiceProviderInterface
             $builder->setDeserializationVisitor($format, $visitor);
         }
     }
-
 }

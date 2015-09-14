@@ -7,7 +7,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 abstract class BaseController
 {
-
     /** @var ModularApp */
     protected $app;
 
@@ -57,5 +56,4 @@ abstract class BaseController
 
         return $this->getApp()->json($output, $status, $header);
     }
-
 }

@@ -7,7 +7,6 @@ use Symfony\Component\EventDispatcher\GenericEvent;
 
 class AppEvent extends GenericEvent
 {
-
     /** @var  ModularApp */
     protected $app;
 
@@ -25,5 +24,4 @@ class AppEvent extends GenericEvent
     {
         return $this->app;
     }
-
 }

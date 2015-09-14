@@ -16,7 +16,6 @@ use Silex\Provider\TwigServiceProvider;
 
 class Register
 {
-
     /** @var array[] */
     protected $ormMappings = [];
 
@@ -67,8 +66,7 @@ class Register
             if (isset($c['twig.path'])) {
                 if (is_array($c['twig.path'])) {
                     $paths = array_merge($c['twig.path'], $paths);
-                }
-                else {
+                } else {
                     $paths[] = $c['twig.path'];
                 }
             }
@@ -214,5 +212,4 @@ class Register
 
         return implode('_', $ret);
     }
-
 }

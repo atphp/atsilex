@@ -12,9 +12,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * @TODO: How to hide this command to end user?
  */
-class InstallCommand extends Command
+class InstallComand extends Command
 {
-
     /** @var  ModularApp */
     protected $app;
 
@@ -38,5 +37,4 @@ class InstallCommand extends Command
             ->getDispatcher()
             ->dispatch(SystemModule::EVENT_APP_INSTALL, new AppEvent($this->app));
     }
-
 }

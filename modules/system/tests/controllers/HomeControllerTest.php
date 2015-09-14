@@ -7,12 +7,10 @@ use Symfony\Component\HttpFoundation\Request;
 
 class HomeControllerTest extends BaseTestCase
 {
-
     public function testActionGet()
     {
         $app = $this->getApplication();
         $response = $app->handle(Request::create('/hello'));
         $this->assertContains('Welcome to <strong>Project Name</strong>!', $response->getContent());
     }
-
 }

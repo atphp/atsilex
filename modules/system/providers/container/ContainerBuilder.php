@@ -9,7 +9,6 @@ use Symfony\Component\DependencyInjection\Dumper\PhpDumper;
 
 class ContainerBuilder
 {
-
     /** @var  ModularApp */
     private $app;
 
@@ -37,5 +36,4 @@ class ContainerBuilder
 
         file_put_contents($file, $code);
     }
-
 }

@@ -16,7 +16,6 @@ use Symfony\Component\Routing\Loader\YamlFileLoader;
  */
 abstract class Module extends BaseModule
 {
-
     /** @var bool|string */
     protected $routeFile = false;
 
@@ -111,5 +110,4 @@ abstract class Module extends BaseModule
             }
         }
     }
-
 }

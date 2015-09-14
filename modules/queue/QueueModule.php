@@ -25,7 +25,6 @@ use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
  */
 class QueueModule extends Module
 {
-
     protected $machineName = 'queue';
     protected $name        = 'Queue';
 
@@ -116,5 +115,4 @@ class QueueModule extends Module
 
         return $queueNames;
     }
-
 }

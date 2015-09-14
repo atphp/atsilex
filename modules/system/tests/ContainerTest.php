@@ -7,7 +7,6 @@ use atsilex\module\system\providers\container\AppAwareContainer;
 
 class ContainerTest extends BaseTestCase
 {
-
     public function testContainer()
     {
         $app = $this->getApplication();
@@ -19,5 +18,4 @@ class ContainerTest extends BaseTestCase
         $this->assertTrue($c->get('app') instanceof ModularApp);
         $this->assertContains('controllers', $c->getServiceIds());
     }
-
 }

@@ -11,7 +11,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class CacheFlushingCommand extends Command
 {
-
     /** @var  ModularApp */
     protected $app;
 
@@ -37,5 +36,4 @@ class CacheFlushingCommand extends Command
             throw new \RuntimeException('Can not flush cache.');
         }
     }
-
 }

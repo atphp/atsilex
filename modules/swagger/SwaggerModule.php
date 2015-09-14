@@ -11,7 +11,6 @@ use Symfony\Component\Routing\RouteCollection;
 
 class SwaggerModule extends Module
 {
-
     protected $machineName = 'swagger';
     protected $name        = 'Swagger Module';
 
@@ -73,5 +72,4 @@ class SwaggerModule extends Module
 
         return $allow;
     }
-
 }

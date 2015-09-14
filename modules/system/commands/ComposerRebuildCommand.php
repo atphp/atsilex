@@ -9,7 +9,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class ComposerRebuildCommand extends Command
 {
-
     /** @var  ModularApp */
     protected $app;
 
@@ -57,5 +56,4 @@ class ComposerRebuildCommand extends Command
             $json = array_merge_recursive($json, json_decode($moduleJson, true));
         }
     }
-
 }

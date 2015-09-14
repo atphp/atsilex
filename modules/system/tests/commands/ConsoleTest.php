@@ -10,7 +10,6 @@ use Symfony\Component\Console\Tester\CommandTester;
 
 class ConsoleTest extends BaseTestCase
 {
-
     /**
      * Make sure the magic commands are auto added to console.
      */
@@ -37,5 +36,4 @@ class ConsoleTest extends BaseTestCase
 
         $this->assertTrue(FooCommand::$executed);
     }
-
 }

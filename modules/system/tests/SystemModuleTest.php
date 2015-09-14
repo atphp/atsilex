@@ -26,7 +26,6 @@ use Twig_Environment;
 
 class SystemModuleTest extends BaseTestCase
 {
-
     public function testCoreServices()
     {
         $app = $this->getApplication();
@@ -96,5 +95,4 @@ class SystemModuleTest extends BaseTestCase
 
         $this->assertTrue($app['controllers']->match('/_profiler/search') instanceof Controller);
     }
-
 }

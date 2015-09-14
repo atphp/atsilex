@@ -12,7 +12,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class ListCommand extends Command
 {
-
     /** @var ModularApp */
     protected $app;
 
@@ -41,5 +40,4 @@ class ListCommand extends Command
             ->setHeaders(['Queue', 'Message class'])
             ->render();
     }
-
 }

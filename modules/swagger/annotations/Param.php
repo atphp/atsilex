@@ -11,7 +11,6 @@ use Doctrine\Common\Annotations\Annotation\Enum;
  */
 class Param extends Annotation
 {
-
     /**
      * @var string
      */
@@ -80,5 +79,4 @@ class Param extends Annotation
 
         return $vars;
     }
-
 }

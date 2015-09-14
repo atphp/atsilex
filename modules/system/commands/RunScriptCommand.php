@@ -11,7 +11,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class RunScriptCommand extends Command
 {
-
     /** @var  Application */
     protected $app;
 
@@ -35,5 +34,4 @@ class RunScriptCommand extends Command
         $script = new $class($this->app);
         $script->execute($input, $output);
     }
-
 }

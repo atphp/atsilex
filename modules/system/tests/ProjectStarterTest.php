@@ -4,7 +4,6 @@ namespace atsilex\module\system\tests;
 
 class ProjectStarterTest extends BaseTestCase
 {
-
     private $root = '/tmp/my-project';
 
     public function testProjectStructure()
@@ -29,5 +28,4 @@ class ProjectStarterTest extends BaseTestCase
             $this->assertContains($value, $configDefault);
         }
     }
-
 }

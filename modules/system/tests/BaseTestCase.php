@@ -9,7 +9,6 @@ use Doctrine\ORM\Tools\SchemaTool;
 
 abstract class BaseTestCase extends \PHPUnit_Framework_TestCase
 {
-
     private $app;
 
     protected function getApplicationConfiguration()
@@ -62,5 +61,4 @@ abstract class BaseTestCase extends \PHPUnit_Framework_TestCase
 
         return $em;
     }
-
 }

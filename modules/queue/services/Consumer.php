@@ -7,7 +7,6 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class Consumer extends \Bernard\Consumer
 {
-
     /**
      * @return Router
      */
@@ -23,5 +22,4 @@ class Consumer extends \Bernard\Consumer
     {
         return $this->dispatcher;
     }
-
 }

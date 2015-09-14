@@ -7,7 +7,6 @@ use atsilex\module\tests\fixtures\InvalidModule;
 
 class ModuleTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @expectedException \RuntimeException
      * @expectedExceptionMessage Machine name is required: atsilex\module\tests\fixtures\InvalidModule
@@ -73,5 +72,4 @@ class ModuleTest extends \PHPUnit_Framework_TestCase
             ],
         ];
     }
-
 }

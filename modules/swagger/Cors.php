@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class Cors
 {
-
     private $app;
 
     public function __construct(Application $app)
@@ -38,8 +37,7 @@ class Cors
             $headers["Access-Control-Allow-Headers"] = $request->headers->get("Access-Control-Request-Headers");
             $headers["Access-Control-Allow-Methods"] = $allowedMethods;
             $headers["Access-Control-Max-Age"] = $this->app["cors.maxAge"];
-        }
-        else {
+        } else {
             $headers["Access-Control-Expose-Headers"] = $this->app["cors.exposeHeaders"];
         }
         $headers["Access-Control-Allow-Origin"] = $this->allowOrigin($request);
@@ -79,5 +77,4 @@ class Cors
     {
         return $this->app["cors.allowCredentials"] === true ? "true" : null;
     }
-
 }

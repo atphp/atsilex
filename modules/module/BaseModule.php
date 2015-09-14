@@ -11,7 +11,6 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
  */
 abstract class BaseModule implements ModuleInterface
 {
-
     /** @var string */
     protected $machineName = '';
 
@@ -165,5 +164,4 @@ abstract class BaseModule implements ModuleInterface
 
         return $this->path;
     }
-
 }

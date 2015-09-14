@@ -11,7 +11,6 @@ use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 
 class PasswordEncodeCommand extends Command
 {
-
     /** @var  ModularApp */
     protected $app;
 
@@ -39,5 +38,4 @@ class PasswordEncodeCommand extends Command
 
         $output->writeln('Passord: ' . $encoder->encodePassword($password, $salt));
     }
-
 }

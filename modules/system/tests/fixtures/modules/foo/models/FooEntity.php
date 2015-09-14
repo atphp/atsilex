@@ -11,7 +11,6 @@ use Doctrine\ORM\Mapping\Id;
  */
 class FooEntity
 {
-
     /**
      * @Id()
      * @Column(type="integer")
@@ -56,5 +55,4 @@ class FooEntity
     {
         $this->name = $name;
     }
-
 }
