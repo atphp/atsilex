@@ -1,15 +1,10 @@
 {
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/atphp/atsilex"
-    }
-  ],
   "require": {
-    "atphp/atsilex": "0.1.x-dev",
+    "atphp/atsilex": "0.2.x-dev",
     "silex\/silex": "2.0.x-dev",
     "bernard\/bernard": "1.0.*@dev",
-    "silex\/web-profiler": "2.0.x-dev"
+    "silex\/web-profiler": "2.0.x-dev",
+    "symfony/var-dumper": "^2.7.0"
   },
   "scripts": {
     "post-install-cmd": [

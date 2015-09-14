@@ -26,6 +26,7 @@
 // Get rid of global variable
 use atsilex\module\queue\QueueModule;
 use atsilex\module\system\ModularApp;
+use atsilex\module\system\SystemModule;
 
 return call_user_func(function () {
     global $loader;
@@ -44,7 +45,8 @@ return call_user_func(function () {
         # Modules — Select modules for the application.
         # ---------------------
         'modules'                    => [
-            'queue' => QueueModule::class
+            'queue' => QueueModule::class,
+            'system' => SystemModule::class,
         ],
 
         # The front-end configurations
