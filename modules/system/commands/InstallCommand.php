@@ -12,7 +12,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * @TODO: How to hide this command to end user?
  */
-class InstallComand extends Command
+class InstallCommand extends Command
 {
     /** @var  ModularApp */
     protected $app;
