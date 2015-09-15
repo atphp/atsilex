@@ -18,7 +18,7 @@ Require `atphp/atsilex` in your project's `composer.json` file:
 {
   "name": "v3knet/website",
   "require": {
-    "atphp/atsilex": "^0.1.0"
+    "atphp/atsilex": "^0.2.0"
   },
   "scripts": {
     "post-install-cmd": [
