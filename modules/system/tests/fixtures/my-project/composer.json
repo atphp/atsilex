@@ -2,9 +2,7 @@
   "require": {
     "atphp/atsilex": "0.2.x-dev",
     "silex\/silex": "2.0.x-dev",
-    "bernard\/bernard": "1.0.*@dev",
-    "silex\/web-profiler": "2.0.x-dev",
-    "symfony/var-dumper": "^2.7.0"
+    "bernard\/bernard": "1.0.*@dev"
   },
   "scripts": {
     "post-install-cmd": [
