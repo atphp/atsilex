@@ -1,0 +1,29 @@
+{#
+    Template to render Drupal response without Drupal's assets
+#}
+
+{% extends 'pages/index.twig' %}
+
+{% block head_title %}{{ response.title }} | {{ app.site_name }}{% endblock %}
+
+{% block contentPrefix %}
+  {% if response.messages is defined %}
+    {% for type, items in response.messages %}
+      <div class="messages {{ type }}">
+        <ul>
+          {% for item in items %}
+            <li>{{ item|raw }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  {{ parent() }}
+{% endblock %}
+
+{% block content %}
+  {{ parent() }}
+
+  {{ response.content|raw }}
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends '@drupal/pages/html.twig' %}
+
+{% block head_script %}
+  {{ parent() }}
+
+  <!-- Drupal header CSS -->
+  {{ response.css|replace({'%base_url%': app.drupal_cdn})|raw }}
+
+  <!-- Drupal header scripts -->
+  {{ response.js('header')|replace({'%base_url%': app.drupal_cdn})|raw }}
+{% endblock %}
+
+{% block footer_script %}
+  <!-- Drupal footer scripts -->
+  {{ response.js('footer')|replace({'%base_url%': app.drupal_cdn})|raw }}
+
+  {{ parent() }}
+{% endblock %}
