@@ -21,7 +21,7 @@ use Silex\Provider\WebProfilerServiceProvider;
 
 class ModularApp extends Application
 {
-    const VERSION = '0.1.1-dev';
+    const VERSION = '0.2.0-dev';
 
     use ModularAppTrait;
     use GetterAppTrait;
@@ -35,7 +35,7 @@ class ModularApp extends Application
         parent::__construct($values);
 
         $this['app'] = $this;
-        
+
         foreach ($this->requiredConfigKeys as $k) {
             if (!$this->offsetExists($k)) {
                 throw new \InvalidArgumentException(sprintf('Missing "%s" value.', $k));
