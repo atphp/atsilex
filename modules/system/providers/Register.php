@@ -5,6 +5,7 @@ namespace atsilex\module\system\providers;
 use atsilex\module\system\events\AppEvent;
 use atsilex\module\system\ModularApp;
 use atsilex\module\system\SystemModule;
+use Boris\Boris;
 use Dflydev\Provider\DoctrineOrm\DoctrineOrmServiceProvider;
 use Doctrine\Common\Cache\FilesystemCache;
 use Pimple\Container;
@@ -52,6 +53,18 @@ class Register
         $this->registerTwigServices($c);
         $this->registerDoctrineServices($c);
         $this->registerMagicServices($c);
+
+        $c['shell'] = function (Container $c) {
+            $shell = new Boris('@silex > ');
+
+            $shell->setLocal([
+                'app'    => $c,
+                'em'     => $c->getEntityManager(),
+                'mailer' => $c->getMailer(),
+            ]);
+
+            return $shell;
+        };
     }
 
     /**
@@ -65,7 +78,8 @@ class Register
             if (isset($c['twig.path'])) {
                 if (is_array($c['twig.path'])) {
                     $paths = array_merge($c['twig.path'], $paths);
-                } else {
+                }
+                else {
                     $paths[] = $c['twig.path'];
                 }
             }
@@ -121,9 +135,9 @@ class Register
         }
 
         $c->register(new DoctrineOrmServiceProvider(), [
-            'orm.proxies_dir' => $c['app.root'] . '/files/proxies',
+            'orm.proxies_dir'   => $c['app.root'] . '/files/proxies',
             'orm.default_cache' => $c['cache.default'],
-            'orm.em.options'  => [
+            'orm.em.options'    => [
                 'mappings' => $this->ormMappings
             ],
         ]);

@@ -36,6 +36,6 @@ class PasswordEncodeCommand extends Command
         $password = $input->getArgument('password');
         $salt = $input->getArgument('salt') ?: '';
 
-        $output->writeln('Passord: ' . $encoder->encodePassword($password, $salt));
+        $output->writeln('Password: ' . $encoder->encodePassword($password, $salt));
     }
 }

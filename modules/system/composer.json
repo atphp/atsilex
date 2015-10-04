@@ -35,6 +35,7 @@
     "silex/web-profiler": "2.0.x-dev"
   },
   "suggest": {
-    "silex/web-profiler": "silex/web-profiler 2.0.x-dev"
+    "silex/web-profiler": "silex/web-profiler 2.0.x-dev",
+    "d11wtq/boris:^1.0": "Boris REPL"
   }
 }
