@@ -57,9 +57,9 @@ trait GetterAppTrait
     /**
      * @return Connection
      */
-    public function getDb()
+    public function getDb($name = 'default')
     {
-        return $this['db'];
+        return isset($this["db.{$name}"]) ? $this["db.{$name}"] : $this['db'];
     }
 
     /**

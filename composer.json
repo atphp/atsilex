@@ -17,7 +17,6 @@
         "doctrine\/orm": "^2.5.0",
         "phpdocumentor\/reflection-docblock": "^2.0",
         "doctrine\/cache": "^1.4.1",
-        "dflydev\/doctrine-orm-service-provider": "^2.0.0",
         "guzzlehttp\/guzzle": "^6.0.2",
         "jms\/serializer": "^1.0",
         "monolog\/monolog": "^1.16.0",

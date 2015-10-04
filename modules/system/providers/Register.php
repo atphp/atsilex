@@ -6,7 +6,6 @@ use atsilex\module\system\events\AppEvent;
 use atsilex\module\system\ModularApp;
 use atsilex\module\system\SystemModule;
 use Boris\Boris;
-use Dflydev\Provider\DoctrineOrm\DoctrineOrmServiceProvider;
 use Doctrine\Common\Cache\FilesystemCache;
 use Pimple\Container;
 use Silex\Provider\DoctrineServiceProvider;
@@ -134,12 +133,10 @@ class Register
             }
         }
 
+        $c->register(new DoctrineCacheServiceProvider(), ['orm.default_cache' => $c['cache.default']]);
         $c->register(new DoctrineOrmServiceProvider(), [
-            'orm.proxies_dir'   => $c['app.root'] . '/files/proxies',
-            'orm.default_cache' => $c['cache.default'],
-            'orm.em.options'    => [
-                'mappings' => $this->ormMappings
-            ],
+            'orm.proxies_dir' => $c['app.root'] . '/files/proxies',
+            'orm.em.options'  => ['mappings' => $this->ormMappings],
         ]);
 
         $c['cache'] = function (Container $c) {
