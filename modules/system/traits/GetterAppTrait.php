@@ -2,6 +2,7 @@
 
 namespace atsilex\module\system\traits;
 
+use atsilex\module\exceptions\MissingResourceException;
 use Doctrine\Common\Cache\CacheProvider;
 use Doctrine\Common\EventManager;
 use Doctrine\DBAL\Configuration;
@@ -130,9 +131,14 @@ trait GetterAppTrait
             // Our custom commands
             foreach ($this->keys() as $key) {
                 if (false !== strpos($key, '.cmd.')) {
-                    $cmd = $this[$key];
-                    if ($cmd instanceof Command) {
-                        $this['console']->add($cmd);
+                    try {
+                        $cmd = $this[$key];
+                        if ($cmd instanceof Command) {
+                            $this['console']->add($cmd);
+                        }
+                    }
+                    catch (MissingResourceException $e) {
+                        // …
                     }
                 }
             }
