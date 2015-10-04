@@ -11,7 +11,7 @@ if (false !== strpos(phpversion(), '5.6.')) {
         $branches = ['0.1', '0.2'];                   # Only push main branches
         $tmp = '/tmp';                                # Temp dir
         $trees = [
-            'modules/module'  => 'git@github.com:v3knet/module.git',
+            'src/module'      => 'git@github.com:v3knet/module.git',
             'modules/queue'   => 'git@github.com:v3knet/queue-module.git',
             'modules/swagger' => 'git@github.com:v3knet/swagger-module.git',
             'modules/system'  => 'git@github.com:v3knet/system-module.git',

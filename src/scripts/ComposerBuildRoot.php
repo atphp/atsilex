@@ -10,7 +10,7 @@ class ComposerBuildRoot
 
     public function execute()
     {
-        $root = realpath(__DIR__ . '/../');
+        $root = realpath(__DIR__ . '/../../');
 
         // Get root composer, reset it
         $composer = json_decode(file_get_contents($root . '/composer.json'), true);

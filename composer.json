@@ -4,7 +4,6 @@
     "autoload": {
         "psr-4": {
             "atsilex\\": ".\/",
-            "atsilex\\module\\": "modules\/module",
             "atsilex\\module\\queue\\": "modules\/queue",
             "atsilex\\module\\swagger\\": "modules\/swagger",
             "atsilex\\module\\system\\": "modules\/system"
@@ -12,8 +11,8 @@
     },
     "require": {
         "php": ">=5.5",
-        "silex\/silex": "2.0.x-dev",
         "bernard\/bernard": "1.0.*@dev",
+        "silex\/silex": "2.0.x-dev",
         "symfony\/console": "^2.7.0",
         "doctrine\/orm": "^2.5.0",
         "phpdocumentor\/reflection-docblock": "^2.0",
@@ -48,6 +47,6 @@
     },
     "suggest": {
         "silex\/web-profiler": "silex\/web-profiler 2.0.x-dev",
-        "d11wtq/boris:^1.0": "Boris REPL"
+        "d11wtq\/boris:^1.0": "Boris REPL"
     }
 }
