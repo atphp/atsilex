@@ -7,7 +7,7 @@ Console
 
 ### Start PHP REPL
 
-    php public/index.php v3k:shell
+    php public/index.php at:shell
 
     @silex > $app;
     @silex > exit; // or control-D
@@ -16,8 +16,7 @@ Console
 
 This command is useful we we need run some code quickly without writing any command or controller:
 
-
-    php public/index.php v3k:scr /path/to/debug.php
+    php public/index.php at:scr /path/to/debug.php
 
     # @file /path/to/debug.php
     return function(atsilex\module\system\ModularApp $app) {
