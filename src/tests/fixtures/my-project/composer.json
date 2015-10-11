@@ -10,7 +10,7 @@
   "extra": {
     "atsilex": {
       "%site_name%": "My Project",
-      "%site_version%": "0.1",
+      "%site_version%": "0.3",
       "%site_url%": "http://www.v3k.net/",
       "%site_frontpage%": "hello",
       "%site_ga_code%": "UA-1234567-890",

@@ -20,7 +20,7 @@ class Installer
     public function __construct($root)
     {
         $this->root = $root;
-        $this->systemModuleDir = $root . '/modules/system';
+        $this->systemModuleDir = dirname(dirname(__DIR__)) . '/modules/system';
     }
 
     public static function execute(Event $event)

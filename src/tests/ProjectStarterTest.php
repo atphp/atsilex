@@ -34,5 +34,17 @@ class ProjectStarterTest extends BaseTestCase
             $this->assertNotContains($token, $configDefault);
             $this->assertContains($value, $configDefault);
         }
+
+        $this->doTestConfigValues(require $root . '/config.php');
+    }
+
+    private function doTestConfigValues($config)
+    {
+        $this->assertEquals('My Project', $config['site_name']);
+        $this->assertEquals('0.3', $config['site_version']);
+        $this->assertEquals('/hello', $config['site_frontpage']);
+        $this->assertEquals('UA-1234567-890', $config['site_ga_code']);
+        $this->assertContains('http://www.v3k.net/', $config['site_footer']);
+        $this->assertContains('First Last', $config['site_footer']);
     }
 }
