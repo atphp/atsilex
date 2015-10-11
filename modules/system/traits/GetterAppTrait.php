@@ -3,6 +3,7 @@
 namespace atsilex\module\system\traits;
 
 use atsilex\module\exceptions\MissingResourceException;
+use atsilex\module\system\ModularApp;
 use Doctrine\Common\Cache\CacheProvider;
 use Doctrine\Common\EventManager;
 use Doctrine\DBAL\Configuration;
@@ -36,6 +37,14 @@ use Twig_Environment;
 trait GetterAppTrait
 {
     /**
+     * @return string
+     */
+    public function getAppRoot()
+    {
+        return $this['app.root'];
+    }
+
+    /**
      * @return LoggerInterface
      */
     public function getLogger()
@@ -49,9 +58,10 @@ trait GetterAppTrait
     /**
      * @return CacheProvider
      */
-    public function getCache()
+    public function getCache($name = 'default', $cacheName = 'default', array $options = [])
     {
-        return $this['cache'];
+        $options = $options ?: $this["cache.{$name}"];
+        return $this['orm.cache.locator']($name, $cacheName, $options);
     }
 
     /**
@@ -83,7 +93,15 @@ trait GetterAppTrait
      */
     public function getEntityManager($name = 'default')
     {
-        return isset($this["orm.em.{$name}"]) ? $this["orm.em.{$name}"] : $this['orm.em'];
+        if (isset($this["orm.em.{$name}"])) {
+            return $this["orm.em.{$name}"];
+        }
+
+        if (!isset($this['orm.em'])) {
+            throw new MissingResourceException('ORM module is not enabled.');
+        }
+
+        return $this['orm.em'];
     }
 
     /**
@@ -118,33 +136,44 @@ trait GetterAppTrait
     public function getConsole()
     {
         if (!isset($this['console']) || (null === $this['console'])) {
-            $name = isset($this['site_name']) ? $this['site_name'] : 'V3K';
-            $version = isset($this['site_version']) ? $this['site_version'] : 'dev';
-            $this['console'] = new Console($name, $version);
-
-            // Doctrine commands
-            $this['console']->setHelperSet(DBAL::createHelperSet($this->getDb()));
-            $this['console']->setHelperSet(ORM::createHelperSet($this->getEntityManager()));
-            DBAL::addCommands($this['console']);
-            ORM::addCommands($this['console']);
-
-            // Our custom commands
-            foreach ($this->keys() as $key) {
-                if (false !== strpos($key, '.cmd.')) {
-                    try {
-                        $cmd = $this[$key];
-                        if ($cmd instanceof Command) {
-                            $this['console']->add($cmd);
-                        }
-                    }
-                    catch (MissingResourceException $e) {
-                        // …
-                    }
-                }
-            }
+            $this['console'] = $this->createConsole();
         }
 
         return $this['console'];
+    }
+
+    private function createConsole()
+    {
+        $name = isset($this['site_name']) ? $this['site_name'] : 'V3K';
+        $version = isset($this['site_version']) ? $this['site_version'] : ModularApp::VERSION;
+        $console = new Console($name, $version);
+
+        // Doctrine commands
+        $console->setHelperSet(DBAL::createHelperSet($this->getDb()));
+        DBAL::addCommands($console);
+
+        try {
+            $console->setHelperSet(ORM::createHelperSet($this->getEntityManager()));
+            ORM::addCommands($console);
+        }
+        catch (MissingResourceException $e) {
+        }
+
+        // Our custom commands
+        foreach ($this->keys() as $key) {
+            if (false !== strpos($key, '.cmd.')) {
+                try {
+                    $cmd = $this[$key];
+                    if ($cmd instanceof Command) {
+                        $console->add($cmd);
+                    }
+                }
+                catch (MissingResourceException $e) {
+                    // …
+                }
+            }
+        }
+        return $console;
     }
 
     /**

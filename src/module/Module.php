@@ -2,6 +2,7 @@
 
 namespace atsilex\module;
 
+use atsilex\module\system\ModularApp;
 use Pimple\Container;
 use Silex\Application;
 use Symfony\Component\Config\FileLocator;
@@ -24,15 +25,24 @@ abstract class Module extends BaseModule
      */
     public function boot(Application $app)
     {
-        // Load routes from YAML file
         if (!empty($this->routeFile)) {
-            $this->routeFile = true === $this->routeFile ? '%dir/resources/config/routing.yml' : $this->routeFile;
-            $path = str_replace('%dir', $this->getPath(), $this->routeFile);
-            $loader = new YamlFileLoader(new FileLocator([dirname($path)]));
-            $collection = $loader->load('routing.yml');
-            $collection->addPrefix($this->routePrefix);
-            $app['routes']->addCollection($collection);
+            $this->loadRoutes($app['routes']);
         }
+
+        parent::boot($app);
+    }
+
+    /**
+     * Load routes from YAML file.
+     */
+    protected function loadRoutes($routes)
+    {
+        $this->routeFile = (true === $this->routeFile) ? '%dir/resources/config/routing.yml' : $this->routeFile;
+        $path = str_replace('%dir', $this->getPath(), $this->routeFile);
+        $loader = new YamlFileLoader(new FileLocator([dirname($path)]));
+        $collection = $loader->load('routing.yml');
+        $collection->addPrefix($this->routePrefix);
+        $routes->addCollection($collection);
     }
 
     /**

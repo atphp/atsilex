@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "18f80110191ee340621c1cd6eafdce6a",
-    "content-hash": "d0623abd94545efa31823b045da96f23",
+    "hash": "69d6e72ae2af062660d0059f243c71b8",
+    "content-hash": "52a67f68661e993fa09cdb6fa59ae6c8",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -66,12 +66,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/bernardphp/bernard.git",
-                "reference": "38e600c3134021810fecac000acc22aeaed141ce"
+                "reference": "0d0401d08a9f73e444d008ce2ca2a03a0157114b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bernardphp/bernard/zipball/38e600c3134021810fecac000acc22aeaed141ce",
-                "reference": "38e600c3134021810fecac000acc22aeaed141ce",
+                "url": "https://api.github.com/repos/bernardphp/bernard/zipball/0d0401d08a9f73e444d008ce2ca2a03a0157114b",
+                "reference": "0d0401d08a9f73e444d008ce2ca2a03a0157114b",
                 "shasum": ""
             },
             "require": {
@@ -109,7 +109,7 @@
                 "MIT"
             ],
             "description": "Message queue implemented in PHP with Redis as a backend.",
-            "time": "2015-05-15 11:20:46"
+            "time": "2015-10-09 14:29:54"
         },
         {
             "name": "bernard/normalt",
@@ -142,63 +142,6 @@
                 "MIT"
             ],
             "time": "2014-03-25 08:06:03"
-        },
-        {
-            "name": "dflydev/doctrine-orm-service-provider",
-            "version": "v2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/dflydev/dflydev-doctrine-orm-service-provider.git",
-                "reference": "84b3f4887a999cbd017010f758122d8409cccac0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/dflydev/dflydev-doctrine-orm-service-provider/zipball/84b3f4887a999cbd017010f758122d8409cccac0",
-                "reference": "84b3f4887a999cbd017010f758122d8409cccac0",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/orm": "~2.3",
-                "php": ">=5.3.3",
-                "pimple/pimple": ">=2.1,<4"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Dflydev\\Provider\\DoctrineOrm\\": "src/Dflydev/Provider/DoctrineOrm"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Dragonfly Development Inc.",
-                    "email": "info@dflydev.com",
-                    "homepage": "http://dflydev.com"
-                },
-                {
-                    "name": "Beau Simensen",
-                    "email": "beau@dflydev.com",
-                    "homepage": "http://beausimensen.com"
-                }
-            ],
-            "description": "Doctrine ORM Service Provider",
-            "homepage": "http://dflydev.com/projects/doctrine-orm-service-provider/",
-            "keywords": [
-                "cilex",
-                "doctrine",
-                "orm",
-                "pimple",
-                "silex"
-            ],
-            "time": "2015-09-07 12:14:46"
         },
         {
             "name": "doctrine/annotations",
@@ -1492,12 +1435,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silexphp/Silex.git",
-                "reference": "129cc1bd190e0018c8920c8d9150bfc9b4065946"
+                "reference": "55b5c4e5bb92c62b2fa94c7c343570487665ecaa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silexphp/Silex/zipball/129cc1bd190e0018c8920c8d9150bfc9b4065946",
-                "reference": "129cc1bd190e0018c8920c8d9150bfc9b4065946",
+                "url": "https://api.github.com/repos/silexphp/Silex/zipball/55b5c4e5bb92c62b2fa94c7c343570487665ecaa",
+                "reference": "55b5c4e5bb92c62b2fa94c7c343570487665ecaa",
                 "shasum": ""
             },
             "require": {
@@ -1567,7 +1510,7 @@
             "keywords": [
                 "microframework"
             ],
-            "time": "2015-09-27 18:54:29"
+            "time": "2015-10-03 15:45:08"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2939,24 +2882,24 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silexphp/Silex-WebProfiler.git",
-                "reference": "babdbc0b5c8682178c09b5549ab9ef352a1843cd"
+                "reference": "951b113e1a364e8cb46097f4fd81d03073bf968c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silexphp/Silex-WebProfiler/zipball/babdbc0b5c8682178c09b5549ab9ef352a1843cd",
-                "reference": "babdbc0b5c8682178c09b5549ab9ef352a1843cd",
+                "url": "https://api.github.com/repos/silexphp/Silex-WebProfiler/zipball/951b113e1a364e8cb46097f4fd81d03073bf968c",
+                "reference": "951b113e1a364e8cb46097f4fd81d03073bf968c",
                 "shasum": ""
             },
             "require": {
                 "silex/silex": "2.0.*@dev",
-                "symfony/stopwatch": "~2.7",
-                "symfony/twig-bridge": "~2.7",
-                "symfony/web-profiler-bundle": "~2.7"
+                "symfony/stopwatch": "~2.7|3.0.*",
+                "symfony/twig-bridge": "~2.7|3.0.*",
+                "symfony/web-profiler-bundle": "~2.7|3.0.*"
             },
             "require-dev": {
-                "symfony/browser-kit": "~2.7",
-                "symfony/css-selector": "~2.7",
-                "symfony/debug-bundle": "~2.7"
+                "symfony/browser-kit": "~2.7|3.0.*",
+                "symfony/css-selector": "~2.7|3.0.*",
+                "symfony/debug-bundle": "~2.7|3.0.*"
             },
             "type": "library",
             "extra": {
@@ -2981,7 +2924,7 @@
             ],
             "description": "A WebProfiler for Silex",
             "homepage": "http://silex.sensiolabs.org/",
-            "time": "2015-08-30 13:08:03"
+            "time": "2015-10-02 10:32:55"
         },
         {
             "name": "symfony/stopwatch",
@@ -3092,8 +3035,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "silex/silex": 20,
         "bernard/bernard": 20,
+        "silex/silex": 20,
         "silex/web-profiler": 20
     },
     "prefer-stable": false,

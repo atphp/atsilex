@@ -24,11 +24,11 @@ class ContainerBuilder
 
     public function build($file, $namespace, $class)
     {
-        $container = new Builder();
-        $container->addCompilerPass(new AppPass($this->app));
-        $container->compile();
+        $c = new Builder();
+        $c->addCompilerPass(new AppPass($this->app));
+        $c->compile();
 
-        $code = (new PhpDumper($container))->dump([
+        $code = (new PhpDumper($c))->dump([
             'namespace'  => $namespace,
             'class'      => $class,
             'base_class' => '\\' . AppAwareContainer::class,

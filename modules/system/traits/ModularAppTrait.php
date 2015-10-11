@@ -3,17 +3,16 @@
 namespace atsilex\module\system\traits;
 
 use atsilex\module\Module;
+use atsilex\module\system\events\AppEvent;
 use Silex\Application;
 
 trait ModularAppTrait
 {
     use V3kAppTrait;
-    use ContainerAppTrait;
 
     private $modules = [];
 
     /**
-     * @TODO Fire module.register event.
      * @param string|Module      $module
      * @param string|Module|null $instance
      * @return self
@@ -23,7 +22,8 @@ trait ModularAppTrait
         if ($module instanceof Module) {
             $name = $module->getMachineName();
             $instance = $module;
-        } else {
+        }
+        else {
             if (!is_string($module) || is_null($instance)) {
                 throw new \UnexpectedValueException();
             }
@@ -32,23 +32,23 @@ trait ModularAppTrait
             $instance = is_string($instance) ? new $instance : $instance;
         }
 
-        return $this->doRegisterModule($name, $instance);
+        if (!$this->isModuleExists($name)) {
+            $this->doRegisterModule($name, $instance);
+        }
+
+        return $this;
     }
 
     private function doRegisterModule($name, Module $instance)
     {
-        if (!$this->isModuleExists($name)) {
-            foreach ($instance->getRequires() as $require) {
-                $this->registerModule(new $require);
-            }
-
-            $index = count($this->providers);
-            $this->modules[$name] = $index;
-            $this->register($instance);
-            $this->mount($instance->getRoutePrefix(), $instance);
+        foreach ($instance->getRequires() as $require) {
+            $this->registerModule(new $require);
         }
 
-        return $this;
+        $index = count($this->providers);
+        $this->modules[$name] = $index;
+        $this->register($instance);
+        $this->mount($instance->getRoutePrefix(), $instance);
     }
 
     /**

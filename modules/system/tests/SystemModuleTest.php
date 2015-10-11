@@ -13,6 +13,7 @@ use Silex\Application;
 use Silex\Controller;
 use Silex\Provider\Locale\LocaleListener;
 use Symfony\Component\Console\Application as Console;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -41,6 +42,7 @@ class SystemModuleTest extends BaseTestCase
         $this->assertTrue($app->getTwig() instanceof Twig_Environment);
         $this->assertTrue($app->getMailer() instanceof \Swift_Mailer);
         $this->assertTrue($app->getMailerTransport() instanceof \Swift_Transport);
+        $this->assertTrue($app->getDispatcher() instanceof EventDispatcherInterface);
     }
 
     public function testDoctrineServices()

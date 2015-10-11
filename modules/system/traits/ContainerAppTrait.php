@@ -46,4 +46,11 @@ trait ContainerAppTrait
 
         return $this->container;
     }
+
+    public function has($id)
+    {
+        $c = $this->getContainer();
+
+        return $c->has($id) || isset($this[$id]);
+    }
 }

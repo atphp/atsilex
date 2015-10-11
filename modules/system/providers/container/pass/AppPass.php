@@ -17,14 +17,12 @@ class AppPass implements CompilerPassInterface
         $this->app = $app;
     }
 
-    public function process(ContainerBuilder $container)
+    public function process(ContainerBuilder $c)
     {
         // Register 'app' service
-        $container->setDefinition(
-            'app',
-            (new Definition())
-                ->setClass(ModularApp::class)
-                ->setSynthetic(true)
+        $c->setDefinition('app', (new Definition())
+            ->setClass(ModularApp::class)
+            ->setSynthetic(true)
         );
 
         // Register Silex services
@@ -32,10 +30,7 @@ class AppPass implements CompilerPassInterface
             $v = $this->app->raw($id);
 
             if (!is_scalar($v) && !is_array($v)) {
-                $container->setDefinition(
-                    $id,
-                    (new Definition())->setSynthetic(true)
-                );
+                $c->setDefinition($id, (new Definition())->setSynthetic(true));
             }
         }
     }

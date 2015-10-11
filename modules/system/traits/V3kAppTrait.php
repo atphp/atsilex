@@ -13,14 +13,6 @@ trait V3kAppTrait
     private $classLoader;
 
     /**
-     * @return string
-     */
-    public function getAppRoot()
-    {
-        return $this['app.root'];
-    }
-
-    /**
      * @return ClassLoader
      */
     public function getClassLoader()

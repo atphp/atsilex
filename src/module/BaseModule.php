@@ -2,6 +2,7 @@
 
 namespace atsilex\module;
 
+use atsilex\module\system\ModularApp;
 use Pimple\Container;
 use Silex\Application;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -18,14 +19,12 @@ abstract class BaseModule implements ModuleInterface
     protected $name = '';
 
     /** @var string */
-    protected $version = '0.1.0';
+    protected $version = ModularApp::VERSION;
 
     /** @var string */
     protected $description = '';
 
-    /**
-     * @var string[] List of module-dependencies classes.
-     */
+    /** @var string[] List of module-dependencies classes. */
     protected $requires = [];
 
     /** @var string */

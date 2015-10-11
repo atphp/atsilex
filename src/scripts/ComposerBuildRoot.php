@@ -16,7 +16,7 @@ class ComposerBuildRoot
         $composer = json_decode(file_get_contents($root . '/composer.json'), true);
         $composer['require'] = ['php' => '>=5.5'];
         $composer['require-dev'] = ['symfony/var-dumper' => '^2.7.0'];
-        $composer['autoload'] = ['psr-4' => ['atsilex\\' => './']];
+        $composer['autoload'] = ['psr-4' => ['atsilex\\' => './src']];
         $composer['suggest'] = [];
 
         foreach (glob($root . '/modules/*/composer.json') as $path) {
