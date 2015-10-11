@@ -12,6 +12,7 @@
          bootstrap="./bootstrap.php">
     <testsuites>
         <testsuite name="Project Name Test Suite">
+            <directory>./src/tests</directory>
             <directory>./modules/*/tests</directory>
         </testsuite>
     </testsuites>

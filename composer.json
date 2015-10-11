@@ -43,7 +43,7 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "atsilex\\module\\system\\commands\\InstallerScript::execute"
+            "atsilex\\scripts\\Installer::execute"
         ]
     },
     "suggest": {

@@ -15,8 +15,6 @@ matrix:
 
 install:
   - composer install
-  - rsync -av tests/fixtures/my-project/ /tmp/my-project/
-  - cd /tmp/my-project/; composer install; cd -
 
 script: phpunit --boot=vendor/autoload.php tests/
 notifications: { email: false }

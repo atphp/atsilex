@@ -15,7 +15,7 @@ matrix:
 
 install:
   - composer install
-  - rsync -av modules/system/tests/fixtures/my-project/ /tmp/my-project/
+  - rsync -av src/tests/fixtures/my-project/ /tmp/my-project/
   - cd /tmp/my-project/; composer install; cd -
 
 script: phpunit

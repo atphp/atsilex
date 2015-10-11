@@ -1,13 +1,11 @@
 {
   "require": {
-    "atphp/atsilex": "0.2.x-dev",
+    "atphp/atsilex": "0.3.x-dev",
     "silex\/silex": "2.0.x-dev",
     "bernard\/bernard": "1.0.*@dev"
   },
   "scripts": {
-    "post-install-cmd": [
-      "atsilex\\module\\system\\commands\\InstallerScript::execute"
-    ]
+    "post-install-cmd": ["atsilex\\scripts\\Installer::execute"]
   },
   "extra": {
     "atsilex": {
