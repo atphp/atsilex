@@ -12,6 +12,8 @@ if (false !== strpos(phpversion(), '5.6.')) {
         $tmp = '/tmp';                                # Temp dir
         $trees = [
             'src/module'      => 'git@github.com:v3knet/module.git',
+            'modules/dev'     => 'git@github.com:v3knet/dev-module.git',
+            'modules/orm'     => 'git@github.com:v3knet/orm-module.git',
             'modules/queue'   => 'git@github.com:v3knet/queue-module.git',
             'modules/swagger' => 'git@github.com:v3knet/swagger-module.git',
             'modules/system'  => 'git@github.com:v3knet/system-module.git',
