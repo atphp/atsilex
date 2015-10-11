@@ -2,6 +2,8 @@
 
 namespace atsilex\tests;
 
+use atsilex\module\system\tests\BaseTestCase;
+
 class ProjectStarterTest extends BaseTestCase
 {
     private $root = '/tmp/my-project';
