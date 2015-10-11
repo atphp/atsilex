@@ -1,5 +1,6 @@
 files/cache/*
 files/session/*
+files/container.php
 config.php
 config.default.php
 public/assets/modules/*

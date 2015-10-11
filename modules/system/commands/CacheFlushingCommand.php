@@ -9,10 +9,10 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class CacheFlushingCommand extends Command
+class CacheFlushingCommand extends BaseCmd
 {
-    /** @var  ModularApp */
-    protected $app;
+    const NAME        = 'at:cache:flush';
+    const DESCRIPTION = 'Flush all caches.';
 
     /** @var CacheProvider */
     protected $cache;
@@ -21,13 +21,7 @@ class CacheFlushingCommand extends Command
     {
         $this->cache = $app->getCache();
 
-        $vendor = isset($app['vendor_machine_name']) ? $app['vendor_machine_name'] : 'v3k';
-        parent::__construct($vendor . ':cache:flush');
-    }
-
-    protected function configure()
-    {
-        $this->setDescription('Flush all caches');
+        return parent::__construct();
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

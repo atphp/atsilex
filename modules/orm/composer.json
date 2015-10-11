@@ -1,0 +1,10 @@
+{
+  "name": "v3knet/orm-module",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "atsilex\\module\\orm\\": "./"
+    }
+  },
+  "require": {}
+}

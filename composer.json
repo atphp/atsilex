@@ -3,7 +3,9 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "atsilex\\": ".\/",
+            "atsilex\\": ".\/src",
+            "atsilex\\module\\dev\\": "modules\/dev",
+            "atsilex\\module\\orm\\": "modules\/orm",
             "atsilex\\module\\queue\\": "modules\/queue",
             "atsilex\\module\\swagger\\": "modules\/swagger",
             "atsilex\\module\\system\\": "modules\/system"

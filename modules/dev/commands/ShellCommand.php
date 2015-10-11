@@ -1,18 +1,19 @@
 <?php
 
-namespace atsilex\module\system\commands;
+namespace atsilex\module\dev\commands;
 
 use atsilex\module\exceptions\MissingResourceException;
+use atsilex\module\system\commands\BaseCmd;
 use atsilex\module\system\ModularApp;
 use Boris\Boris;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class ShellCommand extends Command
+class ShellCommand extends BaseCmd
 {
-    /** @var  ModularApp */
-    protected $app;
+    const NAME        = 'at:shell';
+    const DESCRIPTION = 'Start interacting shell.';
 
     /** @var  Boris */
     protected $shell;
@@ -25,10 +26,7 @@ class ShellCommand extends Command
 
         $this->shell = $app['shell'];
 
-        $vendor = isset($app['vendor_machine_name']) ? $app['vendor_machine_name'] : 'v3k';
-        parent::__construct($vendor . ':shell');
-
-        $this->setDescription('Start interacting shell.');
+        parent::__construct();
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

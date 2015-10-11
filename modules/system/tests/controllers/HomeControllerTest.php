@@ -11,6 +11,8 @@ class HomeControllerTest extends BaseTestCase
     {
         $app = $this->getApplication();
         $response = $app->handle(Request::create('/hello'));
+
+        $this->assertEquals(200, $response->getStatusCode());
         $this->assertContains('Welcome to <strong>Project Name</strong>!', $response->getContent());
     }
 }

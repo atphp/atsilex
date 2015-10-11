@@ -2,14 +2,11 @@
 
 namespace atsilex\module\system\tests;
 
-use atsilex\module\system\commands\RunScriptCommand;
+use atsilex\module\dev\commands\RunScriptCommand;
 use atsilex\module\system\controllers\HomeController;
 use atsilex\module\system\tests\fixtures\modules\foo\FooModule;
-use atsilex\module\system\tests\fixtures\modules\foo\models\FooEntity;
 use Doctrine\Common\Cache\Cache;
 use Doctrine\DBAL\Driver\Connection;
-use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\EntityRepository;
 use JMS\Serializer\SerializerInterface;
 use Psr\Log\LoggerInterface;
 use Silex\Application;
@@ -50,8 +47,6 @@ class SystemModuleTest extends BaseTestCase
     {
         $app = $this->getApplication();
         $this->assertTrue($app->getDb() instanceof Connection);
-        $this->assertTrue($app->getEntityManager() instanceof EntityManagerInterface);
-        $this->assertTrue($app->getEntityManager()->getRepository(FooEntity::class) instanceof EntityRepository);
     }
 
     public function testTwigService()
@@ -63,7 +58,7 @@ class SystemModuleTest extends BaseTestCase
     public function testMagicServices()
     {
         $app = $this->getApplication();
-        $this->assertTrue($app['system.cmd.run_script'] instanceof RunScriptCommand);
+        $this->assertTrue($app['dev.cmd.run_script'] instanceof RunScriptCommand);
         $this->assertTrue($app['system.ctrl.home'] instanceof HomeController);
     }
 

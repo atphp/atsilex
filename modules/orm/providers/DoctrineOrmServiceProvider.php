@@ -1,6 +1,6 @@
 <?php
 
-namespace atsilex\module\system\providers;
+namespace atsilex\module\orm\providers;
 
 use Doctrine\Common\Persistence\Mapping\Driver\MappingDriver;
 use Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain;
@@ -28,7 +28,6 @@ class DoctrineOrmServiceProvider implements ServiceProviderInterface
      * Get default ORM configuration settings.
      *
      * @param Container $c
-     *
      * @return array
      */
     protected function getOrmDefaults()

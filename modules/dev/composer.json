@@ -1,0 +1,10 @@
+{
+  "name": "v3knet/dev-module",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "atsilex\\module\\dev\\": "./"
+    }
+  },
+  "require": {}
+}

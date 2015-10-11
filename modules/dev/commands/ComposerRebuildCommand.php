@@ -1,29 +1,17 @@
 <?php
 
-namespace atsilex\module\system\commands;
+namespace atsilex\module\dev\commands;
 
+use atsilex\module\system\commands\AppAwareCmd;
 use atsilex\module\system\ModularApp;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class ComposerRebuildCommand extends Command
+class ComposerRebuildCommand extends AppAwareCmd
 {
-    /** @var  ModularApp */
-    protected $app;
-
-    public function __construct(ModularApp $app)
-    {
-        $this->app = $app;
-
-        $vendor = isset($app['vendor_machine_name']) ? $app['vendor_machine_name'] : 'v3k';
-        parent::__construct($vendor . ':composer-rebuild');
-    }
-
-    protected function configure()
-    {
-        $this->setDescription("Rebuild master composer file for all non-core modules.");
-    }
+    const NAME        = 'at:composer-rebuild';
+    const DESCRIPTION = 'Rebuild master composer file for all non-core modules.';
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {

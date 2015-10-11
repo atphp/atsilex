@@ -18,9 +18,7 @@ class DoctrineCacheServiceProvider implements ServiceProviderInterface
 {
     public function register(Container $c)
     {
-        $c['orm.default_cache'] = [
-            'driver' => 'array',
-        ];
+        $c['orm.default_cache'] = ['driver' => 'array'];
 
         $c['orm.cache.locator'] = $c->protect(function ($name, $cacheName, $options) use ($c) {
             return $this->cacheLocator($c, $name, $cacheName, $options);

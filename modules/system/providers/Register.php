@@ -5,6 +5,7 @@ namespace atsilex\module\system\providers;
 use atsilex\module\system\events\AppEvent;
 use atsilex\module\system\ModularApp;
 use atsilex\module\system\SystemModule;
+use atsilex\module\system\traits\ModularAppTrait;
 use Boris\Boris;
 use Doctrine\Common\Cache\FilesystemCache;
 use Pimple\Container;
@@ -16,9 +17,6 @@ use Silex\Provider\TwigServiceProvider;
 
 class Register
 {
-    /** @var array[] */
-    protected $ormMappings = [];
-
     /**
      * Auto register services for modules, so they have not to do.
      *
@@ -40,29 +38,18 @@ class Register
     {
         // Register app core & popular contributed providers
         $c->register(new JmsSerializerServiceProvider(), ['serializer.cacheDir' => $c['app.root'] . '/files/cache/jms.serializer']);
-        $c->register(new SwiftmailerServiceProvider(), [
-            'swiftmailer.use_spool' => isset($c['swiftmailer.use_spool']) ? $c['swiftmailer.use_spool'] : true,
-            'swiftmailer.options'   => isset($c['swiftmailer.options']) ? $c['swiftmailer.options'] : [],
-        ]);
-        $c->register(new SessionServiceProvider(), [
-            'session.test'              => isset($c['session.test']) ? $c['session.test'] : false,
-            'session.storage.save_path' => $c['app.root'] . '/files/session'
-        ]);
 
         $this->registerTwigServices($c);
-        $this->registerDoctrineServices($c);
+        $this->registerCacheServices($c);
         $this->registerMagicServices($c);
+    }
 
-        $c['shell'] = function (Container $c) {
-            $shell = new Boris('@silex > ');
+    private function registerCacheServices(Container $c)
+    {
+        $c->register(new DoctrineCacheServiceProvider(), ['orm.default_cache' => $c['cache.default']]);
 
-            $shell->setLocal([
-                'app'    => $c,
-                'em'     => $c->getEntityManager(),
-                'mailer' => $c->getMailer(),
-            ]);
-
-            return $shell;
+        $c['cache'] = function (Container $c) {
+            return $c['orm.cache.locator']('default', 'default', $c['cache.default']);
         };
     }
 
@@ -101,47 +88,18 @@ class Register
             return $twig;
         });
 
-        $c->extend(
-            'twig.loader.filesystem',
-            function (\Twig_Loader_Filesystem $loader, Container $c) {
-                /** @var ModularTrait $c */
-                foreach ($c->getModules() as $name) {
-                    $path = $c->getModulePath($name) . '/resources/views';
+        $c->extend('twig.loader.filesystem', function (\Twig_Loader_Filesystem $loader, Container $c) {
+            /** @var ModularApp $c */
+            foreach ($c->getModules() as $name) {
+                $path = $c->getModulePath($name) . '/resources/views';
 
-                    if (is_dir($path)) {
-                        $loader->addPath($path, $name);
-                    }
+                if (is_dir($path)) {
+                    $loader->addPath($path, $name);
                 }
-
-                return $loader;
             }
-        );
-    }
 
-    private function registerDoctrineServices(Container $c)
-    {
-        $c->register(new DoctrineServiceProvider(), ['db.options' => isset($c['db.options']) ? $c['db.options'] : []]);
-
-        $c['orm.default_cache'] = function (Container $c) {
-            return $c->getCache();
-        };
-
-        foreach ($c->getModules() as $module) {
-            // Register entity mappings if available
-            if ($mappings = $c->getModule($module)->getEntityMappings($c)) {
-                $this->ormMappings = array_merge($this->ormMappings, $mappings);
-            }
-        }
-
-        $c->register(new DoctrineCacheServiceProvider(), ['orm.default_cache' => $c['cache.default']]);
-        $c->register(new DoctrineOrmServiceProvider(), [
-            'orm.proxies_dir' => $c['app.root'] . '/files/proxies',
-            'orm.em.options'  => ['mappings' => $this->ormMappings],
-        ]);
-
-        $c['cache'] = function (Container $c) {
-            return $c['orm.cache.locator']('default', 'default', $c['cache.default']);
-        };
+            return $loader;
+        });
     }
 
     private function registerMagicServices(ModularApp $c)

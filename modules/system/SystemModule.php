@@ -2,6 +2,7 @@
 
 namespace atsilex\module\system;
 
+use atsilex\module\dev\DevModule;
 use atsilex\module\Module;
 use atsilex\module\system\providers\Register;
 use Pimple\Container;
@@ -39,15 +40,28 @@ class SystemModule extends Module
      */
     const EVENT_APP_INSTALL = 'system.app.install';
 
+    /**
+     * @param ModularApp $c
+     */
     public function register(Container $c)
     {
-        (new Register())->register($c);
+        if ('cli' === php_sapi_name()) {
+            if (!$c->isModuleExists('dev')) {
+                $c->registerModule(new DevModule());
+            }
+        }
 
-        // Site front-page
-        if (isset($c['site_frontpage']) && ('/' !== $c['site_frontpage'])) {
-            $c->get('/', function (Container $c) {
-                return $c->handle(Request::create($c['site_frontpage']));
+        (new Register())->register($c);
+    }
+
+    public function boot(Application $app)
+    {
+        if ($app->has('site_frontpage') && ('/' !== $app->get('site_frontpage'))) {
+            $app->get('/', function (Container $c) {
+                return $c->handle(Request::create($c->get('site_frontpage')));
             });
         }
+
+        parent::boot($app);
     }
 }

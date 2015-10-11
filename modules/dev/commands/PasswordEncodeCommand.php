@@ -1,7 +1,8 @@
 <?php
 
-namespace atsilex\module\system\commands;
+namespace atsilex\module\dev\commands;
 
+use atsilex\module\system\commands\BaseCmd;
 use atsilex\module\system\ModularApp;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -9,23 +10,14 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 
-class PasswordEncodeCommand extends Command
+class PasswordEncodeCommand extends BaseCmd
 {
-    /** @var  ModularApp */
-    protected $app;
-
-    public function __construct(ModularApp $app)
-    {
-        $this->app = $app;
-
-        $vendor = isset($app['vendor_machine_name']) ? $app['vendor_machine_name'] : 'v3k';
-        parent::__construct($vendor . ':password-encode');
-    }
+    const NAME        = 'at:password-encode';
+    const DESCRIPTION = 'Encode a password.';
 
     protected function configure()
     {
         $this
-            ->setDescription('Encode a password')
             ->addArgument('password', InputArgument::REQUIRED)
             ->addArgument('salt', InputArgument::OPTIONAL);
     }
